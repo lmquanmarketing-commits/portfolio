@@ -33,51 +33,51 @@ function draw() {
   const u = mode === 'qr' ? '%' : 'k';
   let s = '';
 
-  // Grid lines
+  // Thin refined horizontal rule lines
   for (let k = 0; k < 4; k++) {
     const yy = Ht - 32 - k * (Ht - 80) / 3;
-    s += `<line x1="${p}" x2="${W - p}" y1="${yy}" y2="${yy}" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="4 4"/>`;
+    s += `<line x1="${p}" x2="${W - p}" y1="${yy}" y2="${yy}" stroke="var(--border)" stroke-width="1"/>`;
   }
 
   if (mode === 'qr') {
-    // Playful Chunky Bars with border
+    // Refined Gold Bars
     v.forEach((a, i) => {
       const bh = Math.max(Ht - 32 - y(a), 4);
-      s += `<rect x="${x(i) - 18}" y="${y(a)}" width="36" height="${bh}" rx="8" fill="var(--quaternary)" stroke="var(--border)" stroke-width="2">
+      s += `<rect x="${x(i) - 16}" y="${y(a)}" width="32" height="${bh}" rx="4" fill="var(--accent)" opacity="0.88">
         <title>${M[i]}: ${a}% (n=${N[i]} QL)</title>
       </rect>`;
-      s += `<text x="${x(i)}" y="${y(a) - 8}" text-anchor="middle" font-family="Outfit, sans-serif" font-size="12" font-weight="800" fill="var(--ink)">${a}%</text>`;
+      s += `<text x="${x(i)}" y="${y(a) - 8}" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11.5" font-weight="600" fill="var(--foreground)">${a}%</text>`;
     });
   } else {
-    // Smooth geometric path with playful accent fill
+    // Elegant Burnished Gold Curve
     const d = v.map((a, i) => (i ? 'L' : 'M') + x(i) + ',' + y(a)).join(' ');
-    s += `<path d="${d} L${x(7)},${Ht - 32} L${x(0)},${Ht - 32} Z" fill="var(--accent)" opacity="0.12"/>`;
-    s += `<path d="${d}" fill="none" stroke="var(--accent)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>`;
+    s += `<path d="${d} L${x(7)},${Ht - 32} L${x(0)},${Ht - 32} Z" fill="var(--accent)" opacity="0.06"/>`;
+    s += `<path d="${d}" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>`;
     
     v.forEach((a, i) => {
       const isSmallSample = N[i] < 5;
-      s += `<circle cx="${x(i)}" cy="${y(a)}" r="6" fill="${isSmallSample ? '#FFFFFF' : 'var(--accent)'}" stroke="var(--border)" stroke-width="2.5">
+      s += `<circle cx="${x(i)}" cy="${y(a)}" r="4.5" fill="${isSmallSample ? '#FFFFFF' : 'var(--accent)'}" stroke="${isSmallSample ? 'var(--accent)' : 'var(--foreground)'}" stroke-width="1.5">
         <title>${M[i]}: ${a}${u} (n=${N[i]} QL)</title>
       </circle>`;
-      s += `<text x="${x(i)}" y="${y(a) + (i % 2 ? 22 : -12)}" text-anchor="middle" font-family="Outfit, sans-serif" font-size="11.5" font-weight="700" fill="var(--ink)">${a}${u}</text>`;
+      s += `<text x="${x(i)}" y="${y(a) + (i % 2 ? 20 : -10)}" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" font-weight="500" fill="var(--muted-foreground)">${a}${u}</text>`;
     });
   }
 
-  // X Axis dates
+  // X Axis dates (IBM Plex Mono)
   v.forEach((a, i) => {
-    s += `<text x="${x(i)}" y="${Ht - 10}" text-anchor="middle" font-family="Outfit, sans-serif" font-size="12" font-weight="700" fill="var(--mut)">${M[i]}</text>`;
+    s += `<text x="${x(i)}" y="${Ht - 10}" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11.5" font-weight="500" fill="var(--muted-foreground)">${M[i]}</text>`;
   });
 
-  // Highlight badges on milestones
+  // Milestone annotation pins in gold
   [1, 3, 4].forEach((i, k) => {
-    const yy = Math.max(18, y(v[i]) - 36);
-    s += `<circle cx="${x(i)}" cy="${yy}" r="11" fill="var(--tertiary)" stroke="var(--border)" stroke-width="2"/>`;
-    s += `<text x="${x(i)}" y="${yy + 4}" text-anchor="middle" font-family="Outfit, sans-serif" font-size="11" font-weight="900" fill="var(--ink)">${k + 1}</text>`;
+    const yy = Math.max(18, y(v[i]) - 32);
+    s += `<circle cx="${x(i)}" cy="${yy}" r="9" fill="var(--accent)"/>`;
+    s += `<text x="${x(i)}" y="${yy + 3.5}" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="10.5" font-weight="600" fill="#FFFFFF">${k + 1}</text>`;
   });
 
   $('#c').innerHTML = s;
   $('#lg').innerHTML = AN[L].map((t, k) => `<span><b>${k + 1}</b>${t}</span>`).join('') +
-    `<span style="display:inline-flex;align-items:center;gap:6px;"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#FFF;border:2px solid var(--border)"></span> ${L === 'vi' ? 'mẫu nhỏ (n=3 lead đạt chuẩn)' : 'small sample (n=3 qualified)'}</span>`;
+    `<span style="display:inline-flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#FFF;border:1.5px solid var(--accent)"></span> ${L === 'vi' ? 'mẫu nhỏ (n=3 lead đạt chuẩn)' : 'small sample (n=3 qualified)'}</span>`;
 }
 
 function apply() {
