@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /
+# Gỡ "Disallow: /" khi sẵn sàng công khai
