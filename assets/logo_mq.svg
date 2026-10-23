@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="36" height="36">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F3DE9C"/>
+      <stop offset="40%" stop-color="#D4A84B"/>
+      <stop offset="100%" stop-color="#9B7322"/>
+    </linearGradient>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#26221D"/>
+      <stop offset="100%" stop-color="#121110"/>
+    </linearGradient>
+  </defs>
+  <!-- Background Shield/Badge -->
+  <rect x="1.5" y="1.5" width="41" height="41" rx="9" fill="url(#bgGrad)" stroke="url(#goldGrad)" stroke-width="1.4"/>
+  <!-- Q Ring -->
+  <circle cx="21" cy="21" r="11" fill="none" stroke="url(#goldGrad)" stroke-width="2.4"/>
+  <!-- Nested M -->
+  <path d="M15.5 25.5V17L21 22.5L26.5 17V25.5" fill="none" stroke="url(#goldGrad)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Growth Vector / Q Tail -->
+  <path d="M28 28L35 35M35 35H30.5M35 35V30.5" fill="none" stroke="url(#goldGrad)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
