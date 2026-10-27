@@ -1,7 +1,9 @@
 /*
-  X-Robots-Tag: index, follow
+  X-Robots-Tag: index, follow, all
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, HEAD, OPTIONS
+  Access-Control-Allow-Headers: *
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=()
 /assets/*
   Cache-Control: public, max-age=0, must-revalidate
