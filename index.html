@@ -750,36 +750,46 @@
       margin-bottom: 36px;
       font-weight: 600;
     }
-    .about-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-      margin-top: 32px;
-    }
-    @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 20px; } }
-    .ab-card {
+    .about-main-card {
       background: var(--card);
       border: 1px solid var(--border);
+      border-top: 3.5px solid var(--accent);
       border-radius: 8px;
-      padding: 32px 26px;
-      position: relative;
-      transition: var(--transition);
-      box-shadow: 0 1px 4px rgba(44, 30, 14, 0.03);
+      padding: 34px 32px;
+      box-shadow: 0 2px 12px rgba(44, 30, 14, 0.03);
+      margin-top: 28px;
+      margin-bottom: 28px;
+      box-sizing: border-box;
+      width: 100%;
     }
-    .ab-card:hover {
-      box-shadow: 0 8px 24px rgba(122, 75, 26, 0.08);
-      border-color: rgba(212, 168, 75, 0.5);
-      transform: translateY(-2px);
+    @media (max-width: 640px) {
+      .about-main-card {
+        padding: 24px 18px;
+      }
     }
-    .ab-heading {
-      font-family: var(--font-display);
-      font-size: 21px;
-      font-weight: 700;
-      margin-bottom: 14px;
-      color: var(--fg);
-      line-height: 1.28;
+    .about-goals-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px dashed var(--border);
     }
-    .ab-text { font-size: 15px; color: var(--muted-foreground); line-height: 1.75; }
+    @media (max-width: 768px) {
+      .about-goals-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    }
+    .about-goal-box {
+      background: var(--muted);
+      padding: 20px 22px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
 
     /* Hallmark Artisan Timeline Spine (Mục 05) */
     .timeline-spine-wrapper {
@@ -1395,28 +1405,36 @@
       
       <p class="about-lead sec-desc" data-vi="Tăng trưởng thực chất từ lăng kính tâm lý học hành vi, kỷ luật số liệu và sức mạnh từ sự phối hợp đa phòng ban." data-en="Real growth from the intersection of consumer psychology, data discipline, and cross-functional teamwork.">Tăng trưởng thực chất từ lăng kính tâm lý học hành vi, kỷ luật số liệu và sức mạnh từ sự phối hợp đa phòng ban.</p>
 
-      <div class="about-grid">
-        <!-- Story 1: Who I Am -->
-        <div class="ab-card card-top-accent">
-          <div class="ab-heading" data-vi="Tôi là ai?" data-en="Who I Am">Tôi là ai?</div>
-          <div class="ab-text">
-            <p data-vi="Tôi là <strong>Lê Minh Quân</strong> — một Performance Marketer tốt nghiệp chuyên ngành Marketing &amp; Kinh doanh Quốc tế. Tôi không hướng đến việc nhìn quảng cáo là ngồi một góc bấm Bật - Tắt mỗi ngày hay chạy theo những bản báo cáo chỉ số ảo không đem lại doanh thu cho doanh nghiệp." data-en="I am <strong>Lê Minh Quân</strong> — a Performance Marketer graduated in Marketing &amp; International Business. I don't see running ads as just sitting in a corner toggling on/off switches daily or chasing vanity reports that bring no real revenue to the business.">Tôi là <strong>Lê Minh Quân</strong> — một Performance Marketer tốt nghiệp chuyên ngành Marketing &amp; Kinh doanh Quốc tế. Tôi không hướng đến việc nhìn quảng cáo là ngồi một góc bấm Bật - Tắt mỗi ngày hay chạy theo những bản báo cáo chỉ số ảo không đem lại doanh thu cho doanh nghiệp.</p>
-          </div>
+      <!-- Khối Giới Thiệu Bản Thân & Mục Tiêu Ngắn - Dài Hạn Liền Mạch -->
+      <div class="about-main-card">
+        <div style="margin-bottom:14px">
+          <span class="editorial-tag" style="margin-bottom:0">Định vị &amp; Hành trình phát triển</span>
+        </div>
+        
+        <div style="font-size:15.5px;color:var(--fg);line-height:1.8;margin-bottom:0">
+          <p data-vi="Tôi là <strong>Lê Minh Quân</strong> — một Performance Marketer tốt nghiệp chuyên ngành Marketing &amp; Kinh doanh Quốc tế. Với tôi, quảng cáo không đơn thuần là việc ngồi một góc bật - tắt chiến dịch hàng ngày hay chạy theo những bản báo cáo chỉ số ảo không đem lại doanh thu. Tăng trưởng thực chất và bền vững phải bắt nguồn từ tư duy số liệu kỷ luật, chiến lược phễu tổng thể từ sản phẩm đến chuyển đổi, và trên hết là sức mạnh phối hợp chặt chẽ với các đội ngũ để cùng giải bài toán kinh doanh cho doanh nghiệp qua các dự án <strong>B2B EdTech SaaS</strong>, <strong>Chuỗi Agency F&amp;B</strong> và <strong>E-commerce quốc tế</strong>." data-en="I am <strong>Lê Minh Quân</strong> — a Performance Marketer graduated in Marketing &amp; International Business. To me, growth marketing is never about just sitting in a corner toggling ad campaigns or chasing vanity reports that bring no revenue. Genuine, sustainable growth must stem from data discipline, a holistic funnel strategy from product to conversion, and above all, tight cross-functional teamwork across real-world <strong>B2B EdTech SaaS</strong>, <strong>F&amp;B multi-brand agency</strong>, and <strong>cross-border E-commerce</strong>.">Tôi là <strong>Lê Minh Quân</strong> — một Performance Marketer tốt nghiệp chuyên ngành Marketing &amp; Kinh doanh Quốc tế. Với tôi, quảng cáo không đơn thuần là việc ngồi một góc bật - tắt chiến dịch hàng ngày hay chạy theo những bản báo cáo chỉ số ảo không đem lại doanh thu. Tăng trưởng thực chất và bền vững phải bắt nguồn từ tư duy số liệu kỷ luật, chiến lược phễu tổng thể từ sản phẩm đến chuyển đổi, và trên hết là sức mạnh phối hợp chặt chẽ với các đội ngũ để cùng giải bài toán kinh doanh cho doanh nghiệp qua các dự án <strong>B2B EdTech SaaS</strong>, <strong>Chuỗi Agency F&amp;B</strong> và <strong>E-commerce quốc tế</strong>.</p>
         </div>
 
-        <!-- Story 2: What I've Done -->
-        <div class="ab-card card-top-accent">
-          <div class="ab-heading" data-vi="Đã làm gì?" data-en="What I've Done">Đã làm gì?</div>
-          <div class="ab-text">
-            <p data-vi="Với tôi, tăng trưởng bền vững phải bắt nguồn từ tư duy số liệu thực chất, chiến lược tổng thể từ sản phẩm đến phễu chuyển đổi, và trên hết là sức mạnh hợp tác chặt chẽ với các đội ngũ để cùng giải bài toán doanh thu của doanh nghiệp qua các dự án B2B SaaS, Agency F&amp;B và E-commerce." data-en="To me, sustainable growth must stem from genuine data discipline, a holistic strategy from product to conversion funnel, and above all, the power of tight cross-functional teamwork to solve the revenue equation across B2B SaaS, F&amp;B Agency, and E-commerce.">Với tôi, tăng trưởng bền vững phải bắt nguồn từ tư duy số liệu thực chất, chiến lược tổng thể từ sản phẩm đến phễu chuyển đổi, và trên hết là sức mạnh hợp tác chặt chẽ với các đội ngũ để cùng giải bài toán doanh thu của doanh nghiệp qua các dự án B2B SaaS, Agency F&amp;B và E-commerce.</p>
+        <!-- Khối Mục Tiêu Tương Lai: Ngắn Hạn & Dài Hạn -->
+        <div class="about-goals-grid">
+          <div class="about-goal-box">
+            <div>
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+                <span class="editorial-pill" style="font-weight:700">MỤC TIÊU NGẮN HẠN · 1–2 NĂM</span>
+              </div>
+              <h4 style="font-family:var(--font-display);font-size:16.5px;margin-bottom:8px;color:var(--fg)" data-vi="Làm chủ toàn diện năng lực Growth Marketer" data-en="Master Full-Stack Growth Marketing">Làm chủ toàn diện năng lực Growth Marketer</h4>
+              <p style="font-size:14px;color:var(--muted-foreground);line-height:1.65;margin:0" data-vi="Hoàn thiện chuyên sâu kỹ năng thiết kế phễu chuyển đổi đa kênh (CRO), kiểm soát hạ tầng đo lường tracking (GA4, CAPI) và ứng dụng AI tự động hóa; đồng hành trực tiếp cùng doanh nghiệp tối ưu chi phí và tăng trưởng dòng tiền có lãi." data-en="Master end-to-end multi-channel funnel CRO, tracking infrastructure (GA4, CAPI), and AI automation; directly partnering with businesses to optimize costs and drive profitable cash flow.">Hoàn thiện chuyên sâu kỹ năng thiết kế phễu chuyển đổi đa kênh (CRO), kiểm soát hạ tầng đo lường tracking (GA4, CAPI) và ứng dụng AI tự động hóa; đồng hành trực tiếp cùng doanh nghiệp tối ưu chi phí và tăng trưởng dòng tiền có lãi.</p>
+            </div>
           </div>
-        </div>
 
-        <!-- Story 3: My Goal -->
-        <div class="ab-card card-top-accent">
-          <div class="ab-heading" data-vi="Mục tiêu của tôi" data-en="My Goals">Mục tiêu của tôi</div>
-          <div class="ab-text">
-            <p data-vi="Mục tiêu của tôi trong 1–2 năm tới có thể nắm vững các kỹ năng của một <strong>Growth Marketing</strong> để có thể đồng hành phát triển cùng doanh nghiệp một cách bền vững." data-en="My goal in the next 1–2 years is to master the comprehensive skills of a <strong>Growth Marketer</strong> to accompany businesses in sustainable, long-term development.">Mục tiêu của tôi trong 1–2 năm tới có thể nắm vững các kỹ năng của một <strong>Growth Marketing</strong> để có thể đồng hành phát triển cùng doanh nghiệp một cách bền vững.</p>
+          <div class="about-goal-box">
+            <div>
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+                <span class="editorial-pill" style="font-weight:700">MỤC TIÊU DÀI HẠN · 3–5 NĂM</span>
+              </div>
+              <h4 style="font-family:var(--font-display);font-size:16.5px;margin-bottom:8px;color:var(--fg)" data-vi="Phát triển lên Growth Lead / Performance Lead" data-en="Advance to Growth Lead / Performance Lead">Phát triển lên Growth Lead / Performance Lead</h4>
+              <p style="font-size:14px;color:var(--muted-foreground);line-height:1.65;margin:0" data-vi="Trực tiếp hoạch định chiến lược tăng trưởng tổng thể, xây dựng hạ tầng dữ liệu chuẩn mực và dẫn dắt đội ngũ marketing đa chức năng, đồng hành cùng doanh nghiệp mở rộng quy mô (Scale-up) một cách bền vững." data-en="Architect holistic growth strategies, build standard data infrastructure, and lead cross-functional marketing teams to sustainably scale businesses long-term.">Trực tiếp hoạch định chiến lược tăng trưởng tổng thể, xây dựng hạ tầng dữ liệu chuẩn mực và dẫn dắt đội ngũ marketing đa chức năng, đồng hành cùng doanh nghiệp mở rộng quy mô (Scale-up) một cách bền vững.</p>
+            </div>
           </div>
         </div>
       </div>
