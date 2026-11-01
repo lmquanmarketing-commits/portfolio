@@ -99,7 +99,7 @@
       word-break: normal;
     }
 
-    .w { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+    .w { width: 100%; max-width: 1040px; margin: 0 auto; padding: 0 24px; box-sizing: border-box; }
     @media (max-width: 640px) { .w { padding: 0 18px; } }
 
     /* Khoảng cách nhịp thở giữa các Section */
@@ -461,20 +461,24 @@
       color: var(--btn-brown) !important;
     }
 
-    /* 3 Case Study Grid - Nằm ngang đối xứng 3 cột đồng bộ */
+    /* 3 Case Study Grid - Nằm ngang đối xứng 3 cột đồng bộ, Safe-Zone Tuyệt Đối */
     .hero-cases-wrapper {
-      margin-top: 48px;
+      margin-top: 40px;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 24px 26px 26px;
+      padding: 22px 20px 24px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.02);
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
     }
     .hk-bar-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       padding-bottom: 12px;
       border-bottom: 1px solid var(--border);
       font-family: var(--font-mono);
@@ -486,10 +490,12 @@
     }
     .hero-cases-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      width: 100%;
+      box-sizing: border-box;
     }
-    @media (max-width: 880px) {
+    @media (max-width: 960px) {
       .hero-cases-grid {
         grid-template-columns: 1fr;
         gap: 14px;
@@ -501,9 +507,10 @@
       .logo-name { font-size: 17px; }
       .logo-sub { font-size: 8.5px; }
       .hero-block { padding: 36px 0 40px; margin-bottom: 32px; }
-      .hero-cases-wrapper { margin-top: 28px; padding: 18px 14px; }
+      .hero-cases-wrapper { margin-top: 24px; padding: 16px 14px; }
       .hero-case-card { padding: 16px 14px; min-height: auto; }
-      .hk-sub { font-size: 12.5px; line-height: 1.5; }
+      .hk-num { font-size: 20px !important; }
+      .hk-sub { font-size: 12.5px; line-height: 1.5; min-height: auto !important; }
       .hk-bar-header {
         justify-content: center !important;
       }
@@ -524,11 +531,14 @@
       border: 1px solid var(--border);
       border-top: 3px solid var(--accent);
       border-radius: 6px;
-      padding: 20px 18px;
+      padding: 18px 16px;
       text-decoration: none;
       color: inherit;
       transition: var(--transition);
-      min-height: 165px;
+      min-width: 0;
+      max-width: 100%;
+      box-sizing: border-box;
+      height: 100%;
     }
     .hero-case-card:hover {
       background: #FFFFFF;
@@ -538,53 +548,73 @@
     }
     .hk-brand-row {
       margin-bottom: 6px;
+      display: flex;
+      align-items: center;
     }
     .hk-brand-title {
       font-family: var(--font-mono);
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.04em;
       color: var(--btn-brown);
       display: block;
+      line-height: 1.35;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
     .hk-num {
       font-family: var(--font-display);
-      font-size: clamp(23px, 2.6vw, 28px);
+      font-size: clamp(19px, 1.8vw, 22px);
       font-weight: 700;
       color: var(--fg);
-      margin: 4px 0 8px;
-      line-height: 1.15;
+      margin: 4px 0 6px;
+      line-height: 1.25;
+      display: block;
+      white-space: nowrap;
+    }
+    .hk-tag-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
     }
     .hk-accent-tag {
-      font-size: 16px;
+      font-size: 12px;
       color: var(--accent);
       font-family: var(--font-mono);
-      font-weight: 600;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      line-height: 1.35;
+      white-space: nowrap;
     }
     .hk-sub {
-      font-size: 13px;
+      font-size: 12.5px;
       color: var(--muted-foreground);
       line-height: 1.55;
-      min-height: 42px;
-      display: flex;
-      align-items: flex-start;
+      display: block;
+      word-break: normal;
+      overflow-wrap: break-word;
+      text-wrap: pretty;
+      margin-top: auto;
+      padding-top: 8px;
+      min-height: 40px;
     }
 
     /* Master Project Switcher (Phương án 1) - Khóa phẳng & Chống xuống dòng */
     .project-master-nav {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
       margin: 24px 0 28px;
       align-items: stretch;
+      width: 100%;
+      box-sizing: border-box;
     }
     @media (max-width: 960px) {
       .project-master-nav {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
     @media (max-width: 520px) {
@@ -610,7 +640,9 @@
       justify-content: space-between;
       min-height: 96px;
       height: 100%;
+      min-width: 0;
       box-sizing: border-box;
+      overflow: hidden;
       position: relative;
     }
     .pmn-btn:hover {
@@ -1244,7 +1276,6 @@
       </a>
       <div class="nav-links">
         <a href="#about" data-vi="Giới thiệu" data-en="About">Giới thiệu</a>
-        <a href="#results" data-vi="Kết quả" data-en="Results">Kết quả</a>
         <a href="#cases" data-vi="Dự án" data-en="Projects">Dự án</a>
         <a href="#skills" data-vi="Kỹ năng" data-en="Skills">Kỹ năng</a>
         <a href="#experience" data-vi="Kinh nghiệm" data-en="Experience">Kinh nghiệm</a>
@@ -1311,33 +1342,42 @@
           <a href="#tomia" class="hero-case-card">
             <div>
               <div class="hk-brand-row">
-                <span class="hk-brand-title">Tomia · B2B EdTech SaaS</span>
+                <span class="hk-brand-title">Tomia · EdTech B2B</span>
               </div>
-              <div class="hk-num">~363M <span class="hk-accent-tag">· 3,3× ROAS</span></div>
+              <div class="hk-num">300M+ Hợp đồng</div>
+              <div class="hk-tag-row">
+                <span class="hk-accent-tag">▲ ROAS 3,3× (Doanh thu/Ads)</span>
+              </div>
             </div>
-            <div class="hk-sub" data-vi="Doanh thu Inbound mang về trên 109M Ads · 194 Qualified Leads (CR 44,7% đỉnh 55,6%)" data-en="Inbound contract revenue on 109M ad spend · 194 Qualified Leads (44.7% qualified rate)">Doanh thu Inbound mang về trên 109M Ads · 194 Qualified Leads (CR 44,7% đỉnh 55,6%)</div>
+            <div class="hk-sub" data-vi="Ngân sách ~109M tạo gần 200 khách đạt chuẩn; chốt 33 hợp đồng thu tiền trực tiếp." data-en="~109M ad spend generated nearly 200 qualified leads; 33 paid deals closed.">Ngân sách ~109M tạo gần 200 khách đạt chuẩn; chốt 33 hợp đồng thu tiền trực tiếp.</div>
           </a>
 
           <!-- Case 2: Fitmar -->
           <a href="#fitmar" class="hero-case-card">
             <div>
               <div class="hk-brand-row">
-                <span class="hk-brand-title">Fitmar Agency · F&amp;B Multi-Brand</span>
+                <span class="hk-brand-title">Fitmar · Chuỗi F&amp;B</span>
               </div>
-              <div class="hk-num">7 Brand <span class="hk-accent-tag">· A/S 4% – 16%</span></div>
+              <div class="hk-num">800M – 1 Tỷ / tháng</div>
+              <div class="hk-tag-row">
+                <span class="hk-accent-tag">✓ Chi phí Ads an toàn 4% – 16%</span>
+              </div>
             </div>
-            <div class="hk-sub" data-vi="Quản trị ngân sách 200–250M/tháng, hạ CPA 30–50%, scale doanh thu gần 1 Tỷ/tháng" data-en="200–250M/mo budget, cut CPA 30–50%, scaled revenue to ~1 Billion/month">Quản trị ngân sách 200–250M/tháng, hạ CPA 30–50%, scale doanh thu gần 1 Tỷ/tháng</div>
+            <div class="hk-sub" data-vi="Vận hành 7 thương hiệu F&amp;B song song; ngân sách 10M–20M cho dự án hiệu quả nhất." data-en="Operated 7 concurrent F&amp;B brands; 10M–20M spend for top performing outlet.">Vận hành 7 thương hiệu F&amp;B song song; ngân sách 10M–20M cho dự án hiệu quả nhất.</div>
           </a>
 
           <!-- Case 3: Abera -->
           <a href="#abera" class="hero-case-card">
             <div>
               <div class="hk-brand-row">
-                <span class="hk-brand-title">ABERA · E-Com &amp; Mỹ Phẩm QT</span>
+                <span class="hk-brand-title">ABERA · E-Commerce</span>
               </div>
-              <div class="hk-num">2,0 – 3,0 <span class="hk-accent-tag">ROAS</span></div>
+              <div class="hk-num">Lãi ròng ~$5.400 / tháng</div>
+              <div class="hk-tag-row">
+                <span class="hk-accent-tag">★ ROAS 2,0 – 3,0× (Vượt hòa vốn)</span>
+              </div>
             </div>
-            <div class="hk-sub" data-vi="Vượt xa hòa vốn 1,56, lợi nhuận ròng đỉnh $5.400/tháng, 1,17 Triệu video views" data-en="Well above 1.56 break-even, peak net profit $5,400/mo, 1.17M video views">Vượt xa hòa vốn 1,56, lợi nhuận ròng đỉnh $5.400/tháng, 1,17 Triệu video views</div>
+            <div class="hk-sub" data-vi="Vận hành E-commerce Philippines; đạt hơn 1,17 triệu views và vượt xa điểm hòa vốn." data-en="Operated Philippines cross-border E-commerce; reached 1.17M views and beat break-even.">Vận hành E-commerce Philippines; đạt hơn 1,17 triệu views và vượt xa điểm hòa vốn.</div>
           </a>
         </div>
       </div>
@@ -1388,68 +1428,10 @@
       </div>
     </section>
 
-    <!-- 02 / Results Section -->
-    <section class="sec" id="results">
-      <div class="section-heading-editorial">
-        <span class="sec-num-giant">02</span>
-        <div class="sec-meta-wrap">
-          <span class="sec-category-label">ĐỐI SOÁT THỰC TẾ</span>
-          <h2 class="sec-title-main">Hiệu quả đo lường bằng khách hàng thật</h2>
-        </div>
-      </div>
-      <p class="mut sec-desc" data-vi="Số liệu thực tế được đối soát từ Ads Manager, CRM và báo cáo doanh số nội bộ." data-en="Verified numbers cross-checked across Ads Manager, CRM, and internal financial reports.">Số liệu thực tế được đối soát từ Ads Manager, CRM và báo cáo doanh số nội bộ.</p>
-
-      <div class="g4">
-        <!-- Card 1: Revenue -->
-        <div class="metric-card metric-card-top">
-          <span class="editorial-tag">Tomia · B2B SaaS</span>
-          <div class="mc-label" data-vi="Doanh thu Inbound mang về" data-en="Inbound Revenue Generated">Doanh thu Inbound mang về</div>
-          <div class="mc-value">~363M</div>
-          <div class="mc-badge-wrap">
-            <span class="mc-badge mc-badge-green">▲ 3,3× ROAS</span>
-          </div>
-          <div class="mut" style="font-size:13px" data-vi="33 giao dịch thu tiền trên ~109M ngân sách Ads" data-en="33 paid transactions on ~109M ad spend">33 giao dịch thu tiền trên ~109M ngân sách Ads</div>
-        </div>
-
-        <!-- Card 2: CPQL -->
-        <div class="metric-card metric-card-top">
-          <span class="editorial-tag">Tomia · B2B SaaS</span>
-          <div class="mc-label" data-vi="Chi phí / Lead đạt chuẩn" data-en="Cost / Qualified Lead">Chi phí / Lead đạt chuẩn</div>
-          <div class="mc-value">976k → 491k</div>
-          <div class="mc-badge-wrap">
-            <span class="mc-badge mc-badge-green">▼ 50% CPQL</span>
-          </div>
-          <div class="mut" style="font-size:13px" data-vi="Tuần tối ưu tốt nhất chạm mốc 234k / QL" data-en="Best optimized week achieved 234k / QL">Tuần tối ưu tốt nhất chạm mốc 234k / QL</div>
-        </div>
-
-        <!-- Card 3: Qualified Rate -->
-        <div class="metric-card metric-card-top">
-          <span class="editorial-tag">Tomia · B2B SaaS</span>
-          <div class="mc-label" data-vi="Tỷ lệ Lead đạt chuẩn (QL)" data-en="Qualified Lead Rate">Tỷ lệ Lead đạt chuẩn (QL)</div>
-          <div class="mc-value">11,4% → 44,7%</div>
-          <div class="mc-badge-wrap">
-            <span class="mc-badge mc-badge-green">▲ 3,9× Qualified</span>
-          </div>
-          <div class="mut" style="font-size:13px" data-vi="Đạt đỉnh 55,6% · Bơm 194 QL vào pipeline Sales" data-en="Peaked at 55.6% · Fed 194 QL into sales pipeline">Đạt đỉnh 55,6% · Bơm 194 QL vào pipeline Sales</div>
-        </div>
-
-        <!-- Card 4: F&B Agency Efficiency -->
-        <div class="metric-card metric-card-top">
-          <span class="editorial-tag">Fitmar Agency · F&amp;B</span>
-          <div class="mc-label" data-vi="Chi phí Ads / Doanh thu (A/S)" data-en="Ads-to-Sales Ratio (A/S)">Chi phí Ads / Doanh thu (A/S)</div>
-          <div class="mc-value">4% – 16%</div>
-          <div class="mc-badge-wrap">
-            <span class="mc-badge mc-badge-green">✓ Vượt trội trần an toàn</span>
-          </div>
-          <div class="mut" style="font-size:13px" data-vi="Tối ưu vượt trội cho 7 thương hiệu F&amp;B song song" data-en="Outperformed safety ceiling across 7 F&amp;B brands">Tối ưu vượt trội cho 7 thương hiệu F&amp;B song song</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 03 / Featured Projects & Case Studies -->
+    <!-- 02 / Featured Projects & Case Studies -->
     <section class="sec" id="cases">
       <div class="section-heading-editorial">
-        <span class="sec-num-giant">03</span>
+        <span class="sec-num-giant">02</span>
         <div class="sec-meta-wrap">
           <span class="sec-category-label">DỰ ÁN THỰC CHIẾN</span>
           <h2 class="sec-title-main">Dự án &amp; Case Study tiêu biểu</h2>
@@ -1510,24 +1492,24 @@
             <!-- Full-width 4-stage visual funnel strip -->
             <div class="funnel-steps-grid">
               <div class="funnel-step-box">
-                <div class="fsb-stage" data-vi="01 · Leads Thô" data-en="01 · Raw Leads">01 · Leads Thô</div>
-                <div class="fsb-val">613 Leads</div>
-                <div class="fsb-sub" data-vi="~178.000đ / Lead Ads" data-en="~178k / Ad Lead">~178.000đ / Lead Ads</div>
+                <div class="fsb-stage" data-vi="01 · Liên hệ ban đầu" data-en="01 · Initial Inquiries">01 · Liên hệ ban đầu</div>
+                <div class="fsb-val">600+ Liên hệ</div>
+                <div class="fsb-sub" data-vi="Chi phí ~170k – 180k / liên hệ" data-en="Cost ~170k – 180k / lead">Chi phí ~170k – 180k / liên hệ</div>
               </div>
               <div class="funnel-step-box">
-                <div class="fsb-stage" data-vi="02 · Quan Tâm (MQL)" data-en="02 · MQL Interest">02 · Quan Tâm (MQL)</div>
-                <div class="fsb-val">285 Leads</div>
-                <div class="fsb-sub" data-vi="46,5% lọc bước 1" data-en="46.5% step-1 filter">46,5% lọc bước 1</div>
+                <div class="fsb-stage" data-vi="02 · Quan tâm &amp; Tìm hiểu" data-en="02 · High Interest">02 · Quan tâm &amp; Tìm hiểu</div>
+                <div class="fsb-val">Gần 300 Khách</div>
+                <div class="fsb-sub" data-vi="Tỷ lệ quan tâm bước 1 ~46%" data-en="~46% interest step-1">Tỷ lệ quan tâm bước 1 ~46%</div>
               </div>
               <div class="funnel-step-box">
-                <div class="fsb-stage" data-vi="03 · Đạt Chuẩn (QL/SQL)" data-en="03 · Qualified (QL)">03 · Đạt Chuẩn (QL/SQL)</div>
-                <div class="fsb-val">194 Leads</div>
-                <div class="fsb-sub" data-vi="44,7% qualified · CPQL 491k" data-en="44.7% qual · CPQL 491k">44,7% qualified · CPQL 491k</div>
+                <div class="fsb-stage" data-vi="03 · Chủ trường đạt chuẩn" data-en="03 · Verified Decision Makers">03 · Chủ trường đạt chuẩn</div>
+                <div class="fsb-val">Gần 200 Chủ trường</div>
+                <div class="fsb-sub" data-vi="Đạt chuẩn 44,7% · Giảm 50% chi phí" data-en="44.7% qual · 50% cost drop">Đạt chuẩn 44,7% · Giảm 50% chi phí</div>
               </div>
               <div class="funnel-step-box highlight">
-                <div class="fsb-stage" data-vi="04 · Hợp Đồng Thu Tiền" data-en="04 · Closed Contracts">04 · Hợp Đồng Thu Tiền</div>
-                <div class="fsb-val">33 Hợp Đồng</div>
-                <div class="fsb-sub" data-vi="~363M · Chi phí ~3,3M/HĐ" data-en="~363M · ~3.3M/deal">~363M · Chi phí ~3,3M/HĐ</div>
+                <div class="fsb-stage" data-vi="04 · Hợp đồng triển khai" data-en="04 · Deployed Contracts">04 · Hợp đồng triển khai</div>
+                <div class="fsb-val">Hơn 30 Hợp đồng</div>
+                <div class="fsb-sub" data-vi="Bao gồm Dùng thử, Chính thức &amp; Demo" data-en="Trial, Official &amp; Live Demo">Bao gồm Dùng thử, Chính thức &amp; Demo</div>
               </div>
             </div>
 
@@ -1842,10 +1824,10 @@
       </div> <!-- /project-pane more -->
     </section>
 
-    <!-- 04 / Skills & Tool Stack -->
+    <!-- 03 / Skills & Tool Stack -->
     <section class="sec" id="skills">
       <div class="section-heading-editorial">
-        <span class="sec-num-giant">04</span>
+        <span class="sec-num-giant">03</span>
         <div class="sec-meta-wrap">
           <span class="sec-category-label">NĂNG LỰC &amp; VŨ KHÍ THỰC CHIẾN</span>
           <h2 class="sec-title-main">Kỹ năng, Bộ công cụ &amp; Phương pháp luận</h2>
@@ -1968,10 +1950,10 @@
       </div>
     </section>
 
-    <!-- 05 / Career Journey & Education -->
+    <!-- 04 / Career Journey & Education -->
     <section class="sec" id="experience">
       <div class="section-heading-editorial">
-        <span class="sec-num-giant">05</span>
+        <span class="sec-num-giant">04</span>
         <div class="sec-meta-wrap">
           <span class="sec-category-label">HÀNH TRÌNH PHÁT TRIỂN</span>
           <h2 class="sec-title-main">Lịch sử sự nghiệp &amp; Nền tảng học vấn</h2>
@@ -2103,6 +2085,8 @@
         </div>
 
         <div style="font-family:var(--font-mono);font-size:12.5px;color:var(--muted-foreground);display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:12px;padding-top:18px;border-top:1px dashed var(--border)">
+          <span>Hotline / Zalo: <strong style="color:var(--fg)"><a href="https://zalo.me/0812544319" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">0812 544 319</a></strong></span>
+          <span>•</span>
           <span>Email: <strong style="color:var(--fg)">lmquan.marketing@gmail.com</strong></span>
           <span>•</span>
           <span>Địa điểm: <strong style="color:var(--fg)">TP. Hồ Chí Minh</strong></span>
