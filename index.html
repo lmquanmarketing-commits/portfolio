@@ -791,6 +791,134 @@
       justify-content: space-between;
     }
 
+    /* Section 03 - Tools & Platform Ecosystem */
+    .tools-category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    @media (max-width: 1024px) {
+      .tools-category-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+    }
+    @media (max-width: 640px) {
+      .tools-category-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+    }
+    .tool-group-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 18px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+      transition: var(--transition);
+      box-sizing: border-box;
+    }
+    .tool-group-card:hover {
+      box-shadow: 0 6px 20px rgba(122, 75, 26, 0.08);
+      border-color: rgba(212, 168, 75, 0.45);
+    }
+    .tool-group-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 12px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .tool-group-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--fg);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .tool-group-count {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--accent);
+      background: rgba(212, 168, 75, 0.12);
+      padding: 1px 7px;
+      border-radius: 10px;
+    }
+    .tool-items-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex-grow: 1;
+    }
+    .tool-item-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 10px;
+      border-radius: 6px;
+      background: #FAF8F5;
+      border: 1px solid rgba(232, 228, 223, 0.6);
+      transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+      box-sizing: border-box;
+    }
+    .tool-item-row:hover {
+      background: #FFFFFF;
+      border-color: #D4A84B;
+      transform: translateX(3px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .tool-icon-wrap {
+      width: 32px;
+      height: 32px;
+      border-radius: 7px;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .tool-icon-wrap svg {
+      width: 19px;
+      height: 19px;
+      display: block;
+    }
+    .tool-text-wrap {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      flex-grow: 1;
+    }
+    .tool-name {
+      font-family: var(--font-sans);
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--fg);
+      line-height: 1.3;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .tool-badge-role {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--muted-foreground);
+      line-height: 1.25;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-top: 1px;
+    }
+
     /* Hallmark Artisan Timeline Spine (Mục 05) */
     .timeline-spine-wrapper {
       position: relative;
@@ -1852,117 +1980,381 @@
           <h2 class="sec-title-main">Kỹ năng, Bộ công cụ &amp; Phương pháp luận</h2>
         </div>
       </div>
-      <p class="mut sec-desc" data-vi="Khảo sát năng lực thực chiến dưới lăng kính quản trị: Từ thực thi Paid Media, hạ tầng tracking, nghiên cứu ứng dụng AI đến phối hợp đa phòng ban." data-en="Hands-on execution matrix evaluated from a management perspective: From paid media ops, tracking infra, AI workflows to cross-functional alignment.">Khảo sát năng lực thực chiến dưới lăng kính quản trị: Từ thực thi Paid Media, hạ tầng tracking, nghiên cứu ứng dụng AI đến phối hợp đa phòng ban.</p>
+      <p class="mut sec-desc" data-vi="Khảo sát năng lực thực chiến dưới lăng kính quản trị: Tách bạch rõ ràng giữa kỹ thuật phương pháp luận tư duy và hệ sinh thái công cụ phần mềm làm chủ hàng ngày." data-en="Hands-on execution matrix evaluated from a management perspective: Clearly separated between strategic execution methodologies and the applied tool &amp; software ecosystem.">Khảo sát năng lực thực chiến dưới lăng kính quản trị: Tách bạch rõ ràng giữa kỹ thuật phương pháp luận tư duy và hệ sinh thái công cụ phần mềm làm chủ hàng ngày.</p>
+
+      <!-- PHẦN 1: KỸ THUẬT & PHƯƠNG PHÁP LUẬN THỰC THI -->
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)">
+        <div style="display:inline-flex;align-items:center;gap:10px">
+          <span class="editorial-tag" style="margin-bottom:0">PHẦN 1 · NĂNG LỰC CỐT LÕI</span>
+          <h3 style="font-family:var(--font-display);font-size:18px;margin:0;font-weight:700;color:var(--fg)" data-vi="4 Trụ cột Kỹ thuật &amp; Phương pháp luận Quản trị" data-en="4 Core Execution Pillars &amp; Methodologies">4 Trụ cột Kỹ thuật &amp; Phương pháp luận Quản trị</h3>
+        </div>
+        <span style="font-family:var(--font-mono);font-size:11.5px;color:var(--btn-brown);font-weight:700">STRATEGY &amp; OPERATIONS</span>
+      </div>
 
       <div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:24px" class="skills-grid-2x2">
         <!-- Pillar 1 -->
-        <div class="card card-top-accent" style="display:flex;flex-direction:column;justify-content:space-between">
-          <div>
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-              <span class="editorial-tag" style="margin-bottom:0">Paid Media &amp; P&amp;L Control</span>
-              <span style="font-family:var(--font-mono);font-size:12px;color:var(--accent);font-weight:700">PILLAR 01</span>
-            </div>
-            <h4 style="font-family:var(--font-display);font-size:18px;margin-bottom:12px;color:var(--fg)" data-vi="Vận hành Paid Media &amp; Tối ưu Dòng tiền" data-en="Paid Media Execution &amp; P&amp;L Control">Vận hành Paid Media &amp; Tối ưu Dòng tiền</h4>
-            <div style="font-size:13.5px;color:var(--muted-foreground);line-height:1.65;margin-bottom:16px">
-              <div style="margin-bottom:8px">• <strong>Đa nền tảng Paid Media:</strong> Tự tay lên camp &amp; A/B test trên Meta Ads, Google Ads (Search/PMax), TikTok Ads và đón đầu thử nghiệm OpenAI / AI Ads.</div>
-              <div style="margin-bottom:8px">• <strong>Vận hành Sàn TMĐT:</strong> Tối ưu gian hàng Shopee &amp; TikTok Shop Seller Center, triển khai Shopee Ads, quản trị tỷ lệ chuyển đổi và đơn hàng COD.</div>
-              <div style="margin-bottom:8px">• <strong>Quản trị ngân sách lớn (200–250M+/tháng):</strong> Phân bổ ngân sách du kích né giờ cao điểm đối thủ, giữ tỷ lệ A/S luôn trong trần an toàn (4% – 16%).</div>
-              <div>• <strong>Daily P&amp;L Controller &amp; O2O:</strong> Dựng bảng đối soát chi phí - doanh thu mỗi ngày; kéo khách đặt bàn ẩm thực F&amp;B và sự kiện workshop B2B.</div>
-            </div>
+        <div class="card card-top-accent">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+            <span class="editorial-tag" style="margin-bottom:0">Paid Media &amp; P&amp;L Control</span>
+            <span style="font-family:var(--font-mono);font-size:12px;color:var(--accent);font-weight:700">PILLAR 01</span>
           </div>
-          <div style="padding-top:14px;border-top:1px dashed var(--border)">
-            <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted-foreground);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">Công cụ &amp; Kỹ thuật cốt lõi:</div>
-            <div style="display:flex;flex-wrap:wrap;gap:6px">
-              <span class="editorial-pill">Meta Ads</span>
-              <span class="editorial-pill">Google Ads</span>
-              <span class="editorial-pill">TikTok Ads</span>
-              <span class="editorial-pill">Shopee Ads &amp; Mall</span>
-              <span class="editorial-pill">TikTok Shop</span>
-              <span class="editorial-pill">OpenAI / AI Ads</span>
-              <span class="editorial-pill">P&amp;L Controller</span>
-            </div>
+          <h4 style="font-family:var(--font-display);font-size:18px;margin-bottom:12px;color:var(--fg)" data-vi="Vận hành Paid Media &amp; Tối ưu Dòng tiền" data-en="Paid Media Execution &amp; P&amp;L Control">Vận hành Paid Media &amp; Tối ưu Dòng tiền</h4>
+          <div style="font-size:13.5px;color:var(--muted-foreground);line-height:1.65">
+            <div style="margin-bottom:8px">• <strong>Đa nền tảng Paid Media:</strong> Tự tay lên camp &amp; A/B test đa biến trên Meta Ads, Google Ads (Search/PMax), TikTok Ads và đón đầu thử nghiệm OpenAI / AI Ads.</div>
+            <div style="margin-bottom:8px">• <strong>Vận hành Sàn TMĐT:</strong> Tối ưu gian hàng Shopee &amp; TikTok Shop Seller Center, triển khai Shopee Ads, quản trị tỷ lệ chuyển đổi và đơn hàng COD.</div>
+            <div style="margin-bottom:8px">• <strong>Quản trị ngân sách lớn (200–250M+/tháng):</strong> Phân bổ ngân sách du kích né giờ cao điểm đối thủ, giữ tỷ lệ A/S luôn trong trần an toàn (4% – 16%).</div>
+            <div>• <strong>Daily P&amp;L Controller &amp; O2O:</strong> Dựng bảng đối soát chi phí - doanh thu mỗi ngày; kéo khách đặt bàn ẩm thực F&amp;B và sự kiện workshop B2B.</div>
           </div>
         </div>
 
         <!-- Pillar 2 -->
-        <div class="card card-top-accent" style="display:flex;flex-direction:column;justify-content:space-between">
-          <div>
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-              <span class="editorial-tag" style="margin-bottom:0">Data Tracking &amp; Analytics</span>
-              <span style="font-family:var(--font-mono);font-size:12px;color:var(--accent);font-weight:700">PILLAR 02</span>
-            </div>
-            <h4 style="font-family:var(--font-display);font-size:18px;margin-bottom:12px;color:var(--fg)" data-vi="Hạ tầng Đo lường &amp; Phễu Dữ liệu" data-en="Measurement, Tracking &amp; Data Pipeline">Hạ tầng Đo lường &amp; Phễu Dữ liệu</h4>
-            <div style="font-size:13.5px;color:var(--muted-foreground);line-height:1.65;margin-bottom:16px">
-              <div style="margin-bottom:8px">• <strong>Chuẩn hóa UTM Parameters:</strong> Gắn thẻ tracking chi tiết đến từng Ad Set, Creative Hook và Nền tảng phân phối.</div>
-              <div style="margin-bottom:8px">• <strong>Kiểm soát kỹ thuật Tracking:</strong> Cài đặt và cấu hình chuẩn Meta Pixel, TikTok Pixel, Conversion API (CAPI) &amp; Google Tag Manager.</div>
-              <div style="margin-bottom:8px">• <strong>Đối soát phễu trên GA4:</strong> Phân tích user journey, tỷ lệ drop-off giữa các bước để tối ưu tỷ lệ chuyển đổi (CRO).</div>
-              <div>• <strong>Tự động hóa báo cáo Dashboard:</strong> Kết nối đồng bộ real-time dữ liệu Ads sang Google Sheets &amp; Looker Studio.</div>
-            </div>
+        <div class="card card-top-accent">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+            <span class="editorial-tag" style="margin-bottom:0">Data Tracking &amp; Analytics</span>
+            <span style="font-family:var(--font-mono);font-size:12px;color:var(--accent);font-weight:700">PILLAR 02</span>
           </div>
-          <div style="padding-top:14px;border-top:1px dashed var(--border)">
-            <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted-foreground);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">Công cụ &amp; Kỹ thuật cốt lõi:</div>
-            <div style="display:flex;flex-wrap:wrap;gap:6px">
-              <span class="editorial-pill">Google Analytics 4 (GA4)</span>
-              <span class="editorial-pill">Google Tag Manager</span>
-              <span class="editorial-pill">Conversion API (CAPI)</span>
-              <span class="editorial-pill">Looker Studio</span>
-              <span class="editorial-pill">Google Sheets (QUERY/Pivot)</span>
-            </div>
+          <h4 style="font-family:var(--font-display);font-size:18px;margin-bottom:12px;color:var(--fg)" data-vi="Hạ tầng Đo lường &amp; Phễu Dữ liệu" data-en="Measurement, Tracking &amp; Data Pipeline">Hạ tầng Đo lường &amp; Phễu Dữ liệu</h4>
+          <div style="font-size:13.5px;color:var(--muted-foreground);line-height:1.65">
+            <div style="margin-bottom:8px">• <strong>Chuẩn hóa UTM Parameters:</strong> Gắn thẻ tracking chi tiết đến từng Ad Set, Creative Hook và Nền tảng phân phối.</div>
+            <div style="margin-bottom:8px">• <strong>Kiểm soát kỹ thuật Tracking:</strong> Cài đặt và cấu hình chuẩn Meta Pixel, TikTok Pixel, Conversion API (CAPI) &amp; Google Tag Manager.</div>
+            <div style="margin-bottom:8px">• <strong>Đối soát phễu trên GA4:</strong> Phân tích user journey, tỷ lệ drop-off giữa các bước để tối ưu tỷ lệ chuyển đổi (CRO).</div>
+            <div>• <strong>Tự động hóa báo cáo Dashboard:</strong> Kết nối đồng bộ real-time dữ liệu Ads sang Google Sheets &amp; Looker Studio.</div>
           </div>
         </div>
 
         <!-- Pillar 3 -->
-        <div class="card card-top-accent" style="display:flex;flex-direction:column;justify-content:space-between">
-          <div>
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-              <span class="editorial-tag" style="margin-bottom:0">Creative Strategy &amp; AI Workflow</span>
-              <span style="font-family:var(--font-mono);font-size:12px;color:var(--accent);font-weight:700">PILLAR 03</span>
-            </div>
-            <h4 style="font-family:var(--font-display);font-size:18px;margin-bottom:12px;color:var(--fg)" data-vi="Nghiên cứu, Sáng tạo &amp; Ứng dụng AI" data-en="Research, Creative &amp; AI-Driven Ops">Nghiên cứu, Sáng tạo &amp; Ứng dụng AI</h4>
-            <div style="font-size:13.5px;color:var(--muted-foreground);line-height:1.65;margin-bottom:16px">
-              <div style="margin-bottom:8px">• <strong>Thám thính đối thủ &amp; ICP:</strong> Theo dõi Meta Ad Library, TikTok Creative Center, đào sâu nỗi đau thực tế của khách hàng trước khi lên kịch bản.</div>
-              <div style="margin-bottom:8px">• <strong>Performance Copywriting:</strong> Viết copy theo công thức AIDA, PAS siết lọc khách tự nhiên ngay từ 3 giây đầu; tự lên storyboard video UGC cho Media.</div>
-              <div style="margin-bottom:8px">• <strong>AI Prototyping &amp; Landing Page:</strong> Ứng dụng AI (Claude, ChatGPT, Gemini) tự tay dựng Landing Page, Portfolio cá nhân chuyển đổi cao mà không phụ thuộc Dev.</div>
-              <div>• <strong>Tự học tăng tốc với NotebookLM:</strong> Khai thác <strong>NotebookLM</strong> &amp; AI tổng hợp tài liệu chuyên sâu, tự học UA Marketing (User Acquisition), Data Analytics và tiếng Anh (IELTS).</div>
-            </div>
+        <div class="card card-top-accent">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+            <span class="editorial-tag" style="margin-bottom:0">Creative Strategy &amp; AI Workflow</span>
+            <span style="font-family:var(--font-mono);font-size:12px;color:var(--accent);font-weight:700">PILLAR 03</span>
           </div>
-          <div style="padding-top:14px;border-top:1px dashed var(--border)">
-            <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted-foreground);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">Công cụ &amp; Kỹ thuật cốt lõi:</div>
-            <div style="display:flex;flex-wrap:wrap;gap:6px">
-              <span class="editorial-pill">NotebookLM (Deep Research)</span>
-              <span class="editorial-pill">ChatGPT / Claude / Gemini</span>
-              <span class="editorial-pill">AI Landing / Portfolio</span>
-              <span class="editorial-pill">UA Marketing &amp; Analytics</span>
-              <span class="editorial-pill">Meta Ad Library</span>
-              <span class="editorial-pill">AIDA / PAS Copy</span>
-            </div>
+          <h4 style="font-family:var(--font-display);font-size:18px;margin-bottom:12px;color:var(--fg)" data-vi="Nghiên cứu, Sáng tạo &amp; Ứng dụng AI" data-en="Research, Creative &amp; AI-Driven Ops">Nghiên cứu, Sáng tạo &amp; Ứng dụng AI</h4>
+          <div style="font-size:13.5px;color:var(--muted-foreground);line-height:1.65">
+            <div style="margin-bottom:8px">• <strong>Thám thính đối thủ &amp; ICP:</strong> Theo dõi Meta Ad Library, TikTok Creative Center, đào sâu nỗi đau thực tế của khách hàng trước khi lên kịch bản.</div>
+            <div style="margin-bottom:8px">• <strong>Performance Copywriting:</strong> Viết copy theo công thức AIDA, PAS siết lọc khách tự nhiên ngay từ 3 giây đầu; tự lên storyboard video UGC cho Media.</div>
+            <div style="margin-bottom:8px">• <strong>AI Prototyping &amp; Landing Page:</strong> Ứng dụng AI (Claude, ChatGPT, Gemini) tự tay dựng Landing Page, Portfolio cá nhân chuyển đổi cao mà không phụ thuộc Dev.</div>
+            <div>• <strong>Tự học tăng tốc với NotebookLM:</strong> Khai thác <strong>NotebookLM</strong> &amp; AI tổng hợp tài liệu chuyên sâu, tự học UA Marketing (User Acquisition), Data Analytics và tiếng Anh (IELTS).</div>
           </div>
         </div>
 
         <!-- Pillar 4 -->
-        <div class="card card-top-accent" style="display:flex;flex-direction:column;justify-content:space-between">
+        <div class="card card-top-accent">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+            <span class="editorial-tag" style="margin-bottom:0">CRM Integration &amp; Team Ops</span>
+            <span style="font-family:var(--font-mono);font-size:12px;color:var(--accent);font-weight:700">PILLAR 04</span>
+          </div>
+          <h4 style="font-family:var(--font-display);font-size:18px;margin-bottom:12px;color:var(--fg)" data-vi="Hệ thống CRM &amp; Phối hợp Đội ngũ" data-en="CRM Systems &amp; Cross-Functional Ops">Hệ thống CRM &amp; Phối hợp Đội ngũ</h4>
+          <div style="font-size:13.5px;color:var(--muted-foreground);line-height:1.65">
+            <div style="margin-bottom:8px">• <strong>Tự động hóa luồng Data:</strong> Bắn Webhook / API kết nối trực tiếp Ads Lead Form về CRM (Lark Base, Pancake, CRM nội bộ).</div>
+            <div style="margin-bottom:8px">• <strong>Bắt tay chặt chẽ với Sales:</strong> Lọc lead rác, đóng vòng lặp phản hồi (Feedback Loop) chất lượng data, hạ chi phí CPQL (-50%).</div>
+            <div style="margin-bottom:8px">• <strong>Phối hợp liên phòng ban:</strong> Làm việc nhịp nhàng với Account, Content, Kỹ thuật và Vận hành nhà hàng để tối ưu tỷ lệ chốt bàn.</div>
+            <div>• <strong>Vận hành TMĐT Sàn &amp; COD:</strong> Quản lý quy trình xử lý đơn hàng Shopee &amp; TikTok Shop, đối soát dòng tiền và giảm thiểu tối đa tỷ lệ hoàn hủy hàng (RTS).</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHẦN 2: HỆ SINH THÁI CÔNG CỤ & NỀN TẢNG THỰC CHIẾN -->
+      <div class="tools-ecosystem-wrapper" style="margin-top:44px;padding-top:34px;border-top:1.5px dashed var(--border)">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:22px;flex-wrap:wrap;gap:14px">
           <div>
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-              <span class="editorial-tag" style="margin-bottom:0">CRM Integration &amp; Team Ops</span>
-              <span style="font-family:var(--font-mono);font-size:12px;color:var(--accent);font-weight:700">PILLAR 04</span>
+            <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:6px">
+              <span class="editorial-tag" style="margin-bottom:0;background:#FAF3E0;color:#7A4B1A;border-color:#D4A84B">PHẦN 2 · HỆ SINH THÁI THỰC CHIẾN</span>
+              <span style="font-family:var(--font-mono);font-size:11.5px;color:var(--btn-brown);font-weight:700">18+ NỀN TẢNG &amp; ỨNG DỤNG</span>
             </div>
-            <h4 style="font-family:var(--font-display);font-size:18px;margin-bottom:12px;color:var(--fg)" data-vi="Hệ thống CRM &amp; Phối hợp Đội ngũ" data-en="CRM Systems &amp; Cross-Functional Ops">Hệ thống CRM &amp; Phối hợp Đội ngũ</h4>
-            <div style="font-size:13.5px;color:var(--muted-foreground);line-height:1.65;margin-bottom:16px">
-              <div style="margin-bottom:8px">• <strong>Tự động hóa luồng Data:</strong> Bắn Webhook / API kết nối trực tiếp Ads Lead Form về CRM (Lark Base, Pancake, CRM nội bộ).</div>
-              <div style="margin-bottom:8px">• <strong>Bắt tay chặt chẽ với Sales:</strong> Lọc lead rác, đóng vòng lặp phản hồi (Feedback Loop) chất lượng data, hạ chi phí CPQL (-50%).</div>
-              <div style="margin-bottom:8px">• <strong>Phối hợp liên phòng ban:</strong> Làm việc nhịp nhàng với Account, Content, Kỹ thuật và Vận hành nhà hàng để tối ưu tỷ lệ chốt bàn.</div>
-              <div>• <strong>Vận hành TMĐT Sàn &amp; COD:</strong> Quản lý quy trình xử lý đơn hàng Shopee &amp; TikTok Shop, đối soát dòng tiền và giảm thiểu tối đa tỷ lệ hoàn hủy hàng (RTS).</div>
+            <h3 style="font-family:var(--font-display);font-size:clamp(20px, 2.2vw, 24px);font-weight:700;color:var(--fg);margin:0" data-vi="Bộ công cụ &amp; Nền tảng làm chủ thực tế" data-en="Applied Tool Stack &amp; Platform Ecosystem">Bộ công cụ &amp; Nền tảng làm chủ thực tế</h3>
+          </div>
+          <p style="font-size:13.5px;color:var(--muted-foreground);margin:0;max-width:500px;line-height:1.55" data-vi="Các phần mềm, nền tảng quảng cáo số, hạ tầng tracking và công cụ AI được trực tiếp vận hành hàng ngày để kiểm soát số liệu và tối ưu chuyển đổi." data-en="Software, digital ad platforms, tracking infrastructure, and AI tools operated daily to control data and drive conversions.">Các phần mềm, nền tảng quảng cáo số, hạ tầng tracking và công cụ AI được trực tiếp vận hành hàng ngày để kiểm soát số liệu và tối ưu chuyển đổi.</p>
+        </div>
+
+        <div class="tools-category-grid">
+          <!-- Nhóm 1: Paid Ads & Sàn TMĐT -->
+          <div class="tool-group-card">
+            <div class="tool-group-header">
+              <div class="tool-group-title">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--btn-brown)"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                Paid Ads &amp; Sàn TMĐT
+              </div>
+              <span class="tool-group-count">5 APPS</span>
+            </div>
+            <div class="tool-items-list">
+              <!-- Meta Ads -->
+              <div class="tool-item-row">
+                <div class="tool-icon-wrap">
+                  <svg viewBox="0 0 24 24" fill="#0081FB">
+                    <path d="M12 14.5c-1.3 0-2.1-1-2.1-2.5s.8-2.5 2.1-2.5 2.1 1 2.1 2.5-.8 2.5-2.1 2.5zm4.7-7c-1.8 0-3.4.9-4.3 2.4-.9-1.5-2.5-2.4-4.3-2.4C4.7 7.5 2 10.2 2 13.5S4.7 19.5 8.1 19.5c1.8 0 3.4-.9 4.3-2.4.9 1.5 2.5 2.4 4.3 2.4 3.4 0 6.1-2.7 6.1-6s-2.7-6-6.1-6zm-8.6 9.6c-2 0-3.6-1.6-3.6-3.6s1.6-3.6 3.6-3.6c1.6 0 2.9 1 3.4 2.5-.5 1.5-1.8 4.7-3.4 4.7zm8.6 0c-1.6 0-2.9-3.2-3.4-4.7.5-1.5 1.8-2.5 3.4-2.5 2 0 3.6 1.6 3.6 3.6s-1.6 3.6-3.6 3.6z"/>
+                  </svg>
+                </div>
+                <div class="tool-text-wrap">
+                  <span class="tool-name">Meta Ads Manager</span>
+                  <span class="tool-badge-role">Scale Ads &amp; A/B Camp</span>
+                </div>
+              </div>
+              <!-- Google Ads -->
+              <div class="tool-item-row">
+                <div class="tool-icon-wrap">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M4.3 14.7l5.9-10.2c.7-1.2 2.2-1.6 3.4-.9l2.7 1.6c1.2.7 1.6 2.2.9 3.4L11.3 18.8c-.7 1.2-2.2 1.6-3.4.9L5.2 18.1c-1.2-.7-1.6-2.2-.9-3.4z" fill="#FBBC04"/>
+                    <path d="M21.1 17.6l-5.9-10.2c-.7-1.2-2.2-1.6-3.4-.9-1.2.7-1.6 2.2-.9 3.4l5.9 10.2c.7 1.2 2.2 1.6 3.4.9 1.2-.7 1.6-2.2.9-3.4z" fill="#4285F4"/>
+                    <circle cx="5.2" cy="18.1" r="2.8" fill="#34A853"/>
+                  </svg>
+                </div>
+                <div class="tool-text-wrap">
+                  <span class="tool-name">Google Ads</span>
+                  <span class="tool-badge-role">Search &amp; PMax Camp</span>
+                </div>
+              </div>
+              <!-- TikTok Ads -->
+              <div class="tool-item-row">
+                <div class="tool-icon-wrap">
+                  <svg viewBox="0 0 24 24" fill="#000000">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.78 0 2.89 2.89 0 0 1 3.71-2.75V9.41a6.34 6.34 0 1 0 5.52 6.26V8.76a8.17 8.17 0 0 0 4.77 1.49v-3.49a4.81 4.81 0 0 1-1-.07z"/>
+                  </svg>
+                </div>
+                <div class="tool-text-wrap">
+                  <span class="tool-name">TikTok Ads</span>
+                  <span class="tool-badge-role">Video UGC &amp; Viral Hook</span>
+                </div>
+              </div>
+              <!-- Shopee Ads -->
+              <div class="tool-item-row">
+                <div class="tool-icon-wrap">
+                  <svg viewBox="0 0 24 24" fill="#EE4D2D">
+                    <path d="M19.3 6.8h-2.5c-.4-2.8-2.5-4.9-5.1-4.9S7.1 4 6.7 6.8H4.2c-.9 0-1.6.7-1.6 1.6l1.2 12.3c.1.9.8 1.5 1.7 1.5h12.5c.9 0 1.6-.7 1.7-1.5l1.2-12.3c.1-.9-.6-1.6-1.6-1.6zm-7.6-3.4c1.8 0 3.3 1.5 3.6 3.4H8.1c.3-1.9 1.8-3.4 3.6-3.4zm1.9 10.3c-.6.3-1.4.5-2.1.5-1.5 0-2.3-.7-2.3-1.7 0-.9.6-1.4 1.9-1.8.9-.3 1.4-.6 1.4-1.1 0-.5-.4-.9-1.2-.9-.8 0-1.5.3-2.1.8l-.8-1.2c.8-.7 1.9-1 3-1 1.6 0 2.4.8 2.4 1.8 0 .8-.5 1.4-1.8 1.7-.9.3-1.4.6-1.4 1.1 0 .5.5.9 1.3.9.7 0 1.4-.3 1.9-.7l.8 1.6z"/>
+                  </svg>
+                </div>
+                <div class="tool-text-wrap">
+                  <span class="tool-name">Shopee Seller Center</span>
+                  <span class="tool-badge-role">Shopee Ads &amp; Mall Store</span>
+                </div>
+              </div>
+              <!-- TikTok Shop -->
+              <div class="tool-item-row">
+                <div class="tool-icon-wrap">
+                  <svg viewBox="0 0 24 24" fill="#FE2C55">
+                    <path d="M18 6h-2c0-2.2-1.8-4-4-4S8 3.8 8 6H6c-1.1 0-2 .9-2 2l1.2 11.2c.1 1.6 1.4 2.8 3 2.8h7.6c1.6 0 2.9-1.2 3-2.8L20 8c0-1.1-.9-2-2-2zm-6-2.5c1.4 0 2.5 1.1 2.5 2.5H9.5c0-1.4 1.1-2.5 2.5-2.5zm2.5 8.5l-3 3-1.5-1.5 1-1 1.5 1.5 2-2 1 1z"/>
+                  </svg>
+                </div>
+                <div class="tool-text-wrap">
+                  <span class="tool-name">TikTok Shop</span>
+                  <span class="tool-badge-role">Seller Ops &amp; Đơn hàng COD</span>
+                </div>
+              </div>
             </div>
           </div>
-          <div style="padding-top:14px;border-top:1px dashed var(--border)">
-            <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted-foreground);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">Công cụ &amp; Kỹ thuật cốt lõi:</div>
-            <div style="display:flex;flex-wrap:wrap;gap:6px">
-              <span class="editorial-pill">Lark Base</span>
-              <span class="editorial-pill">Shopee Seller Centre</span>
-              <span class="editorial-pill">Pancake CRM</span>
-              <span class="editorial-pill">POS365</span>
-              <span class="editorial-pill">Webhook Integration</span>
-              <span class="editorial-pill">Sales Feedback Loop</span>
+
+          <!-- Nhóm 2: Đo lường & Dữ liệu -->
+          <div class="tool-group-card">
+            <div class="tool-group-header">
+              <div class="tool-group-title">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--btn-brown)"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                Đo lường &amp; Dữ liệu
+              </div>
+              <span class="tool-group-count">5 TOOLS</span>
+            </div>
+            <div class="tool-items-list">
+              <!-- Google Analytics 4 -->
+              <div class="tool-item-row">
+                <div class="tool-icon-wrap">
+                  <svg viewBox="0 0 24 24">
+                    <rect x="3" y="13" width="5" height="8" rx="2.5" fill="#F9AB00"/>
+                    <rect x="9.5" y="8" width="5" height="13" rx="2.5" fill="#E37400"/>
+                    <rect x="16" y="3" width="5" height="18" rx="2.5" fill="#E37400"/>
+                  </svg>
+                </div>
+                <div class="tool-text-wrap">
+                  <span class="tool-name">Google Analytics 4</span>
+                  <span class="tool-badge-role">Drop-off &amp; User Journey CRO</span>
+                </div>
+              </div>
+              <!-- Google Tag Manager -->
+              <div class="tool-item-row">
+                <div class="tool-icon-wrap">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 2L3.5 10.5l4.2 4.2L12 10.5l4.3 4.2 4.2-4.2L12 2z" fill="#246FDB"/>
+                    <circle cx="12" cy="14" r="3" fill="#8AB4F8"/>
+                    <path d="M8.5 17.5L12 21l3.5-3.5-3.5-3.5-3.5 3.5z" fill="#1A73E8"/>
+                  </svg>
+                </div>
+                <div class="tool-text-wrap">
+                  <span class="tool-name">Google Tag Manager</span>
+                  <span class="tool-badge-role">Data Layer &amp; Custom Events</span>
+                </div>
+              </div>
+              <!-- Looker Studio -->
+              <div class="tool-item-row">
+                <div class="tool-icon-wrap">
+                  <svg viewBox="0 0 24 24">
+                    <rect x="3" y="11" width="4.5" height="10" rx="1.5" fill="#4285F4"/>
+                    <rect x="9.8" y="5" width="4.5" height="16" rx="1.5" fill="#34A853"/>
+                    <rect x="16.5" y="8" width="4.5" height="13" rx="1.5" fill="#FBBC04"/>
+                  </svg>
+                </div>
+                <div class="tool-text-wrap">
+                  <span class="tool-name">Looker Studio</span>
+                  <span class="tool-badge-role">Real-time Marketing Dashboard</span>
+                </div>
+              </div>
+              <!-- Google Sheets -->
+              <div class="tool-item-row">
+                <div class="tool-icon-wrap">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M19 3H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" fill="#0F9D58"/>
+                    <path d="M9 8h8v2H9V8zm0 3.5h8v2H9v-2zm0 3.5h5v2H9v-2z" fill="#FFFFFF"/>
+                  </svg>
+                </div>
+                <div class="tool-text-wrap">
+                  <span class="tool-name">Google Sheets</span>
+                  <span class="tool-badge-role">Bảng P&amp;L, QUERY &amp; Pivot Data</span>
+                </div>
+              </div>
+              <!-- Meta CAPI & Pixel -->
+              <div class="tool-item-row">
+                <div class="tool-icon-wrap">
+                  <svg viewBox="0 0 24 24" fill="#0081FB">
+                    <circle cx="6" cy="6" r="2.5"/>
+                    <circle cx="18" cy="6" r="2.5"/>
+                    <circle cx="12" cy="18" r="2.5"/>
+                    <path d="M8.5 6h7M7 8l4 8M17 8l-4 8" stroke="#0081FB" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <div class="tool-text-wrap">
+                  <span class="tool-name">Meta CAPI &amp; Pixel</span>
+                  <span class="tool-badge-role">Server-side Tracking Gateway</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Nhóm 3: AI & Nghiên cứu Sâu -->
+          <div class="tool-group-card">
+            <div class="tool-group-header">
+              <div class="tool-group-title">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--btn-brown)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                AI &amp; Nghiên cứu Sâu
+              </div>
+              <span class="tool-group-count">4 APPS</span>
+            </div>
+            <div class="tool-items-list">
+              <!-- OpenAI ChatGPT -->
+              <div class="tool-item-row">
+                <div class="tool-icon-wrap">
+                  <svg viewBox="0 0 24 24" fill="#10A37F">
+                    <path d="M20.5 10.5a5.2 5.2 0 0 0-.4-3.5 5.3 5.3 0 0 0-4.3-2.7 5.2 5.2 0 0 0-3.6-1.5 5.3 5.3 0 0 0-4.9 3.3 5.2 5.2 0 0 0-3.4 1.7 5.3 5.3 0 0 0-.8 5 5.2 5.2 0 0 0 .4 3.5 5.3 5.3 0 0 0 4.3 2.7 5.2 5.2 0 0 0 3.6 1.5 5.3 5.3 0 0 0 4.9-3.3 5.2 5.2 0 0 0 3.4-1.7 5.3 5.3 0 0 0 .8-5zm-7.6 9.8a3.7 3.7 0 0 1-2.4-.9l1.1-1.9 2.7 1.5a3.7 3.7 0 0 1-1.4 1.3zm4.5-3.1l-2.7-1.5v-3.1l2.7-1.5a3.7 3.7 0 0 1 1.7 4.7 3.7 3.7 0 0 1-1.7 1.4zm-2.4-7.2l-2.7 1.5-2.7-1.5a3.7 3.7 0 0 1 3.4-2.1 3.7 3.7 0 0 1 2 2.1zm-6 3.5l2.7 1.5v3.1l-2.7 1.5a3.7 3.7 0 0 1-1.7-4.7 3.7 3.7 0 0 1 1.7-1.4zm2.4 1.4l1.3.8v1.6l-1.3-.8v-1.6z"/>
+                  </svg>
+                </div>
+                <div class="tool-text-wrap">
+                  <span class="tool-name">OpenAI ChatGPT</span>
+                  <span class="tool-badge-role">Prompting, AIDA Copy &amp; Funnel</span>
+                </div>
+              </div>
+              <!-- Claude (Anthropic) -->
+              <div class="tool-item-row">
+                <div class="tool-icon-wrap">
+                  <svg viewBox="0 0 24 24" fill="#D97706">
+                    <path d="M12 2l1.8 6.5 6.2 1.7-6.2 1.7L12 18.4l-1.8-6.5-6.2-1.7 6.2-1.7L12 2z"/>
+                    <path d="M19 16l1 3.2 3.2 1-3.2 1-1 3.2-1-3.2-3.2-1 3.2-1 1-3.2z" fill="#CC5500"/>
+                  </svg>
+                </div>
+                <div class="tool-text-wrap">
+                  <span class="tool-name">Claude (Anthropic)</span>
+                  <span class="tool-badge-role">Coding Landing, Web &amp; Analytical</span>
+                </div>
+              </div>
+              <!-- NotebookLM -->
+              <div class="tool-item-row">
+                <div class="tool-icon-wrap">
+                  <svg viewBox="0 0 24 24">
+                    <rect x="4" y="3" width="16" height="18" rx="3" fill="#1A73E8"/>
+                    <rect x="8" y="7" width="8" height="2" rx="1" fill="#FFFFFF"/>
+                    <rect x="8" y="11" width="8" height="2" rx="1" fill="#FFFFFF"/>
+                    <rect x="8" y="15" width="5" height="2" rx="1" fill="#FFFFFF"/>
+                    <circle cx="15.5" cy="15.5" r="2.2" fill="#FBBC04"/>
+                  </svg>
+                </div>
+                <div class="tool-text-wrap">
+                  <span class="tool-name">NotebookLM (Google)</span>
+                  <span class="tool-badge-role">Deep Research &amp; Tự học UA/IELTS</span>
+                </div>
+              </div>
+              <!-- Meta Ad Library -->
+              <div class="tool-item-row">
+                <div class="tool-icon-wrap">
+                  <svg viewBox="0 0 24 24" fill="#0081FB">
+                    <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 10l-3.5-4.5-2.5 3.01L10 11.5l-3 4h12l-1-1.5z"/>
+                  </svg>
+                </div>
+                <div class="tool-text-wrap">
+                  <span class="tool-name">Meta Ad Library</span>
+                  <span class="tool-badge-role">Thám thính Creative &amp; Đối thủ</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Nhóm 4: CRM, Bán hàng & Vận hành -->
+          <div class="tool-group-card">
+            <div class="tool-group-header">
+              <div class="tool-group-title">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--btn-brown)"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                CRM, Sales &amp; Vận hành
+              </div>
+              <span class="tool-group-count">4 TOOLS</span>
+            </div>
+            <div class="tool-items-list">
+              <!-- Lark Base -->
+              <div class="tool-item-row">
+                <div class="tool-icon-wrap">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 3L3 8.5v7L12 21l9-5.5v-7L12 3z" fill="#00D6B9"/>
+                    <path d="M12 3l9 5.5-9 5.5-9-5.5L12 3z" fill="#007CF0"/>
+                    <path d="M12 14l9-5.5v7L12 21V14z" fill="#0055D6"/>
+                  </svg>
+                </div>
+                <div class="tool-text-wrap">
+                  <span class="tool-name">Lark Base (LarkSuite)</span>
+                  <span class="tool-badge-role">Quản lý Data Lead &amp; Pipeline Sales</span>
+                </div>
+              </div>
+              <!-- Pancake CRM -->
+              <div class="tool-item-row">
+                <div class="tool-icon-wrap">
+                  <svg viewBox="0 0 24 24">
+                    <ellipse cx="12" cy="17" rx="8" ry="3.5" fill="#FF8A00"/>
+                    <ellipse cx="12" cy="12" rx="7.5" ry="3" fill="#FFA733"/>
+                    <ellipse cx="12" cy="7.5" rx="7" ry="2.8" fill="#FFC278"/>
+                    <circle cx="12" cy="6" r="1.5" fill="#D97706"/>
+                  </svg>
+                </div>
+                <div class="tool-text-wrap">
+                  <span class="tool-name">Pancake CRM</span>
+                  <span class="tool-badge-role">Phân luồng hội thoại &amp; Đóng đơn</span>
+                </div>
+              </div>
+              <!-- POS365 -->
+              <div class="tool-item-row">
+                <div class="tool-icon-wrap">
+                  <svg viewBox="0 0 24 24">
+                    <rect x="3" y="4" width="18" height="16" rx="3" fill="#0080FF"/>
+                    <text x="12" y="15" font-family="Arial, sans-serif" font-weight="900" font-size="8" fill="#FFFFFF" text-anchor="middle">365</text>
+                  </svg>
+                </div>
+                <div class="tool-text-wrap">
+                  <span class="tool-name">POS365</span>
+                  <span class="tool-badge-role">Đối soát doanh thu bán lẻ &amp; Đơn O2O</span>
+                </div>
+              </div>
+              <!-- Webhook & API -->
+              <div class="tool-item-row">
+                <div class="tool-icon-wrap">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="#D4A84B"/>
+                  </svg>
+                </div>
+                <div class="tool-text-wrap">
+                  <span class="tool-name">Webhook &amp; API Integration</span>
+                  <span class="tool-badge-role">Tự động hóa luồng Form sang CRM</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
