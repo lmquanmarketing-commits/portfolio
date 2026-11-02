@@ -6,7 +6,7 @@
   <meta name="description" content="Portfolio Performance Marketing của Lê Minh Quân: B2B EdTech SaaS, E-commerce quốc tế, F&amp;B Multi-brand. Tối ưu dựa trên dòng tiền thật và số liệu đối soát minh bạch.">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#FAFAF8">
-  <title>Lê Minh Quân — Growth Performance Marketer</title>
+  <title>Quân - Growth Performance Marketing | Portfolio</title>
   <link rel="icon" type="image/svg+xml" href="assets/logo_mq.svg">
   <link rel="apple-touch-icon" href="assets/logo_mq.svg">
   
@@ -173,45 +173,48 @@
     }
     .logo-wordmark {
       text-decoration: none;
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 11px;
+      gap: 9px;
       transition: opacity 0.2s ease;
     }
     .logo-wordmark:hover {
-      opacity: 0.9;
+      opacity: 0.88;
     }
-    .nav-logo-icon {
-      width: 34px;
-      height: 34px;
-      flex-shrink: 0;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(184, 134, 11, 0.16);
-      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .logo-wordmark:hover .nav-logo-icon {
-      transform: scale(1.06);
-    }
-    .logo-text-wrap {
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-    }
-    .logo-name {
+    .logo-signature {
       font-family: var(--font-display);
-      font-size: 19px;
+      font-style: italic;
+      font-size: 24px;
       font-weight: 700;
       color: var(--fg);
-      line-height: 1.15;
       letter-spacing: -0.01em;
-    }
-    .logo-sub {
-      font-family: var(--font-mono);
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      color: var(--btn-brown);
       line-height: 1;
+    }
+    .logo-sig-dash {
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1;
+    }
+    .logo-sig-role {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--btn-brown);
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+    @media (max-width: 640px) {
+      .logo-signature {
+        font-size: 20px;
+      }
+      .logo-sig-role {
+        font-size: 9.5px;
+        letter-spacing: 0.04em;
+      }
     }
     .nav-links {
       display: flex;
@@ -353,8 +356,16 @@
       font-size: 11px;
       color: var(--btn-brown);
       font-weight: 600;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.02em;
+      margin-top: 3px;
+      line-height: 1.45;
+      text-align: center;
+    }
+    .av-school-row {
+      display: block;
       margin-top: 2px;
+      white-space: nowrap;
+      font-size: 10.5px;
     }
     @media (max-width: 860px) {
       .hero-layout-split {
@@ -1430,28 +1441,10 @@
   <!-- Navigation -->
   <nav>
     <div class="w">
-      <a href="#" class="logo-wordmark" aria-label="Lê Minh Quân - Growth Performance Marketer">
-        <svg class="nav-logo-icon" viewBox="0 0 44 44" width="34" height="34" aria-hidden="true">
-          <defs>
-            <linearGradient id="mqGoldNav" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#F3DE9C"/>
-              <stop offset="40%" stop-color="#D4A84B"/>
-              <stop offset="100%" stop-color="#9B7322"/>
-            </linearGradient>
-            <linearGradient id="mqBgNav" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#26221D"/>
-              <stop offset="100%" stop-color="#121110"/>
-            </linearGradient>
-          </defs>
-          <rect x="1.5" y="1.5" width="41" height="41" rx="9" fill="url(#mqBgNav)" stroke="url(#mqGoldNav)" stroke-width="1.4"/>
-          <circle cx="21" cy="21" r="11" fill="none" stroke="url(#mqGoldNav)" stroke-width="2.4"/>
-          <path d="M15.5 25.5V17L21 22.5L26.5 17V25.5" fill="none" stroke="url(#mqGoldNav)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M28 28L35 35M35 35H30.5M35 35V30.5" fill="none" stroke="url(#mqGoldNav)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <div class="logo-text-wrap">
-          <span class="logo-name">Lê Minh Quân</span>
-          <span class="logo-sub">GROWTH</span>
-        </div>
+      <a href="#" class="logo-wordmark" aria-label="Quân - Growth Performance Marketing">
+        <span class="logo-signature">Quân</span>
+        <span class="logo-sig-dash">—</span>
+        <span class="logo-sig-role">Growth Performance Marketing</span>
       </a>
       <div class="nav-links">
         <a href="#about" data-vi="Giới thiệu" data-en="About">Giới thiệu</a>
@@ -1479,11 +1472,11 @@
             <span class="hero-eyebrow">PORTFOLIO &amp; VERIFIED CASE STUDIES</span>
             <span class="hero-live-pill" style="background:#FAF3E0;border-color:#D4A84B;color:#7A4B1A;font-weight:700">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#7A4B1A;display:inline-block;vertical-align:middle;margin-right:2px"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-              Cử nhân Marketing – ĐH Công nghệ TP.HCM
+              Cử nhân Marketing – Đại học Công nghệ TP.HCM
             </span>
           </div>
           <h1 class="hero-name-main">LÊ MINH QUÂN</h1>
-          <div class="hero-role-main">Growth Performance Marketer</div>
+          <div class="hero-role-main">Growth Performance Marketing</div>
 
           <p class="lang-txt" style="font-size:clamp(19px, 2.3vw, 23px);font-weight:600;line-height:1.45;margin-bottom:14px;color:var(--fg);font-family:var(--font-display);max-width:820px" data-vi="Tăng trưởng từ tư duy số liệu, chiến lược tổng thể và sức mạnh từ teamwork." data-en="Growth driven by data mindset, holistic strategy, and teamwork power.">Tăng trưởng từ tư duy số liệu, chiến lược tổng thể và sức mạnh từ teamwork.</p>
           
@@ -1504,11 +1497,14 @@
         <!-- Cột Phải: Ảnh chân dung doanh nhân chuyên nghiệp -->
         <div class="hero-avatar-card">
           <div class="avatar-frame">
-            <img src="assets/avatar_quan.jpg" alt="Lê Minh Quân - Growth Performance Marketer" class="avatar-img" onerror="this.src='avatar_quan.jpg'">
+            <img src="assets/avatar_quan.jpg" alt="Lê Minh Quân - Growth Performance Marketing" class="avatar-img" onerror="this.src='avatar_quan.jpg'">
           </div>
           <div class="avatar-caption">
             <div class="av-name">Lê Minh Quân</div>
-            <div class="av-spec">Cử nhân Marketing · ĐH Công nghệ TP.HCM</div>
+            <div class="av-spec">
+              <span>Cử nhân Marketing</span>
+              <span class="av-school-row">Đại học Công nghệ TP.HCM</span>
+            </div>
           </div>
         </div>
       </div>
@@ -1585,7 +1581,7 @@
         </div>
         
         <div style="font-size:15.5px;color:var(--fg);line-height:1.8;margin-bottom:0">
-          <p data-vi="Tôi là <strong>Lê Minh Quân</strong> — một Performance Marketer tốt nghiệp chuyên ngành Marketing &amp; Kinh doanh Quốc tế. Với tôi, quảng cáo không đơn thuần là việc ngồi một góc bật - tắt chiến dịch hàng ngày hay chạy theo những bản báo cáo chỉ số ảo không đem lại doanh thu. Tăng trưởng thực chất và bền vững phải bắt nguồn từ tư duy số liệu kỷ luật, chiến lược phễu tổng thể từ sản phẩm đến chuyển đổi, và trên hết là sức mạnh phối hợp chặt chẽ với các đội ngũ để cùng giải bài toán kinh doanh cho doanh nghiệp qua các dự án <strong>B2B EdTech SaaS</strong>, <strong>Chuỗi Agency F&amp;B</strong> và <strong>E-commerce quốc tế</strong>." data-en="I am <strong>Lê Minh Quân</strong> — a Performance Marketer graduated in Marketing &amp; International Business. To me, growth marketing is never about just sitting in a corner toggling ad campaigns or chasing vanity reports that bring no revenue. Genuine, sustainable growth must stem from data discipline, a holistic funnel strategy from product to conversion, and above all, tight cross-functional teamwork across real-world <strong>B2B EdTech SaaS</strong>, <strong>F&amp;B multi-brand agency</strong>, and <strong>cross-border E-commerce</strong>.">Tôi là <strong>Lê Minh Quân</strong> — một Performance Marketer tốt nghiệp chuyên ngành Marketing &amp; Kinh doanh Quốc tế. Với tôi, quảng cáo không đơn thuần là việc ngồi một góc bật - tắt chiến dịch hàng ngày hay chạy theo những bản báo cáo chỉ số ảo không đem lại doanh thu. Tăng trưởng thực chất và bền vững phải bắt nguồn từ tư duy số liệu kỷ luật, chiến lược phễu tổng thể từ sản phẩm đến chuyển đổi, và trên hết là sức mạnh phối hợp chặt chẽ với các đội ngũ để cùng giải bài toán kinh doanh cho doanh nghiệp qua các dự án <strong>B2B EdTech SaaS</strong>, <strong>Chuỗi Agency F&amp;B</strong> và <strong>E-commerce quốc tế</strong>.</p>
+          <p data-vi="Tôi là <strong>Lê Minh Quân</strong> — chuyên môn <strong>Growth Performance Marketing</strong>, tốt nghiệp chuyên ngành Marketing &amp; Kinh doanh Quốc tế. Với tôi, quảng cáo không đơn thuần là việc ngồi một góc bật - tắt chiến dịch hàng ngày hay chạy theo những bản báo cáo chỉ số ảo không đem lại doanh thu. Tăng trưởng thực chất và bền vững phải bắt nguồn từ tư duy số liệu kỷ luật, chiến lược phễu tổng thể từ sản phẩm đến chuyển đổi, và trên hết là sức mạnh phối hợp chặt chẽ với các đội ngũ để cùng giải bài toán kinh doanh cho doanh nghiệp qua các dự án <strong>B2B EdTech SaaS</strong>, <strong>Chuỗi Agency F&amp;B</strong> và <strong>E-commerce quốc tế</strong>." data-en="I am <strong>Lê Minh Quân</strong> — specialized in <strong>Growth Performance Marketing</strong>, graduated in Marketing &amp; International Business. To me, growth marketing is never about just sitting in a corner toggling ad campaigns or chasing vanity reports that bring no revenue. Genuine, sustainable growth must stem from data discipline, a holistic funnel strategy from product to conversion, and above all, tight cross-functional teamwork across real-world <strong>B2B EdTech SaaS</strong>, <strong>F&amp;B multi-brand agency</strong>, and <strong>cross-border E-commerce</strong>.">Tôi là <strong>Lê Minh Quân</strong> — chuyên môn <strong>Growth Performance Marketing</strong>, tốt nghiệp chuyên ngành Marketing &amp; Kinh doanh Quốc tế. Với tôi, quảng cáo không đơn thuần là việc ngồi một góc bật - tắt chiến dịch hàng ngày hay chạy theo những bản báo cáo chỉ số ảo không đem lại doanh thu. Tăng trưởng thực chất và bền vững phải bắt nguồn từ tư duy số liệu kỷ luật, chiến lược phễu tổng thể từ sản phẩm đến chuyển đổi, và trên hết là sức mạnh phối hợp chặt chẽ với các đội ngũ để cùng giải bài toán kinh doanh cho doanh nghiệp qua các dự án <strong>B2B EdTech SaaS</strong>, <strong>Chuỗi Agency F&amp;B</strong> và <strong>E-commerce quốc tế</strong>.</p>
         </div>
 
         <!-- Khối Nền Tảng Học Vấn & Bằng Cấp Chính Quy (Hiển thị ngay trong 10s đầu) -->
@@ -1615,7 +1611,7 @@
               <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
                 <span class="editorial-pill" style="font-weight:700">MỤC TIÊU NGẮN HẠN · 1–2 NĂM</span>
               </div>
-              <h4 style="font-family:var(--font-display);font-size:16.5px;margin-bottom:8px;color:var(--fg);white-space:nowrap" data-vi="Làm chủ toàn diện năng lực Growth Marketer" data-en="Master Full-Stack Growth Marketing">Làm chủ toàn diện năng lực Growth Marketer</h4>
+              <h4 style="font-family:var(--font-display);font-size:16.5px;margin-bottom:8px;color:var(--fg);white-space:nowrap" data-vi="Làm chủ toàn diện năng lực Growth Performance Marketing" data-en="Master Full-Stack Growth Performance Marketing">Làm chủ toàn diện năng lực Growth Performance Marketing</h4>
               <p style="font-size:14px;color:var(--muted-foreground);line-height:1.65;margin:0" data-vi="Hoàn thiện chuyên sâu kỹ năng thiết kế phễu chuyển đổi đa kênh (CRO), kiểm soát hạ tầng đo lường tracking (GA4, CAPI) và ứng dụng AI tự động hóa; đồng hành trực tiếp cùng doanh nghiệp tối ưu chi phí và tăng trưởng dòng tiền có lãi." data-en="Master end-to-end multi-channel funnel CRO, tracking infrastructure (GA4, CAPI), and AI automation; directly partnering with businesses to optimize costs and drive profitable cash flow.">Hoàn thiện chuyên sâu kỹ năng thiết kế phễu chuyển đổi đa kênh (CRO), kiểm soát hạ tầng đo lường tracking (GA4, CAPI) và ứng dụng AI tự động hóa; đồng hành trực tiếp cùng doanh nghiệp tối ưu chi phí và tăng trưởng dòng tiền có lãi.</p>
             </div>
           </div>
@@ -1635,7 +1631,7 @@
       <!-- Quote Box -->
       <div class="quote-box">
         <p class="quote-text" data-vi="&ldquo;Tôi không tối ưu để có những bản báo cáo đẹp mắt với CTR cao hay số lượng Lead rẻ. Tôi tối ưu cho dòng tiền thật, khách hàng thật và sự tăng trưởng có lãi của doanh nghiệp.&rdquo;" data-en="&ldquo;I don't optimize for vanity reports with high CTR or cheap unqualified leads. I optimize for real customers, cash flow, and profitable business growth.&rdquo;">&ldquo;Tôi không tối ưu để có những bản báo cáo đẹp mắt với CTR cao hay số lượng Lead rẻ. Tôi tối ưu cho dòng tiền thật, khách hàng thật và sự tăng trưởng có lãi của doanh nghiệp.&rdquo;</p>
-        <div class="quote-author">&mdash; Lê Minh Quân · Growth Performance Marketer</div>
+        <div class="quote-author">&mdash; Lê Minh Quân · Growth Performance Marketing</div>
       </div>
     </section>
 
