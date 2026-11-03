@@ -770,6 +770,8 @@
       box-sizing: border-box;
       overflow: hidden;
       position: relative;
+      text-decoration: none;
+      color: inherit;
     }
     .pmn-btn:hover {
       border-color: #D4A84B;
@@ -826,13 +828,18 @@
       line-height: 1.2;
     }
 
-    /* Panes - Chỉ hiển thị 1 dự án được chọn */
+    /* Panes - Hiển thị dàn xuống toàn bộ dự án thực chiến & case study */
     .project-pane {
-      display: none;
-    }
-    .project-pane.active {
       display: block;
-      animation: fadeInPane 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      margin-bottom: 56px;
+      padding-bottom: 48px;
+      border-bottom: 1.5px dashed var(--border);
+      scroll-margin-top: 80px;
+    }
+    .project-pane:last-of-type {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
     }
     @keyframes fadeInPane {
       from { opacity: 0; transform: translateY(6px); }
@@ -1493,9 +1500,11 @@
       text-overflow: ellipsis;
     }
 
-    .tab-content { display: none; }
-    .tab-content.active { display: block; animation: fadeIn 0.3s ease; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+    .tab-content {
+      display: block;
+      margin-top: 24px;
+      scroll-margin-top: 90px;
+    }
 
     /* STAR Framework 3 Cột */
     .star-block {
@@ -1874,37 +1883,37 @@
     <!-- 02 / Featured Projects & Case Studies -->
     <section class="sec" id="cases">
       <div class="section-heading-editorial">
-        <span class="sec-category-label">DỰ ÁN THỰC CHIẾN</span>
-        <h2 class="sec-title-main" data-vi="<span class='sec-num-inline'>02 ·</span> Dự án &amp; Case Study tiêu biểu" data-en="<span class='sec-num-inline'>02 ·</span> Featured Projects &amp; Case Studies"><span class="sec-num-inline'>02 ·</span> Dự án &amp; Case Study tiêu biểu</h2>
+        <span class="sec-category-label">DỰ ÁN THỰC CHIẾN &amp; CASE STUDY</span>
+        <h2 class="sec-title-main" data-vi="<span class='sec-num-inline'>02 ·</span> Dự án thực chiến &amp; Case Study tiêu biểu" data-en="<span class='sec-num-inline'>02 ·</span> Featured Projects &amp; Case Studies"><span class="sec-num-inline'>02 ·</span> Dự án thực chiến &amp; Case Study tiêu biểu</h2>
       </div>
       <p class="mut sec-desc" data-vi="Tổng hợp các dự án tăng trưởng thực chiến đã trực tiếp triển khai: từ B2B EdTech SaaS, chuỗi F&amp;B đa thương hiệu đến E-commerce quốc tế." data-en="Comprehensive portfolio of executed growth projects: from B2B EdTech SaaS, F&amp;B multi-brand chains to cross-border E-commerce.">Tổng hợp các dự án tăng trưởng thực chiến đã trực tiếp triển khai: từ B2B EdTech SaaS, chuỗi F&amp;B đa thương hiệu đến E-commerce quốc tế.</p>
 
-      <!-- Master Project Selector: 4 Nút Lớn Rõ Ràng, Tương Tác Cực Kỳ Mượt Mà -->
+      <!-- Master Project Quick-Jump: 4 Nút Lớn Nhảy Trực Tiếp Đến Từng Dự Án -->
       <div class="project-master-nav">
-        <button class="pmn-btn active" onclick="switchMasterProject('tomia', event)" data-pane="tomia">
+        <a class="pmn-btn active" href="#tomia" data-target="tomia">
           <span class="pmn-tag">01 · B2B SAAS</span>
           <span class="pmn-title">Tomia · EdTech SaaS</span>
-          <span class="pmn-kpi">300M+ · 3,3× ROAS</span>
-        </button>
-        <button class="pmn-btn" onclick="switchMasterProject('fitmar', event)" data-pane="fitmar">
+          <span class="pmn-kpi">300M+ · 3,3× ROAS ↓</span>
+        </a>
+        <a class="pmn-btn" href="#fitmar" data-target="fitmar">
           <span class="pmn-tag">02 · AGENCY F&amp;B</span>
           <span class="pmn-title">Fitmar · Chuỗi F&amp;B</span>
-          <span class="pmn-kpi">Ads 10–20M ➔ 800M–1 Tỷ</span>
-        </button>
-        <button class="pmn-btn" onclick="switchMasterProject('abera', event)" data-pane="abera">
+          <span class="pmn-kpi">Ads 10–20M ➔ 800M–1 Tỷ ↓</span>
+        </a>
+        <a class="pmn-btn" href="#abera" data-target="abera">
           <span class="pmn-tag">03 · E-COMMERCE</span>
           <span class="pmn-title">ABERA · Philippines</span>
-          <span class="pmn-kpi">ROAS 2–3 · LN $5.400</span>
-        </button>
-        <button class="pmn-btn" onclick="switchMasterProject('more', event)" data-pane="more">
+          <span class="pmn-kpi">ROAS 2–3 · LN $5.400 ↓</span>
+        </a>
+        <a class="pmn-btn" href="#more" data-target="more">
           <span class="pmn-tag">04 · FREELANCE NHÃN HÀNG</span>
           <span class="pmn-title">Dự án Freelance</span>
-          <span class="pmn-kpi">A-Zone &amp; Thức Coffee</span>
-        </button>
+          <span class="pmn-kpi">A-Zone &amp; Thức Coffee ↓</span>
+        </a>
       </div>
 
       <!-- PANE 1: TOMIA -->
-      <div class="project-pane active" id="tomia">
+      <div class="project-pane" id="tomia">
         <div class="pane-header-box">
           <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
             <span class="editorial-tag" style="margin-bottom:0">Case 01 · B2B SaaS Lead Generation</span>
@@ -1914,11 +1923,11 @@
           <p class="mut" style="margin:0;font-size:15px;line-height:1.7" data-vi="Thách thức: 7 tuần đầu chỉ 11,4% lead đạt chuẩn do AI tự set camp. Giải pháp: Tự tay dựng hạ tầng tracking từ số 0, thiết kế Performance Content AIDA/PAS siết lọc khách tự nhắn, và điều phối ngân sách du kích né giờ cao điểm đối thủ." data-en="Challenge: only 11.4% leads qualified in first 7 weeks due to automated AI campaigns. Solution: Built tracking from scratch, deployed AIDA/PAS performance content, and guerrilla auction timing.">Thách thức: 7 tuần đầu chỉ 11,4% lead đạt chuẩn do AI tự set camp. Giải pháp: Tự tay dựng hạ tầng tracking từ số 0, thiết kế Performance Content AIDA/PAS siết lọc khách tự nhắn, và điều phối ngân sách du kích né giờ cao điểm đối thủ.</p>
         </div>
 
-        <!-- Pills Navigation -->
+        <!-- Pills Jump Navigation Bên Trong Tomia -->
         <div class="pills-bar" style="margin-top:20px">
-          <button class="pill-btn active" onclick="switchPill(event, 'tomia-tab-1')" data-vi="01 · Phễu chuyển đổi &amp; Doanh thu" data-en="01 · Funnel &amp; Revenue">01 · Phễu chuyển đổi &amp; Doanh thu</button>
-          <button class="pill-btn" onclick="switchPill(event, 'tomia-tab-2')" data-vi="02 · 4 Trụ cột chiến lược" data-en="02 · 4 Strategic Pillars">02 · 4 Trụ cột chiến lược</button>
-          <button class="pill-btn" onclick="switchPill(event, 'tomia-tab-3')" data-vi="03 · Bài học Scale-up" data-en="03 · Scaling Lessons">03 · Bài học Scale-up</button>
+          <a class="pill-btn" href="#tomia-tab-1" data-vi="01 · Phễu chuyển đổi &amp; Doanh thu ↓" data-en="01 · Funnel &amp; Revenue ↓">01 · Phễu chuyển đổi &amp; Doanh thu ↓</a>
+          <a class="pill-btn" href="#tomia-tab-2" data-vi="02 · 4 Trụ cột chiến lược ↓" data-en="02 · 4 Strategic Pillars ↓">02 · 4 Trụ cột chiến lược ↓</a>
+          <a class="pill-btn" href="#tomia-tab-3" data-vi="03 · Bài học Scale-up ↓" data-en="03 · Scaling Lessons ↓">03 · Bài học Scale-up ↓</a>
         </div>
 
         <!-- Tab 1: Funnel & Revenue -->
@@ -2091,11 +2100,11 @@
           <p class="mut" style="margin:0;font-size:15px;line-height:1.7" data-vi="Vận hành ngân sách 200–250 triệu/tháng, xây dựng bảng Daily Tracking &amp; P&amp;L Controller, bắt tay chặt chẽ với Account &amp; Content để hạ CPA 30–50% và scale doanh thu chuỗi." data-en="Managed 200–250M/month budget, built daily P&amp;L tracker, closely aligned with Account &amp; Content teams to cut CPA 30–50% and scale restaurant revenues.">Vận hành ngân sách 200–250 triệu/tháng, xây dựng bảng Daily Tracking &amp; P&amp;L Controller, bắt tay chặt chẽ với Account &amp; Content để hạ CPA 30–50% và scale doanh thu chuỗi.</p>
         </div>
 
-        <!-- Pills Navigation -->
+        <!-- Pills Jump Navigation Bên Trong Fitmar -->
         <div class="pills-bar" style="margin-top:20px">
-          <button class="pill-btn active" onclick="switchPill(event, 'fitmar-tab-1')" data-vi="01 · Chuỗi Ẩm Thực (~900M)" data-en="01 · Food Chain (~900M)">01 · Chuỗi Ẩm Thực (~900M)</button>
-          <button class="pill-btn" onclick="switchPill(event, 'fitmar-tab-2')" data-vi="02 · Nhà Hàng Pháp Cao Cấp" data-en="02 · French Fine Dining">02 · Nhà Hàng Pháp Cao Cấp</button>
-          <button class="pill-btn" onclick="switchPill(event, 'fitmar-tab-3')" data-vi="03 · Ra Mắt Quán Mới (B2B)" data-en="03 · New Launch (B2B)">03 · Ra Mắt Quán Mới (B2B)</button>
+          <a class="pill-btn" href="#fitmar-tab-1" data-vi="01 · Chuỗi Ẩm Thực (~900M) ↓" data-en="01 · Food Chain (~900M) ↓">01 · Chuỗi Ẩm Thực (~900M) ↓</a>
+          <a class="pill-btn" href="#fitmar-tab-2" data-vi="02 · Nhà Hàng Pháp Cao Cấp ↓" data-en="02 · French Fine Dining ↓">02 · Nhà Hàng Pháp Cao Cấp ↓</a>
+          <a class="pill-btn" href="#fitmar-tab-3" data-vi="03 · Ra Mắt Quán Mới (B2B) ↓" data-en="03 · New Launch (B2B) ↓">03 · Ra Mắt Quán Mới (B2B) ↓</a>
         </div>
 
       <!-- Case 1: Traditional Cuisine Chain -->
@@ -2754,42 +2763,39 @@
   </footer>
 
   <script>
-    // Master Project Switcher (Phương án 1)
-    function switchMasterProject(paneId, e) {
-      if (e) e.preventDefault();
-      document.querySelectorAll('.pmn-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.pane === paneId);
-      });
-      document.querySelectorAll('.project-pane').forEach(pane => {
-        pane.classList.toggle('active', pane.id === paneId);
-      });
+    // Smooth Anchor Scroll & Auto-Highlight Active Project Nav
+    const pmnButtons = document.querySelectorAll('.pmn-btn');
+    const projectPanes = document.querySelectorAll('.project-pane');
+
+    if ('IntersectionObserver' in window) {
+      const pmnObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const currentId = entry.target.id;
+            pmnButtons.forEach(btn => {
+              const target = btn.getAttribute('href') ? btn.getAttribute('href').replace('#', '') : btn.dataset.target;
+              btn.classList.toggle('active', target === currentId);
+            });
+          }
+        });
+      }, { rootMargin: '-10% 0px -55% 0px' });
+
+      projectPanes.forEach(pane => pmnObserver.observe(pane));
     }
 
-    // Tự động chuyển tab dự án khi click vào Hero Cards hoặc anchor link
+    // Smooth scroll handler for all internal anchor links
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
-        if (['#tomia', '#fitmar', '#abera', '#more'].includes(href)) {
-          e.preventDefault();
-          const targetId = href.substring(1);
-          switchMasterProject(targetId);
-          const casesSec = document.getElementById('cases');
-          if (casesSec) {
-            casesSec.scrollIntoView({ behavior: 'smooth' });
+        if (href && href.length > 1) {
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
           }
         }
       });
     });
-
-    // Pills Switcher (Nhỏ gọn, mượt mà bên trong từng dự án)
-    function switchPill(e, tabId) {
-      const container = e.target.closest('.project-pane') || e.target.closest('section');
-      container.querySelectorAll('.pill-btn').forEach(btn => btn.classList.remove('active'));
-      container.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-      e.target.classList.add('active');
-      const targetContent = document.getElementById(tabId);
-      if (targetContent) targetContent.classList.add('active');
-    }
 
     // Language Switcher an toàn 100% (không ghi đè icon hay cấu trúc)
     let currentLang = 'vi';
