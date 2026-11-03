@@ -139,36 +139,43 @@
       } 
     }
 
-    /* === SECTION HEADERS: TIÊU ĐỀ LIỀN NGAY SAU SỐ ĐẦU MỤC, KHÔNG DỰNG CỘT, KHÔNG RỚT DÒNG === */
+    /* === SECTION HEADERS: SỐ TO BẰNG 2 HÀNG CHỮ (TIÊU ĐỀ + PHÂN LOẠI) === */
     .section-heading-editorial {
-      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 26px;
       padding-bottom: 14px;
       border-bottom: 1.5px solid var(--border);
     }
-    .sec-category-label {
-      font-family: var(--font-mono);
-      font-size: 11.5px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+    .sec-num-giant {
+      font-family: var(--font-display);
+      font-size: 42px;
       font-weight: 700;
-      color: var(--btn-brown);
-      margin-bottom: 6px;
-      display: block;
+      color: var(--accent-deep);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .sec-meta-wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 3px;
+    }
+    .sec-category-label {
+      display: none !important;
     }
     .sec-title-main {
       font-family: var(--font-display);
-      font-size: clamp(22px, 3.2vw, 30px);
+      font-size: clamp(21px, 2.6vw, 28px);
       font-weight: 700;
       color: var(--fg);
-      margin: 0;
       line-height: 1.25;
-      text-wrap: balance;
-    }
-    .sec-num-inline {
-      color: var(--accent-deep);
-      font-weight: 700;
-      font-family: var(--font-display);
-      margin-right: 6px;
+      margin: 0;
     }
     .mut { color: var(--muted-foreground); font-size: 16px; line-height: 1.7; }
     .sec-desc { margin-bottom: 36px; max-width: 760px; }
@@ -770,8 +777,6 @@
       box-sizing: border-box;
       overflow: hidden;
       position: relative;
-      text-decoration: none;
-      color: inherit;
     }
     .pmn-btn:hover {
       border-color: #D4A84B;
@@ -828,18 +833,13 @@
       line-height: 1.2;
     }
 
-    /* Panes - Hiển thị dàn xuống toàn bộ dự án thực chiến & case study */
+    /* Panes - Chỉ hiển thị 1 dự án được chọn */
     .project-pane {
-      display: block;
-      margin-bottom: 56px;
-      padding-bottom: 48px;
-      border-bottom: 1.5px dashed var(--border);
-      scroll-margin-top: 80px;
+      display: none;
     }
-    .project-pane:last-of-type {
-      margin-bottom: 0;
-      padding-bottom: 0;
-      border-bottom: none;
+    .project-pane.active {
+      display: block;
+      animation: fadeInPane 0.28s cubic-bezier(0.16, 1, 0.3, 1);
     }
     @keyframes fadeInPane {
       from { opacity: 0; transform: translateY(6px); }
@@ -1395,27 +1395,36 @@
       border-color: var(--btn-brown) !important;
       box-shadow: 0 2px 8px rgba(122, 75, 26, 0.2) !important;
     }
-    @media (max-width: 680px) {
+    @media (max-width: 680px) and (min-width: 541px) {
       .pills-bar {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 8px !important;
-        width: 100% !important;
-        margin-bottom: 20px !important;
-        overflow-x: visible !important;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
       }
       .pill-btn {
-        width: 100% !important;
-        flex: 1 1 auto !important;
-        padding: 12px 16px !important;
-        font-size: 13.5px !important;
-        text-align: left !important;
+        font-size: 10px;
+        padding: 8px 3px;
+        letter-spacing: 0.01em;
+      }
+    }
+    @media (max-width: 540px) {
+      .pills-bar {
         display: flex !important;
-        align-items: center !important;
-        justify-content: flex-start !important;
-        border-radius: 6px !important;
-        min-height: 44px !important;
-        white-space: normal !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        gap: 8px !important;
+        padding-bottom: 6px !important;
+        -webkit-overflow-scrolling: touch !important;
+        scrollbar-width: none !important;
+      }
+      .pills-bar::-webkit-scrollbar { 
+        display: none !important; 
+      }
+      .pill-btn {
+        flex: 0 0 auto !important;
+        width: auto !important;
+        padding: 9px 14px !important;
+        font-size: 11.5px !important;
+        white-space: nowrap !important;
       }
     }
 
@@ -1500,11 +1509,9 @@
       text-overflow: ellipsis;
     }
 
-    .tab-content {
-      display: block;
-      margin-top: 24px;
-      scroll-margin-top: 90px;
-    }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
     /* STAR Framework 3 Cột */
     .star-block {
@@ -1559,58 +1566,42 @@
       }
     }
 
-    /* Sub-headers for Skills section */
-    .skills-part-header {
-      margin-bottom: 20px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
-    }
-    .sph-top-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 6px;
-    }
-    .sph-title {
-      font-family: var(--font-display);
-      font-size: clamp(17px, 2.2vw, 20px);
-      font-weight: 700;
-      color: var(--fg);
-      margin: 0;
-      line-height: 1.35;
-      text-wrap: balance;
-    }
-
     @media (max-width: 640px) {
-      /* Đồng bộ tuyệt đối các đầu mục từ 01 đến 05: Tiêu đề liền sau số đầu mục, không dựng cột, không rớt dòng */
+      /* Đồng bộ tuyệt đối các đầu mục từ 01 đến 05 */
       .section-heading-editorial {
-        margin-bottom: 18px !important;
+        display: flex !important;
+        align-items: flex-start !important;
+        gap: 12px !important;
+        margin-bottom: 20px !important;
         padding-bottom: 12px !important;
         border-bottom: 1.5px solid var(--border) !important;
       }
+      .sec-num-giant {
+        font-size: 30px !important;
+        line-height: 1 !important;
+        margin-top: 2px !important;
+        flex-shrink: 0 !important;
+      }
+      .sec-meta-wrap {
+        flex: 1 !important;
+        min-width: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 3px !important;
+      }
       .sec-category-label {
         font-size: 11px !important;
-        letter-spacing: 0.1em !important;
-        line-height: 1.3 !important;
+        letter-spacing: 0.12em !important;
+        line-height: 1.2 !important;
         color: var(--btn-brown) !important;
         text-align: left !important;
-        font-weight: 700 !important;
-        margin-bottom: 4px !important;
-        display: block !important;
       }
       .sec-title-main {
-        font-size: clamp(19px, 5.2vw, 22.5px) !important;
-        line-height: 1.3 !important;
-        text-wrap: balance !important;
+        font-size: clamp(18px, 4.6vw, 21.5px) !important;
+        line-height: 1.28 !important;
+        text-wrap: normal !important;
         text-align: left !important;
         margin: 0 !important;
-        width: 100% !important;
-      }
-      .sec-num-inline {
-        font-size: 19px !important;
-        margin-right: 5px !important;
       }
 
       /* Khôi phục và giữ nguyên tuyệt đối căn giữa các phần đã chốt */
@@ -1816,8 +1807,11 @@
     <!-- 01 / About Section -->
     <section class="sec" id="about">
       <div class="section-heading-editorial">
-        <span class="sec-category-label">ĐỊNH VỊ &amp; NĂNG LỰC CỐT LÕI</span>
-        <h2 class="sec-title-main" data-vi="<span class='sec-num-inline'>01 ·</span> Giới thiệu &amp; Triết lý tăng trưởng" data-en="<span class='sec-num-inline'>01 ·</span> About &amp; Growth Philosophy"><span class="sec-num-inline">01 ·</span> Giới thiệu &amp; Triết lý tăng trưởng</h2>
+        <span class="sec-num-giant">01</span>
+        <div class="sec-meta-wrap">
+          <span class="sec-category-label">ĐỊNH VỊ &amp; NĂNG LỰC CỐT LÕI</span>
+          <h2 class="sec-title-main">Giới thiệu &amp; Triết lý tăng trưởng</h2>
+        </div>
       </div>
       
       <p class="about-lead sec-desc" data-vi="Tăng trưởng thực chất từ lăng kính tâm lý học hành vi, kỷ luật số liệu và sức mạnh từ sự phối hợp đa phòng ban." data-en="Real growth from the intersection of consumer psychology, data discipline, and cross-functional teamwork.">Tăng trưởng thực chất từ lăng kính tâm lý học hành vi, kỷ luật số liệu và sức mạnh từ sự phối hợp đa phòng ban.</p>
@@ -1883,37 +1877,40 @@
     <!-- 02 / Featured Projects & Case Studies -->
     <section class="sec" id="cases">
       <div class="section-heading-editorial">
-        <span class="sec-category-label">DỰ ÁN THỰC CHIẾN &amp; CASE STUDY</span>
-        <h2 class="sec-title-main" data-vi="<span class='sec-num-inline'>02 ·</span> Dự án thực chiến &amp; Case Study tiêu biểu" data-en="<span class='sec-num-inline'>02 ·</span> Featured Projects &amp; Case Studies"><span class="sec-num-inline'>02 ·</span> Dự án thực chiến &amp; Case Study tiêu biểu</h2>
+        <span class="sec-num-giant">02</span>
+        <div class="sec-meta-wrap">
+          <span class="sec-category-label">DỰ ÁN THỰC CHIẾN</span>
+          <h2 class="sec-title-main">Dự án &amp; Case Study tiêu biểu</h2>
+        </div>
       </div>
       <p class="mut sec-desc" data-vi="Tổng hợp các dự án tăng trưởng thực chiến đã trực tiếp triển khai: từ B2B EdTech SaaS, chuỗi F&amp;B đa thương hiệu đến E-commerce quốc tế." data-en="Comprehensive portfolio of executed growth projects: from B2B EdTech SaaS, F&amp;B multi-brand chains to cross-border E-commerce.">Tổng hợp các dự án tăng trưởng thực chiến đã trực tiếp triển khai: từ B2B EdTech SaaS, chuỗi F&amp;B đa thương hiệu đến E-commerce quốc tế.</p>
 
-      <!-- Master Project Quick-Jump: 4 Nút Lớn Nhảy Trực Tiếp Đến Từng Dự Án -->
+      <!-- Master Project Selector: 4 Nút Lớn Rõ Ràng, Tương Tác Cực Kỳ Mượt Mà -->
       <div class="project-master-nav">
-        <a class="pmn-btn active" href="#tomia" data-target="tomia">
+        <button class="pmn-btn active" onclick="switchMasterProject('tomia', event)" data-pane="tomia">
           <span class="pmn-tag">01 · B2B SAAS</span>
           <span class="pmn-title">Tomia · EdTech SaaS</span>
-          <span class="pmn-kpi">300M+ · 3,3× ROAS ↓</span>
-        </a>
-        <a class="pmn-btn" href="#fitmar" data-target="fitmar">
+          <span class="pmn-kpi">300M+ · 3,3× ROAS</span>
+        </button>
+        <button class="pmn-btn" onclick="switchMasterProject('fitmar', event)" data-pane="fitmar">
           <span class="pmn-tag">02 · AGENCY F&amp;B</span>
           <span class="pmn-title">Fitmar · Chuỗi F&amp;B</span>
-          <span class="pmn-kpi">Ads 10–20M ➔ 800M–1 Tỷ ↓</span>
-        </a>
-        <a class="pmn-btn" href="#abera" data-target="abera">
+          <span class="pmn-kpi">Ads 10–20M ➔ 800M–1 Tỷ</span>
+        </button>
+        <button class="pmn-btn" onclick="switchMasterProject('abera', event)" data-pane="abera">
           <span class="pmn-tag">03 · E-COMMERCE</span>
           <span class="pmn-title">ABERA · Philippines</span>
-          <span class="pmn-kpi">ROAS 2–3 · LN $5.400 ↓</span>
-        </a>
-        <a class="pmn-btn" href="#more" data-target="more">
+          <span class="pmn-kpi">ROAS 2–3 · LN $5.400</span>
+        </button>
+        <button class="pmn-btn" onclick="switchMasterProject('more', event)" data-pane="more">
           <span class="pmn-tag">04 · FREELANCE NHÃN HÀNG</span>
           <span class="pmn-title">Dự án Freelance</span>
-          <span class="pmn-kpi">A-Zone &amp; Thức Coffee ↓</span>
-        </a>
+          <span class="pmn-kpi">A-Zone &amp; Thức Coffee</span>
+        </button>
       </div>
 
       <!-- PANE 1: TOMIA -->
-      <div class="project-pane" id="tomia">
+      <div class="project-pane active" id="tomia">
         <div class="pane-header-box">
           <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
             <span class="editorial-tag" style="margin-bottom:0">Case 01 · B2B SaaS Lead Generation</span>
@@ -1923,11 +1920,11 @@
           <p class="mut" style="margin:0;font-size:15px;line-height:1.7" data-vi="Thách thức: 7 tuần đầu chỉ 11,4% lead đạt chuẩn do AI tự set camp. Giải pháp: Tự tay dựng hạ tầng tracking từ số 0, thiết kế Performance Content AIDA/PAS siết lọc khách tự nhắn, và điều phối ngân sách du kích né giờ cao điểm đối thủ." data-en="Challenge: only 11.4% leads qualified in first 7 weeks due to automated AI campaigns. Solution: Built tracking from scratch, deployed AIDA/PAS performance content, and guerrilla auction timing.">Thách thức: 7 tuần đầu chỉ 11,4% lead đạt chuẩn do AI tự set camp. Giải pháp: Tự tay dựng hạ tầng tracking từ số 0, thiết kế Performance Content AIDA/PAS siết lọc khách tự nhắn, và điều phối ngân sách du kích né giờ cao điểm đối thủ.</p>
         </div>
 
-        <!-- Pills Jump Navigation Bên Trong Tomia -->
+        <!-- Pills Navigation -->
         <div class="pills-bar" style="margin-top:20px">
-          <a class="pill-btn" href="#tomia-tab-1" data-vi="01 · Phễu chuyển đổi &amp; Doanh thu ↓" data-en="01 · Funnel &amp; Revenue ↓">01 · Phễu chuyển đổi &amp; Doanh thu ↓</a>
-          <a class="pill-btn" href="#tomia-tab-2" data-vi="02 · 4 Trụ cột chiến lược ↓" data-en="02 · 4 Strategic Pillars ↓">02 · 4 Trụ cột chiến lược ↓</a>
-          <a class="pill-btn" href="#tomia-tab-3" data-vi="03 · Bài học Scale-up ↓" data-en="03 · Scaling Lessons ↓">03 · Bài học Scale-up ↓</a>
+          <button class="pill-btn active" onclick="switchPill(event, 'tomia-tab-1')" data-vi="01 · Phễu chuyển đổi &amp; Doanh thu" data-en="01 · Funnel &amp; Revenue">01 · Phễu chuyển đổi &amp; Doanh thu</button>
+          <button class="pill-btn" onclick="switchPill(event, 'tomia-tab-2')" data-vi="02 · 4 Trụ cột chiến lược" data-en="02 · 4 Strategic Pillars">02 · 4 Trụ cột chiến lược</button>
+          <button class="pill-btn" onclick="switchPill(event, 'tomia-tab-3')" data-vi="03 · Bài học Scale-up" data-en="03 · Scaling Lessons">03 · Bài học Scale-up</button>
         </div>
 
         <!-- Tab 1: Funnel & Revenue -->
@@ -2100,11 +2097,11 @@
           <p class="mut" style="margin:0;font-size:15px;line-height:1.7" data-vi="Vận hành ngân sách 200–250 triệu/tháng, xây dựng bảng Daily Tracking &amp; P&amp;L Controller, bắt tay chặt chẽ với Account &amp; Content để hạ CPA 30–50% và scale doanh thu chuỗi." data-en="Managed 200–250M/month budget, built daily P&amp;L tracker, closely aligned with Account &amp; Content teams to cut CPA 30–50% and scale restaurant revenues.">Vận hành ngân sách 200–250 triệu/tháng, xây dựng bảng Daily Tracking &amp; P&amp;L Controller, bắt tay chặt chẽ với Account &amp; Content để hạ CPA 30–50% và scale doanh thu chuỗi.</p>
         </div>
 
-        <!-- Pills Jump Navigation Bên Trong Fitmar -->
+        <!-- Pills Navigation -->
         <div class="pills-bar" style="margin-top:20px">
-          <a class="pill-btn" href="#fitmar-tab-1" data-vi="01 · Chuỗi Ẩm Thực (~900M) ↓" data-en="01 · Food Chain (~900M) ↓">01 · Chuỗi Ẩm Thực (~900M) ↓</a>
-          <a class="pill-btn" href="#fitmar-tab-2" data-vi="02 · Nhà Hàng Pháp Cao Cấp ↓" data-en="02 · French Fine Dining ↓">02 · Nhà Hàng Pháp Cao Cấp ↓</a>
-          <a class="pill-btn" href="#fitmar-tab-3" data-vi="03 · Ra Mắt Quán Mới (B2B) ↓" data-en="03 · New Launch (B2B) ↓">03 · Ra Mắt Quán Mới (B2B) ↓</a>
+          <button class="pill-btn active" onclick="switchPill(event, 'fitmar-tab-1')" data-vi="01 · Chuỗi Ẩm Thực (~900M)" data-en="01 · Food Chain (~900M)">01 · Chuỗi Ẩm Thực (~900M)</button>
+          <button class="pill-btn" onclick="switchPill(event, 'fitmar-tab-2')" data-vi="02 · Nhà Hàng Pháp Cao Cấp" data-en="02 · French Fine Dining">02 · Nhà Hàng Pháp Cao Cấp</button>
+          <button class="pill-btn" onclick="switchPill(event, 'fitmar-tab-3')" data-vi="03 · Ra Mắt Quán Mới (B2B)" data-en="03 · New Launch (B2B)">03 · Ra Mắt Quán Mới (B2B)</button>
         </div>
 
       <!-- Case 1: Traditional Cuisine Chain -->
@@ -2277,18 +2274,21 @@
     <!-- 03 / Skills & Tool Stack -->
     <section class="sec" id="skills">
       <div class="section-heading-editorial">
-        <span class="sec-category-label">NĂNG LỰC &amp; VŨ KHÍ THỰC CHIẾN</span>
-        <h2 class="sec-title-main" data-vi="<span class='sec-num-inline'>03 ·</span> Kỹ năng cốt lõi &amp; Hệ sinh thái công cụ" data-en="<span class='sec-num-inline'>03 ·</span> Core Competencies &amp; Tool Ecosystem"><span class="sec-num-inline">03 ·</span> Kỹ năng cốt lõi &amp; Hệ sinh thái công cụ</h2>
+        <span class="sec-num-giant">03</span>
+        <div class="sec-meta-wrap">
+          <span class="sec-category-label">NĂNG LỰC &amp; VŨ KHÍ THỰC CHIẾN</span>
+          <h2 class="sec-title-main">Kỹ năng, Bộ công cụ &amp; Phương pháp luận</h2>
+        </div>
       </div>
-      <p class="mut sec-desc" data-vi="Khảo sát năng lực thực chiến dưới lăng kính quản trị: Tách bạch rõ ràng giữa 4 trụ cột phương pháp luận tư duy và 16 công cụ phần mềm làm chủ hàng ngày." data-en="Hands-on execution matrix evaluated from a management perspective: Clearly separated between 4 core strategic pillars and 16 applied tool stack platforms.">Khảo sát năng lực thực chiến dưới lăng kính quản trị: Tách bạch rõ ràng giữa 4 trụ cột phương pháp luận tư duy và 16 công cụ phần mềm làm chủ hàng ngày.</p>
+      <p class="mut sec-desc" data-vi="Khảo sát năng lực thực chiến dưới lăng kính quản trị: Tách bạch rõ ràng giữa kỹ thuật phương pháp luận tư duy và hệ sinh thái công cụ phần mềm làm chủ hàng ngày." data-en="Hands-on execution matrix evaluated from a management perspective: Clearly separated between strategic execution methodologies and the applied tool &amp; software ecosystem.">Khảo sát năng lực thực chiến dưới lăng kính quản trị: Tách bạch rõ ràng giữa kỹ thuật phương pháp luận tư duy và hệ sinh thái công cụ phần mềm làm chủ hàng ngày.</p>
 
       <!-- PHẦN 1: KỸ THUẬT & PHƯƠNG PHÁP LUẬN THỰC THI -->
-      <div class="skills-part-header">
-        <div class="sph-top-row">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)">
+        <div style="display:inline-flex;align-items:center;gap:10px">
           <span class="editorial-tag" style="margin-bottom:0">PHẦN 1 · NĂNG LỰC CỐT LÕI</span>
-          <span style="font-family:var(--font-mono);font-size:11.5px;color:var(--btn-brown);font-weight:700">STRATEGY &amp; OPERATIONS</span>
+          <h3 style="font-family:var(--font-display);font-size:18px;margin:0;font-weight:700;color:var(--fg)" data-vi="4 Trụ cột Kỹ thuật &amp; Phương pháp luận Quản trị" data-en="4 Core Execution Pillars &amp; Methodologies">4 Trụ cột Kỹ thuật &amp; Phương pháp luận Quản trị</h3>
         </div>
-        <h3 class="sph-title" data-vi="4 Trụ cột Kỹ thuật &amp; Phương pháp luận Quản trị" data-en="4 Core Execution Pillars &amp; Methodologies">4 Trụ cột Kỹ thuật &amp; Phương pháp luận Quản trị</h3>
+        <span style="font-family:var(--font-mono);font-size:11.5px;color:var(--btn-brown);font-weight:700">STRATEGY &amp; OPERATIONS</span>
       </div>
 
       <div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:24px" class="skills-grid-2x2">
@@ -2355,13 +2355,15 @@
 
       <!-- PHẦN 2: HỆ SINH THÁI CÔNG CỤ & NỀN TẢNG THỰC CHIẾN -->
       <div class="tools-ecosystem-wrapper">
-        <div class="skills-part-header" style="margin-bottom:20px">
-          <div class="sph-top-row">
-            <span class="editorial-tag" style="margin-bottom:0;background:#FAF3E0;color:#7A4B1A;border-color:#D4A84B">PHẦN 2 · HỆ SINH THÁI THỰC CHIẾN</span>
-            <span style="font-family:var(--font-mono);font-size:11.5px;color:var(--btn-brown);font-weight:700">16 NỀN TẢNG &amp; ỨNG DỤNG</span>
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:20px;flex-wrap:wrap;gap:14px">
+          <div>
+            <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:6px">
+              <span class="editorial-tag" style="margin-bottom:0;background:#FAF3E0;color:#7A4B1A;border-color:#D4A84B">PHẦN 2 · HỆ SINH THÁI THỰC CHIẾN</span>
+              <span style="font-family:var(--font-mono);font-size:11.5px;color:var(--btn-brown);font-weight:700">16 NỀN TẢNG &amp; ỨNG DỤNG</span>
+            </div>
+            <h3 style="font-family:var(--font-display);font-size:clamp(20px, 2.2vw, 24px);font-weight:700;color:var(--fg);margin:0" data-vi="Bộ công cụ &amp; Nền tảng làm chủ thực tế" data-en="Applied Tool Stack &amp; Platform Ecosystem">Bộ công cụ &amp; Nền tảng làm chủ thực tế</h3>
           </div>
-          <h3 class="sph-title" data-vi="Bộ công cụ &amp; Nền tảng làm chủ thực tế" data-en="Applied Tool Stack &amp; Platform Ecosystem">Bộ công cụ &amp; Nền tảng làm chủ thực tế</h3>
-          <p style="font-size:13.5px;color:var(--muted-foreground);margin:8px 0 0;max-width:680px;line-height:1.6" data-vi="Các phần mềm, nền tảng quảng cáo số, hạ tầng tracking và công cụ AI được trực tiếp vận hành hàng ngày để kiểm soát số liệu và tối ưu chuyển đổi." data-en="Software, digital ad platforms, tracking infrastructure, and AI tools operated daily to control data and drive conversions.">Các phần mềm, nền tảng quảng cáo số, hạ tầng tracking và công cụ AI được trực tiếp vận hành hàng ngày để kiểm soát số liệu và tối ưu chuyển đổi.</p>
+          <p style="font-size:13.5px;color:var(--muted-foreground);margin:0;max-width:500px;line-height:1.55" data-vi="Các phần mềm, nền tảng quảng cáo số, hạ tầng tracking và công cụ AI được trực tiếp vận hành hàng ngày để kiểm soát số liệu và tối ưu chuyển đổi." data-en="Software, digital ad platforms, tracking infrastructure, and AI tools operated daily to control data and drive conversions.">Các phần mềm, nền tảng quảng cáo số, hạ tầng tracking và công cụ AI được trực tiếp vận hành hàng ngày để kiểm soát số liệu và tối ưu chuyển đổi.</p>
         </div>
 
         <div class="tools-category-grid">
@@ -2633,8 +2635,11 @@
     <!-- 04 / Career Journey -->
     <section class="sec" id="experience">
       <div class="section-heading-editorial">
-        <span class="sec-category-label">HÀNH TRÌNH PHÁT TRIỂN</span>
-        <h2 class="sec-title-main" data-vi="<span class='sec-num-inline'>04 ·</span> Hành trình sự nghiệp &amp; Cột mốc thực chiến" data-en="<span class='sec-num-inline'>04 ·</span> Career Journey &amp; Milestones"><span class="sec-num-inline'>04 ·</span> Hành trình sự nghiệp &amp; Cột mốc thực chiến</h2>
+        <span class="sec-num-giant">04</span>
+        <div class="sec-meta-wrap">
+          <span class="sec-category-label">HÀNH TRÌNH PHÁT TRIỂN</span>
+          <h2 class="sec-title-main">Hành trình sự nghiệp &amp; Cột mốc thực chiến</h2>
+        </div>
       </div>
       <p class="mut sec-desc" data-vi="Hành trình tối ưu chiến dịch thực chiến từ F&amp;B agency, E-commerce quốc tế cho tới B2B EdTech SaaS." data-en="Real-world performance marketing journey across F&amp;B agency, international e-commerce, and B2B SaaS.">Hành trình tối ưu chiến dịch thực chiến từ F&amp;B agency, E-commerce quốc tế cho tới B2B EdTech SaaS.</p>
 
@@ -2670,12 +2675,11 @@
               </div>
               <span style="font-family:var(--font-mono);font-size:12px;color:var(--muted-foreground);white-space:nowrap;padding-top:2px">07/2025 – 02/2026</span>
             </div>
-            <p style="font-size:14.5px;color:var(--muted-foreground);line-height:1.7;margin-bottom:14px" data-vi="Trực tiếp chạy Facebook Ads cho các thương hiệu F&amp;B với ngân sách 200–250tr/tháng, tối ưu chi phí marketing giữ ở mức 10–20%. Đề xuất dự toán ngân sách theo mô hình Dive in &amp; Casual giúp team đạt KPI kỳ vọng 5–10% ngân sách. Tối ưu giảm 30–50% CPA qua A/B testing creative &amp; audience, xây dựng funnel chuyển đổi giúp scale doanh thu 30–40% giữ chi phí marketing an toàn." data-en="Managed Facebook Ads for F&amp;B brands with 200–250M/mo spend, maintaining 10–20% marketing cost ratio. Budgeted via Dive in &amp; Casual models to hit KPI 5–10% of budget. Halved CPA via creative &amp; audience A/B testing, scaling revenue 30–40%.">Trực tiếp chạy Facebook Ads cho các thương hiệu F&amp;B với ngân sách 200–250tr/tháng, tối ưu chi phí marketing giữ ở mức 10–20%. Đề xuất dự toán ngân sách theo mô hình Dive in &amp; Casual giúp team đạt KPI kỳ vọng 5–10% ngân sách. Tối ưu giảm 30–50% CPA qua A/B testing creative &amp; audience, xây dựng funnel chuyển đổi giúp scale doanh thu 30–40% giữ chi phí marketing an toàn.</p>
+            <p style="font-size:14.5px;color:var(--muted-foreground);line-height:1.7;margin-bottom:14px" data-vi="Vận hành cùng lúc 7 thương hiệu ẩm thực với ngân sách 200–250 triệu/tháng. Giảm CPA 30–50%, phối hợp chặt chẽ với Content/Account để scale doanh thu chuỗi 30–40% với tỷ lệ A/S luôn an toàn dưới 20%." data-en="Operated 7 concurrent F&B brands with 200–250M/mo spend. Reduced CPA by 30–50%, aligned with Content/Account to scale revenues 30–40% maintaining A/S strictly below 20%.">Vận hành cùng lúc 7 thương hiệu ẩm thực với ngân sách 200–250 triệu/tháng. Giảm CPA 30–50%, phối hợp chặt chẽ với Content/Account để scale doanh thu chuỗi 30–40% với tỷ lệ A/S luôn an toàn dưới 20%.</p>
             <div style="display:flex;gap:8px;flex-wrap:wrap">
-              <span class="editorial-pill">Ngân sách 200–250M/tháng</span>
               <span class="editorial-pill">▼ 30–50% CPA</span>
-              <span class="editorial-pill">Scale Doanh thu 30–40%</span>
-              <span class="editorial-pill">Chi phí MKT 10–20%</span>
+              <span class="editorial-pill">Scale Chuỗi ~900M</span>
+              <span class="editorial-pill">A/S &lt; 20%</span>
             </div>
           </div>
         </div>
@@ -2686,17 +2690,16 @@
           <div class="card card-top-accent" style="padding:28px 24px">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:12px">
               <div>
-                <div style="font-family:var(--font-display);font-size:17.5px;font-weight:700;color:var(--fg);line-height:1.3">Content &amp; Performance Marketing Executive</div>
+                <div style="font-family:var(--font-display);font-size:17.5px;font-weight:700;color:var(--fg);line-height:1.3">Content &amp; Performance Executive</div>
                 <div style="font-family:var(--font-mono);font-size:13.5px;font-weight:700;color:var(--btn-brown);margin-top:4px">HV Holdings (ABERA Cosmetics Philippines)</div>
               </div>
               <span style="font-family:var(--font-mono);font-size:12px;color:var(--muted-foreground);white-space:nowrap;padding-top:2px">02/2025 – 06/2025</span>
             </div>
-            <p style="font-size:14.5px;color:var(--muted-foreground);line-height:1.7;margin-bottom:14px" data-vi="Quản lý kế hoạch nội dung Facebook, Shopify, TikTok và vận hành TikTok Shop (booking KOC/KOL, khuyến mãi, CSKH, rating 4.5–4.8★). Quản lý ngân sách $3.900–$5.900/tháng, doanh thu $7.800–$17.700 với ROAS 2–3.0 (vượt xa hòa vốn 1,56), giảm 20–30% CPA, lợi nhuận ròng tối đa ~$5.400/tháng và đạt 1,17M lượt xem video." data-en="Managed content on Facebook, Shopify &amp; TikTok; operated TikTok Shop (KOC booking, promo, CS, 4.5–4.8★ rating). Handled $3.9k–$5.9k/mo spend, $7.8k–$17.7k revenue, 2.0–3.0 ROAS (vs 1.56 BE), -20–30% CPA, peak net profit ~$5,400/mo and 1.17M views.">Quản lý kế hoạch nội dung Facebook, Shopify, TikTok và vận hành TikTok Shop (booking KOC/KOL, khuyến mãi, CSKH, rating 4.5–4.8★). Quản lý ngân sách $3.900–$5.900/tháng, doanh thu $7.800–$17.700 với ROAS 2–3.0 (vượt xa hòa vốn 1,56), giảm 20–30% CPA, lợi nhuận ròng tối đa ~$5.400/tháng và đạt 1,17M lượt xem video.</p>
+            <p style="font-size:14.5px;color:var(--muted-foreground);line-height:1.7;margin-bottom:14px" data-vi="Vận hành TikTok Shop &amp; Facebook Ads thị trường Philippines ($3.900–$5.900/tháng). Quản lý mạng lưới KOC bản địa, tối ưu xác nhận COD đạt ROAS 2,0–3,0 (vượt xa hòa vốn 1,56), lợi nhuận ròng đỉnh $5.400/tháng và 1,17M lượt xem video." data-en="Operated TikTok Shop &amp; Facebook Ads for Philippines ($3.9k–$5.9k/mo). Managed Filipino KOC network and COD verification, achieving 2.0–3.0 ROAS (vs 1.56 BE), peak net profit $5,400/mo, and 1.17M views.">Vận hành TikTok Shop &amp; Facebook Ads thị trường Philippines ($3.900–$5.900/tháng). Quản lý mạng lưới KOC bản địa, tối ưu xác nhận COD đạt ROAS 2,0–3,0 (vượt xa hòa vốn 1,56), lợi nhuận ròng đỉnh $5.400/tháng và 1,17M lượt xem video.</p>
             <div style="display:flex;gap:8px;flex-wrap:wrap">
-              <span class="editorial-pill">ROAS 2.0–3.0 (BE 1.56)</span>
-              <span class="editorial-pill">Lợi nhuận ~$5,400/tháng</span>
+              <span class="editorial-pill">ROAS 2.0–3.0</span>
+              <span class="editorial-pill">Net Profit ~$5,400</span>
               <span class="editorial-pill">1.17M Video Views</span>
-              <span class="editorial-pill">Rating Shop 4.5–4.8★</span>
             </div>
           </div>
         </div>
@@ -2707,16 +2710,16 @@
           <div class="card card-top-accent" style="padding:28px 24px">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:12px">
               <div>
-                <div style="font-family:var(--font-display);font-size:17.5px;font-weight:700;color:var(--fg);line-height:1.3">Social Marketing Intern</div>
-                <div style="font-family:var(--font-mono);font-size:13.5px;font-weight:700;color:var(--btn-brown);margin-top:4px">Công Ty Cổ phần IVS</div>
+                <div style="font-family:var(--font-display);font-size:17.5px;font-weight:700;color:var(--fg);line-height:1.3">Thực tập sinh Marketing</div>
+                <div style="font-family:var(--font-mono);font-size:13.5px;font-weight:700;color:var(--btn-brown);margin-top:4px">Công ty Cổ phần Phần mềm Hợp tác Quốc tế (IVS)</div>
               </div>
-              <span style="font-family:var(--font-mono);font-size:12px;color:var(--muted-foreground);white-space:nowrap;padding-top:2px">05/2023 – 11/2023</span>
+              <span style="font-family:var(--font-mono);font-size:12px;color:var(--muted-foreground);white-space:nowrap;padding-top:2px">2024</span>
             </div>
-            <p style="font-size:14.5px;color:var(--muted-foreground);line-height:1.7;margin-bottom:14px" data-vi="Lên kế hoạch và triển khai nội dung bài viết Facebook, LinkedIn cho thương hiệu phần mềm; viết mô tả sản phẩm, email marketing, thiết kế hình ảnh web. Giúp Facebook tăng +367% lượt theo dõi và LinkedIn vượt xa trung bình ngành; trực tiếp tổ chức sự kiện nội bộ và bên ngoài cho 100–150 người tham dự." data-en="Planned &amp; executed content on Facebook &amp; LinkedIn; drafted product copy, email marketing &amp; website visuals. Boosted Facebook followers by +367% and outpaced industry benchmarks on LinkedIn; organized company events for 100–150 attendees.">Lên kế hoạch và triển khai nội dung bài viết Facebook, LinkedIn cho thương hiệu phần mềm; viết mô tả sản phẩm, email marketing, thiết kế hình ảnh web. Giúp Facebook tăng +367% lượt theo dõi và LinkedIn vượt xa trung bình ngành; trực tiếp tổ chức sự kiện nội bộ và bên ngoài cho 100–150 người tham dự.</p>
+            <p style="font-size:14.5px;color:var(--muted-foreground);line-height:1.7;margin-bottom:14px" data-vi="Tham gia thực tập marketing tại IVS: Hỗ trợ nghiên cứu thị trường ngành phần mềm, xây dựng nội dung truyền thông và phân tích dữ liệu tương tác phục vụ các dự án tiếp cận khách hàng doanh nghiệp." data-en="Marketing intern at IVS: Assisted in software market research, digital content production, and engagement analytics for B2B client acquisition campaigns.">Tham gia thực tập marketing tại IVS: Hỗ trợ nghiên cứu thị trường ngành phần mềm, xây dựng nội dung truyền thông và phân tích dữ liệu tương tác phục vụ các dự án tiếp cận khách hàng doanh nghiệp.</p>
             <div style="display:flex;gap:8px;flex-wrap:wrap">
-              <span class="editorial-pill">+367% Follower FB</span>
-              <span class="editorial-pill">LinkedIn Growth</span>
-              <span class="editorial-pill">Event 100–150 Pax</span>
+              <span class="editorial-pill">Nghiên cứu thị trường B2B</span>
+              <span class="editorial-pill">Phân tích dữ liệu số</span>
+              <span class="editorial-pill">Nội dung truyền thông</span>
             </div>
           </div>
         </div>
@@ -2763,39 +2766,42 @@
   </footer>
 
   <script>
-    // Smooth Anchor Scroll & Auto-Highlight Active Project Nav
-    const pmnButtons = document.querySelectorAll('.pmn-btn');
-    const projectPanes = document.querySelectorAll('.project-pane');
-
-    if ('IntersectionObserver' in window) {
-      const pmnObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const currentId = entry.target.id;
-            pmnButtons.forEach(btn => {
-              const target = btn.getAttribute('href') ? btn.getAttribute('href').replace('#', '') : btn.dataset.target;
-              btn.classList.toggle('active', target === currentId);
-            });
-          }
-        });
-      }, { rootMargin: '-10% 0px -55% 0px' });
-
-      projectPanes.forEach(pane => pmnObserver.observe(pane));
+    // Master Project Switcher (Phương án 1)
+    function switchMasterProject(paneId, e) {
+      if (e) e.preventDefault();
+      document.querySelectorAll('.pmn-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.pane === paneId);
+      });
+      document.querySelectorAll('.project-pane').forEach(pane => {
+        pane.classList.toggle('active', pane.id === paneId);
+      });
     }
 
-    // Smooth scroll handler for all internal anchor links
+    // Tự động chuyển tab dự án khi click vào Hero Cards hoặc anchor link
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
-        if (href && href.length > 1) {
-          const target = document.querySelector(href);
-          if (target) {
-            e.preventDefault();
-            target.scrollIntoView({ behavior: 'smooth' });
+        if (['#tomia', '#fitmar', '#abera', '#more'].includes(href)) {
+          e.preventDefault();
+          const targetId = href.substring(1);
+          switchMasterProject(targetId);
+          const casesSec = document.getElementById('cases');
+          if (casesSec) {
+            casesSec.scrollIntoView({ behavior: 'smooth' });
           }
         }
       });
     });
+
+    // Pills Switcher (Nhỏ gọn, mượt mà bên trong từng dự án)
+    function switchPill(e, tabId) {
+      const container = e.target.closest('.project-pane') || e.target.closest('section');
+      container.querySelectorAll('.pill-btn').forEach(btn => btn.classList.remove('active'));
+      container.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+      e.target.classList.add('active');
+      const targetContent = document.getElementById(tabId);
+      if (targetContent) targetContent.classList.add('active');
+    }
 
     // Language Switcher an toàn 100% (không ghi đè icon hay cấu trúc)
     let currentLang = 'vi';
