@@ -139,43 +139,36 @@
       } 
     }
 
-    /* === SECTION HEADERS: SỐ TO BẰNG 2 HÀNG CHỮ (TIÊU ĐỀ + PHÂN LOẠI) === */
+    /* === SECTION HEADERS: TIÊU ĐỀ LIỀN NGAY SAU SỐ ĐẦU MỤC, KHÔNG DỰNG CỘT, KHÔNG RỚT DÒNG === */
     .section-heading-editorial {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 26px;
+      margin-bottom: 24px;
       padding-bottom: 14px;
       border-bottom: 1.5px solid var(--border);
     }
-    .sec-num-giant {
-      font-family: var(--font-display);
-      font-size: 42px;
-      font-weight: 700;
-      color: var(--accent-deep);
-      line-height: 1;
-      letter-spacing: -0.02em;
-      flex-shrink: 0;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .sec-meta-wrap {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 3px;
-    }
     .sec-category-label {
-      display: none !important;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--btn-brown);
+      margin-bottom: 6px;
+      display: block;
     }
     .sec-title-main {
       font-family: var(--font-display);
-      font-size: clamp(21px, 2.6vw, 28px);
+      font-size: clamp(22px, 3.2vw, 30px);
       font-weight: 700;
       color: var(--fg);
-      line-height: 1.25;
       margin: 0;
+      line-height: 1.25;
+      text-wrap: balance;
+    }
+    .sec-num-inline {
+      color: var(--accent-deep);
+      font-weight: 700;
+      font-family: var(--font-display);
+      margin-right: 6px;
     }
     .mut { color: var(--muted-foreground); font-size: 16px; line-height: 1.7; }
     .sec-desc { margin-bottom: 36px; max-width: 760px; }
@@ -1582,34 +1575,11 @@
     }
 
     @media (max-width: 640px) {
-      /* Đồng bộ tuyệt đối các đầu mục từ 01 đến 05: Xếp tầng thanh thoát, tiêu đề rộng 100% không bị dựng cột */
+      /* Đồng bộ tuyệt đối các đầu mục từ 01 đến 05: Tiêu đề liền sau số đầu mục, không dựng cột, không rớt dòng */
       .section-heading-editorial {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        gap: 6px !important;
         margin-bottom: 18px !important;
         padding-bottom: 12px !important;
         border-bottom: 1.5px solid var(--border) !important;
-      }
-      .sec-num-giant {
-        font-size: 18px !important;
-        font-weight: 800 !important;
-        line-height: 1 !important;
-        color: var(--btn-brown) !important;
-        background: #FAF3E0 !important;
-        padding: 4px 8px !important;
-        border-radius: 4px !important;
-        border: 1px solid #D4A84B !important;
-        display: inline-block !important;
-        margin-bottom: 2px !important;
-        letter-spacing: 0.04em !important;
-      }
-      .sec-meta-wrap {
-        width: 100% !important;
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 4px !important;
       }
       .sec-category-label {
         font-size: 11px !important;
@@ -1618,6 +1588,8 @@
         color: var(--btn-brown) !important;
         text-align: left !important;
         font-weight: 700 !important;
+        margin-bottom: 4px !important;
+        display: block !important;
       }
       .sec-title-main {
         font-size: clamp(19px, 5.2vw, 22.5px) !important;
@@ -1626,6 +1598,10 @@
         text-align: left !important;
         margin: 0 !important;
         width: 100% !important;
+      }
+      .sec-num-inline {
+        font-size: 19px !important;
+        margin-right: 5px !important;
       }
 
       /* Khôi phục và giữ nguyên tuyệt đối căn giữa các phần đã chốt */
@@ -1831,11 +1807,8 @@
     <!-- 01 / About Section -->
     <section class="sec" id="about">
       <div class="section-heading-editorial">
-        <span class="sec-num-giant">01</span>
-        <div class="sec-meta-wrap">
-          <span class="sec-category-label">ĐỊNH VỊ &amp; NĂNG LỰC CỐT LÕI</span>
-          <h2 class="sec-title-main">Giới thiệu &amp; Triết lý tăng trưởng</h2>
-        </div>
+        <span class="sec-category-label">ĐỊNH VỊ &amp; NĂNG LỰC CỐT LÕI</span>
+        <h2 class="sec-title-main" data-vi="<span class='sec-num-inline'>01 ·</span> Giới thiệu &amp; Triết lý tăng trưởng" data-en="<span class='sec-num-inline'>01 ·</span> About &amp; Growth Philosophy"><span class="sec-num-inline">01 ·</span> Giới thiệu &amp; Triết lý tăng trưởng</h2>
       </div>
       
       <p class="about-lead sec-desc" data-vi="Tăng trưởng thực chất từ lăng kính tâm lý học hành vi, kỷ luật số liệu và sức mạnh từ sự phối hợp đa phòng ban." data-en="Real growth from the intersection of consumer psychology, data discipline, and cross-functional teamwork.">Tăng trưởng thực chất từ lăng kính tâm lý học hành vi, kỷ luật số liệu và sức mạnh từ sự phối hợp đa phòng ban.</p>
@@ -1901,11 +1874,8 @@
     <!-- 02 / Featured Projects & Case Studies -->
     <section class="sec" id="cases">
       <div class="section-heading-editorial">
-        <span class="sec-num-giant">02</span>
-        <div class="sec-meta-wrap">
-          <span class="sec-category-label">DỰ ÁN THỰC CHIẾN</span>
-          <h2 class="sec-title-main">Dự án &amp; Case Study tiêu biểu</h2>
-        </div>
+        <span class="sec-category-label">DỰ ÁN THỰC CHIẾN</span>
+        <h2 class="sec-title-main" data-vi="<span class='sec-num-inline'>02 ·</span> Dự án &amp; Case Study tiêu biểu" data-en="<span class='sec-num-inline'>02 ·</span> Featured Projects &amp; Case Studies"><span class="sec-num-inline'>02 ·</span> Dự án &amp; Case Study tiêu biểu</h2>
       </div>
       <p class="mut sec-desc" data-vi="Tổng hợp các dự án tăng trưởng thực chiến đã trực tiếp triển khai: từ B2B EdTech SaaS, chuỗi F&amp;B đa thương hiệu đến E-commerce quốc tế." data-en="Comprehensive portfolio of executed growth projects: from B2B EdTech SaaS, F&amp;B multi-brand chains to cross-border E-commerce.">Tổng hợp các dự án tăng trưởng thực chiến đã trực tiếp triển khai: từ B2B EdTech SaaS, chuỗi F&amp;B đa thương hiệu đến E-commerce quốc tế.</p>
 
@@ -2298,11 +2268,8 @@
     <!-- 03 / Skills & Tool Stack -->
     <section class="sec" id="skills">
       <div class="section-heading-editorial">
-        <span class="sec-num-giant">03</span>
-        <div class="sec-meta-wrap">
-          <span class="sec-category-label">NĂNG LỰC &amp; VŨ KHÍ THỰC CHIẾN</span>
-          <h2 class="sec-title-main" data-vi="Kỹ năng cốt lõi &amp; Hệ sinh thái công cụ" data-en="Core Competencies &amp; Tool Ecosystem">Kỹ năng cốt lõi &amp; Hệ sinh thái công cụ</h2>
-        </div>
+        <span class="sec-category-label">NĂNG LỰC &amp; VŨ KHÍ THỰC CHIẾN</span>
+        <h2 class="sec-title-main" data-vi="<span class='sec-num-inline'>03 ·</span> Kỹ năng cốt lõi &amp; Hệ sinh thái công cụ" data-en="<span class='sec-num-inline'>03 ·</span> Core Competencies &amp; Tool Ecosystem"><span class="sec-num-inline">03 ·</span> Kỹ năng cốt lõi &amp; Hệ sinh thái công cụ</h2>
       </div>
       <p class="mut sec-desc" data-vi="Khảo sát năng lực thực chiến dưới lăng kính quản trị: Tách bạch rõ ràng giữa 4 trụ cột phương pháp luận tư duy và 16 công cụ phần mềm làm chủ hàng ngày." data-en="Hands-on execution matrix evaluated from a management perspective: Clearly separated between 4 core strategic pillars and 16 applied tool stack platforms.">Khảo sát năng lực thực chiến dưới lăng kính quản trị: Tách bạch rõ ràng giữa 4 trụ cột phương pháp luận tư duy và 16 công cụ phần mềm làm chủ hàng ngày.</p>
 
@@ -2657,11 +2624,8 @@
     <!-- 04 / Career Journey -->
     <section class="sec" id="experience">
       <div class="section-heading-editorial">
-        <span class="sec-num-giant">04</span>
-        <div class="sec-meta-wrap">
-          <span class="sec-category-label">HÀNH TRÌNH PHÁT TRIỂN</span>
-          <h2 class="sec-title-main">Hành trình sự nghiệp &amp; Cột mốc thực chiến</h2>
-        </div>
+        <span class="sec-category-label">HÀNH TRÌNH PHÁT TRIỂN</span>
+        <h2 class="sec-title-main" data-vi="<span class='sec-num-inline'>04 ·</span> Hành trình sự nghiệp &amp; Cột mốc thực chiến" data-en="<span class='sec-num-inline'>04 ·</span> Career Journey &amp; Milestones"><span class="sec-num-inline'>04 ·</span> Hành trình sự nghiệp &amp; Cột mốc thực chiến</h2>
       </div>
       <p class="mut sec-desc" data-vi="Hành trình tối ưu chiến dịch thực chiến từ F&amp;B agency, E-commerce quốc tế cho tới B2B EdTech SaaS." data-en="Real-world performance marketing journey across F&amp;B agency, international e-commerce, and B2B SaaS.">Hành trình tối ưu chiến dịch thực chiến từ F&amp;B agency, E-commerce quốc tế cho tới B2B EdTech SaaS.</p>
 
