@@ -1410,7 +1410,7 @@
       padding: 14px 12px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start;
       transition: var(--transition);
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
       min-width: 0;
@@ -1428,6 +1428,7 @@
       text-transform: uppercase;
       letter-spacing: 0.06em;
       margin-bottom: 6px;
+      line-height: 1.3;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -1438,18 +1439,17 @@
       font-weight: 700;
       color: var(--fg);
       line-height: 1.25;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
       white-space: nowrap;
     }
     .fsb-sub {
       font-family: var(--font-mono);
-      font-size: 11.5px;
+      font-size: clamp(10.5px, 1.05vw, 11.5px);
       color: var(--muted-foreground);
-      line-height: 1.4;
-    }
-    .funnel-step-box.highlight .fsb-sub {
-      color: #7A4B1A;
-      font-weight: 600;
+      line-height: 1.35;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .tab-content { display: none; }
@@ -1888,17 +1888,17 @@
               <div class="funnel-step-box">
                 <div class="fsb-stage" data-vi="02 · Quan tâm &amp; Tìm hiểu" data-en="02 · High Interest">02 · Quan tâm &amp; Tìm hiểu</div>
                 <div class="fsb-val">Gần 300 Khách</div>
-                <div class="fsb-sub" data-vi="Tỷ lệ quan tâm bước 1 ~46%" data-en="~46% interest step-1">Tỷ lệ quan tâm bước 1 ~46%</div>
+                <div class="fsb-sub" data-vi="Tỷ lệ quan tâm đạt ~46%" data-en="Interest rate ~46%">Tỷ lệ quan tâm đạt ~46%</div>
               </div>
               <div class="funnel-step-box">
                 <div class="fsb-stage" data-vi="03 · Chủ trường đạt chuẩn" data-en="03 · Verified Decision Makers">03 · Chủ trường đạt chuẩn</div>
                 <div class="fsb-val">Gần 200 Chủ trường</div>
-                <div class="fsb-sub" data-vi="Đạt chuẩn 44,7% · Giảm 50% chi phí" data-en="44.7% qual · 50% cost drop">Đạt chuẩn 44,7% · Giảm 50% chi phí</div>
+                <div class="fsb-sub" data-vi="Đạt chuẩn 44,7% · Giảm 50% CP" data-en="44.7% qual · -50% cost">Đạt chuẩn 44,7% · Giảm 50% CP</div>
               </div>
               <div class="funnel-step-box">
                 <div class="fsb-stage" data-vi="04 · Hợp đồng triển khai" data-en="04 · Deployed Contracts">04 · Hợp đồng triển khai</div>
                 <div class="fsb-val">Hơn 30 Hợp đồng</div>
-                <div class="fsb-sub" data-vi="Bao gồm Dùng thử, Chính thức &amp; Demo" data-en="Trial, Official &amp; Live Demo">Bao gồm Dùng thử, Chính thức &amp; Demo</div>
+                <div class="fsb-sub" data-vi="Dùng thử, chính thức &amp; demo" data-en="Trial, official &amp; demo">Dùng thử, chính thức &amp; demo</div>
               </div>
             </div>
 
