@@ -800,20 +800,76 @@
         padding: 24px 18px;
       }
     }
+    /* Hallmark Artisan Education Dossier */
     .about-education-banner {
-      margin-top: 20px;
-      padding: 18px 22px;
+      margin-top: 24px;
+      padding: 22px 24px;
       background: #FDFBF7;
-      border: 1px solid rgba(212, 168, 75, 0.45);
-      border-left: 3.5px solid var(--btn-brown);
-      border-radius: 6px;
+      border: 1px solid rgba(212, 168, 75, 0.38);
+      border-left: 4px solid var(--btn-brown);
+      border-radius: 8px;
+      box-shadow: 0 2px 14px rgba(122, 75, 26, 0.04);
       box-sizing: border-box;
       width: 100%;
     }
     @media (max-width: 640px) {
       .about-education-banner {
-        padding: 14px 14px;
+        padding: 18px 16px;
       }
+    }
+    .edu-timeline-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      background: #FAF3E0;
+      border: 1px solid #D4A84B;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--btn-brown);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+    .edu-degree-title {
+      font-family: var(--font-display);
+      font-size: clamp(17px, 2.2vw, 19px);
+      font-weight: 700;
+      color: var(--fg);
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+      margin: 0 0 6px 0;
+    }
+    .edu-school-name {
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      color: #615B54;
+      font-weight: 500;
+      line-height: 1.45;
+      margin: 0;
+    }
+    .edu-divider {
+      height: 1px;
+      border: 0;
+      border-top: 1px dashed rgba(212, 168, 75, 0.35);
+      margin: 14px 0 12px 0;
+    }
+    .edu-result-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      color: var(--btn-brown);
+      font-weight: 600;
+      line-height: 1.3;
+    }
+    .edu-result-row svg {
+      color: var(--accent);
+      flex-shrink: 0;
     }
     .about-goals-grid {
       display: grid;
@@ -1617,21 +1673,24 @@
           <p data-vi="Tôi là <strong>Lê Minh Quân</strong> — chuyên môn <strong>Growth Performance Marketing</strong>, tốt nghiệp chuyên ngành Marketing &amp; Kinh doanh Quốc tế. Với tôi, quảng cáo không đơn thuần là việc ngồi một góc bật - tắt chiến dịch hàng ngày hay chạy theo những bản báo cáo chỉ số ảo không đem lại doanh thu. Tăng trưởng thực chất và bền vững phải bắt nguồn từ tư duy số liệu kỷ luật, chiến lược phễu tổng thể từ sản phẩm đến chuyển đổi, và trên hết là sức mạnh phối hợp chặt chẽ với các đội ngũ để cùng giải bài toán kinh doanh cho doanh nghiệp qua các dự án <strong>B2B EdTech SaaS</strong>, <strong>Chuỗi Agency F&amp;B</strong> và <strong>E-commerce quốc tế</strong>." data-en="I am <strong>Lê Minh Quân</strong> — specialized in <strong>Growth Performance Marketing</strong>, graduated in Marketing &amp; International Business. To me, growth marketing is never about just sitting in a corner toggling ad campaigns or chasing vanity reports that bring no revenue. Genuine, sustainable growth must stem from data discipline, a holistic funnel strategy from product to conversion, and above all, tight cross-functional teamwork across real-world <strong>B2B EdTech SaaS</strong>, <strong>F&amp;B multi-brand agency</strong>, and <strong>cross-border E-commerce</strong>.">Tôi là <strong>Lê Minh Quân</strong> — chuyên môn <strong>Growth Performance Marketing</strong>, tốt nghiệp chuyên ngành Marketing &amp; Kinh doanh Quốc tế. Với tôi, quảng cáo không đơn thuần là việc ngồi một góc bật - tắt chiến dịch hàng ngày hay chạy theo những bản báo cáo chỉ số ảo không đem lại doanh thu. Tăng trưởng thực chất và bền vững phải bắt nguồn từ tư duy số liệu kỷ luật, chiến lược phễu tổng thể từ sản phẩm đến chuyển đổi, và trên hết là sức mạnh phối hợp chặt chẽ với các đội ngũ để cùng giải bài toán kinh doanh cho doanh nghiệp qua các dự án <strong>B2B EdTech SaaS</strong>, <strong>Chuỗi Agency F&amp;B</strong> và <strong>E-commerce quốc tế</strong>.</p>
         </div>
 
-        <!-- Khối Nền Tảng Học Vấn Chính Quy -->
+        <!-- Khối Nền Tảng Học Vấn Chính Quy (Hallmark Artisan Dossier) -->
         <div class="about-education-banner">
-          <!-- 1. Thời gian đưa đầu tiên (Khung định vị mốc thời gian) -->
-          <div style="margin-bottom:10px">
-            <span class="editorial-pill" style="font-weight:700;font-size:11px" data-vi="NIÊN KHÓA 2020 – 2024" data-en="CLASS OF 2020 – 2024">NIÊN KHÓA 2020 – 2024</span>
+          <!-- 1. Mốc thời gian (Đưa đầu tiên theo đúng logic tiến trình) -->
+          <div>
+            <span class="edu-timeline-tag" data-vi="NIÊN KHÓA 2020 – 2024" data-en="CLASS OF 2020 – 2024">Niên khóa 2020 – 2024</span>
           </div>
 
-          <!-- 2. Học vấn: Chuyên ngành & Trường -->
-          <h4 style="font-family:var(--font-display);font-size:17.5px;margin:0 0 5px;color:var(--fg);font-weight:700;line-height:1.3" data-vi="Cử nhân Marketing – Chuyên ngành Marketing &amp; Kinh doanh Quốc tế" data-en="Bachelor of Marketing – Major in Marketing &amp; International Business">Cử nhân Marketing – Chuyên ngành Marketing &amp; Kinh doanh Quốc tế</h4>
-          <div style="font-family:var(--font-mono);font-size:13px;color:var(--muted-foreground);margin-bottom:8px;line-height:1.4" data-vi="Trường Đại học Công nghệ Thành phố Hồ Chí Minh" data-en="Ho Chi Minh City University of Technology">Trường Đại học Công nghệ Thành phố Hồ Chí Minh</div>
+          <!-- 2. Học vấn: Học vị & Cơ sở đào tạo -->
+          <h4 class="edu-degree-title" data-vi="Cử nhân Marketing — Chuyên ngành Marketing &amp; Kinh doanh Quốc tế" data-en="Bachelor of Marketing — Major in Marketing &amp; International Business">Cử nhân Marketing — Chuyên ngành Marketing &amp; Kinh doanh Quốc tế</h4>
+          <p class="edu-school-name" data-vi="Trường Đại học Công nghệ Thành phố Hồ Chí Minh" data-en="Ho Chi Minh City University of Technology">Trường Đại học Công nghệ Thành phố Hồ Chí Minh</p>
 
-          <!-- 3. Kết quả tốt nghiệp: Dòng text thuần (Bỏ khung, đúng nguyên tắc phân cấp thị giác) -->
-          <div style="font-family:var(--font-mono);font-size:12.5px;color:var(--btn-brown);font-weight:600;display:flex;align-items:center;gap:6px" data-vi="Tốt nghiệp loại Khá" data-en="Graduation Grade: Good">
-            <span style="color:var(--accent);font-size:14px;line-height:1">✓</span>
-            <span>Tốt nghiệp loại Khá</span>
+          <!-- Đường phân cách hairline tinh tế ngăn cách Quá trình đào tạo & Kết quả -->
+          <div class="edu-divider"></div>
+
+          <!-- 3. Kết quả tốt nghiệp (Text chứng thực thanh lịch, không lặp lại khung pill) -->
+          <div class="edu-result-row">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span data-vi="Xếp loại tốt nghiệp: Loại Khá" data-en="Graduation Grade: Good">Xếp loại tốt nghiệp: <strong>Loại Khá</strong></span>
           </div>
         </div>
 
