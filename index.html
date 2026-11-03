@@ -139,7 +139,7 @@
       } 
     }
 
-    /* === SECTION HEADERS: SỐ ĐẦU MỤC LIỀN TIÊU ĐỀ, KHÔNG DỰNG CỘT, KHÔNG KHOẢNG TRỐNG === */
+    /* === SECTION HEADERS: TIÊU ĐỀ THẲNG HÀNG, KHÔNG THÀNH CỘT === */
     .section-heading-editorial {
       display: block;
       margin-bottom: 22px;
@@ -857,15 +857,6 @@
       margin-bottom: 24px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.02);
     }
-    .pane-header-tags {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      width: 100%;
-      margin-bottom: 8px;
-    }
     .pane-header-title {
       font-family: var(--font-display);
       font-size: clamp(21px, 2.5vw, 26px);
@@ -1414,27 +1405,36 @@
       border-color: var(--btn-brown) !important;
       box-shadow: 0 2px 8px rgba(122, 75, 26, 0.2) !important;
     }
-    @media (max-width: 768px) {
+    @media (max-width: 680px) and (min-width: 541px) {
       .pills-bar {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 8px !important;
-        width: 100% !important;
-        margin-bottom: 20px !important;
-        overflow-x: visible !important;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
       }
       .pill-btn {
-        width: 100% !important;
-        flex: 1 1 auto !important;
-        padding: 12px 16px !important;
-        font-size: 13px !important;
-        text-align: left !important;
+        font-size: 10px;
+        padding: 8px 3px;
+        letter-spacing: 0.01em;
+      }
+    }
+    @media (max-width: 540px) {
+      .pills-bar {
         display: flex !important;
-        align-items: center !important;
-        justify-content: flex-start !important;
-        border-radius: 6px !important;
-        min-height: 44px !important;
-        white-space: normal !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        gap: 8px !important;
+        padding-bottom: 6px !important;
+        -webkit-overflow-scrolling: touch !important;
+        scrollbar-width: none !important;
+      }
+      .pills-bar::-webkit-scrollbar { 
+        display: none !important; 
+      }
+      .pill-btn {
+        flex: 0 0 auto !important;
+        width: auto !important;
+        padding: 9px 14px !important;
+        font-size: 11.5px !important;
+        white-space: nowrap !important;
       }
     }
 
@@ -1577,7 +1577,7 @@
     }
 
     @media (max-width: 640px) {
-      /* Đồng bộ tuyệt đối các đầu mục: Số đầu mục liền dòng, không dựng cột */
+      /* Đồng bộ tuyệt đối các đầu mục: Tiêu đề thẳng hàng, không thành cột */
       .section-heading-editorial {
         display: block !important;
         margin-bottom: 18px !important;
@@ -1614,7 +1614,6 @@
       .pane-header-box {
         padding: 16px 14px !important;
       }
-      .pane-header-tags,
       .pane-header-box > div:first-child {
         display: flex !important;
         flex-direction: column !important;
@@ -1836,7 +1835,7 @@
     <section class="sec" id="about">
       <div class="section-heading-editorial">
         <span class="sec-category-label">ĐỊNH VỊ &amp; NĂNG LỰC CỐT LÕI</span>
-        <h2 class="sec-title-main" data-vi="<span class='sec-num-inline'>01 ·</span> Giới thiệu &amp; Triết lý tăng trưởng" data-en="<span class='sec-num-inline'>01 ·</span> About &amp; Growth Philosophy"><span class="sec-num-inline">01 ·</span> Giới thiệu &amp; Triết lý tăng trưởng</h2>
+        <h2 class="sec-title-main" data-vi="<span class='sec-num-inline'>01 ·</span> Giới thiệu &amp; Triết lý tăng trưởng" data-en="<span class='sec-num-inline'>01 ·</span> About &amp; Growth Philosophy"><span class="sec-num-inline'>01 ·</span> Giới thiệu &amp; Triết lý tăng trưởng</h2>
       </div>
       
       <p class="about-lead sec-desc" data-vi="Tăng trưởng thực chất từ lăng kính tâm lý học hành vi, kỷ luật số liệu và sức mạnh từ sự phối hợp đa phòng ban." data-en="Real growth from the intersection of consumer psychology, data discipline, and cross-functional teamwork.">Tăng trưởng thực chất từ lăng kính tâm lý học hành vi, kỷ luật số liệu và sức mạnh từ sự phối hợp đa phòng ban.</p>
@@ -1934,7 +1933,7 @@
       <!-- PANE 1: TOMIA -->
       <div class="project-pane active" id="tomia">
         <div class="pane-header-box">
-          <div class="pane-header-tags" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
             <span class="editorial-tag" style="margin-bottom:0">Case 01 · B2B SaaS Lead Generation</span>
             <span class="editorial-pill" style="background:#FDFBF7;border-color:#C49746;color:#7A4B1A;font-weight:700">300M+ Doanh thu Hợp đồng · 3,3× ROAS</span>
           </div>
@@ -2111,12 +2110,12 @@
       <!-- PANE 2: FITMAR -->
       <div class="project-pane" id="fitmar">
         <div class="pane-header-box">
-          <div class="pane-header-tags" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
             <span class="editorial-tag" style="margin-bottom:0">Case 02 · F&amp;B Multi-Brand Growth &amp; P&amp;L Control</span>
             <span class="editorial-pill" style="background:#FDFBF7;border-color:#C49746;color:#7A4B1A;font-weight:700">Ngân Sách 10M–20M/tháng ➔ Doanh Thu 800M – 1 Tỷ</span>
           </div>
           <h3 class="pane-header-title">Fitmar Agency: Quản trị 7 Thương hiệu F&amp;B Song Song</h3>
-          <p class="mut" style="margin:0;font-size:15px;line-height:1.7" data-vi="Trực tiếp chạy quảng cáo Facebook cho các thương hiệu F&amp;B tổng ngân sách 200–250tr/tháng, tối ưu chuyển đổi giữ mức chi phí marketing từ 10–20%. Đề xuất mô hình ngân sách Dive in &amp; Casual theo từng giai đoạn giúp team đạt KPI kỳ vọng từ 5–10% ngân sách, phân tích insight &amp; LAL duy trì CR ổn định 10–20%, A/B test giảm CPA 30–50% và scale doanh thu 30–40%." data-en="Directly managed Facebook Ads for F&amp;B brands with 200–250M/mo budget, keeping marketing cost at 10–20%. Proposed Dive-in &amp; Casual budget models hitting 5–10% KPI, analyzed insights &amp; LAL maintaining 10–20% CR, A/B tested cutting CPA 30–50% and scaling revenue 30–40%.">Trực tiếp chạy quảng cáo Facebook cho các thương hiệu F&amp;B tổng ngân sách 200–250tr/tháng, tối ưu chuyển đổi giữ mức chi phí marketing từ 10–20%. Đề xuất mô hình ngân sách Dive in &amp; Casual theo từng giai đoạn giúp team đạt KPI kỳ vọng từ 5–10% ngân sách, phân tích insight &amp; LAL duy trì CR ổn định 10–20%, A/B test giảm CPA 30–50% và scale doanh thu 30–40%.</p>
+          <p class="mut" style="margin:0;font-size:15px;line-height:1.7" data-vi="Vận hành ngân sách 200–250 triệu/tháng, xây dựng bảng Daily Tracking &amp; P&amp;L Controller, bắt tay chặt chẽ với Account &amp; Content để hạ CPA 30–50% và scale doanh thu chuỗi." data-en="Managed 200–250M/month budget, built daily P&amp;L tracker, closely aligned with Account &amp; Content teams to cut CPA 30–50% and scale restaurant revenues.">Vận hành ngân sách 200–250 triệu/tháng, xây dựng bảng Daily Tracking &amp; P&amp;L Controller, bắt tay chặt chẽ với Account &amp; Content để hạ CPA 30–50% và scale doanh thu chuỗi.</p>
         </div>
 
         <!-- Pills Navigation -->
@@ -2224,12 +2223,12 @@
       <!-- PANE 3: ABERA -->
       <div class="project-pane" id="abera">
         <div class="pane-header-box">
-          <div class="pane-header-tags" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
             <span class="editorial-tag" style="margin-bottom:0">Case 03 · Cross-Border E-Commerce &amp; TikTok Shop</span>
             <span class="editorial-pill" style="background:#FDFBF7;border-color:#C49746;color:#7A4B1A;font-weight:700">ROAS 2,0 – 3,0 · Net Profit $5,400/tháng</span>
           </div>
           <h3 class="pane-header-title">ABERA (HV Holdings): Thị trường Philippines</h3>
-          <p class="mut" style="margin:0;font-size:15px;line-height:1.7" data-vi="Quản lý và lên kế hoạch nội dung, triển khai bài viết trên Facebook, Shopify và TikTok cho thương hiệu mỹ phẩm ABERA tại Philippines. Viết kịch bản video đo lường hiệu suất (CPM, CTR, CVR) giảm CPA 20–30%. Vận hành TikTok Shop (booking KOC/KOL, khuyến mãi, CSKH, rating 4.5–4.8★). Quản lý ngân sách $3.900–$5.900/tháng, doanh thu $7.800–$17.700 với ROAS 2–3.0 (vượt xa hòa vốn 1,56), lợi nhuận ròng tối đa ~$5.400/tháng và đạt 1,17M lượt xem video." data-en="Planned &amp; executed content on Facebook, Shopify &amp; TikTok for ABERA skincare in the Philippines. Wrote video scripts measuring CPM, CTR, CVR cutting CPA 20–30%. Operated TikTok Shop (KOC booking, promo, CS, 4.5–4.8★ rating). Handled $3.9k–$5.9k/mo spend, $7.8k–$17.7k revenue with 2.0–3.0 ROAS (vs 1.56 BE), peak net profit ~$5,400/mo and 1.17M views.">Quản lý và lên kế hoạch nội dung, triển khai bài viết trên Facebook, Shopify và TikTok cho thương hiệu mỹ phẩm ABERA tại Philippines. Viết kịch bản video đo lường hiệu suất (CPM, CTR, CVR) giảm CPA 20–30%. Vận hành TikTok Shop (booking KOC/KOL, khuyến mãi, CSKH, rating 4.5–4.8★). Quản lý ngân sách $3.900–$5.900/tháng, doanh thu $7.800–$17.700 với ROAS 2–3.0 (vượt xa hòa vốn 1,56), lợi nhuận ròng tối đa ~$5.400/tháng và đạt 1,17M lượt xem video.</p>
+          <p class="mut" style="margin:0;font-size:15px;line-height:1.7" data-vi="Vận hành TikTok Shop &amp; Facebook Ads cho dòng mỹ phẩm xóa nhăn. Làm việc với KOC bản địa, tối ưu tỷ lệ hoàn đơn COD, vượt xa điểm hòa vốn 1,56." data-en="Operated TikTok Shop &amp; Facebook Ads for anti-aging skincare. Coordinated with local KOCs to minimize COD return rates and scale well above 1.56 break-even.">Vận hành TikTok Shop &amp; Facebook Ads cho dòng mỹ phẩm xóa nhăn. Làm việc với KOC bản địa, tối ưu tỷ lệ hoàn đơn COD, vượt xa điểm hòa vốn 1,56.</p>
         </div>
 
         <div class="card card-top-accent" style="margin-top:20px">
@@ -2241,11 +2240,7 @@
         <div style="display:flex;gap:16px;flex-wrap:wrap;background:var(--muted);padding:12px 16px;border-radius:4px;font-family:var(--font-mono);font-size:12.5px;margin-bottom:20px">
           <div>ROAS: <strong>2,0 – 3,0 (Hòa vốn 1,56)</strong></div>
           <div>Doanh thu: <strong>$7,800 – $17,700 / tháng</strong></div>
-          <div>Lợi nhuận ròng: <strong>~$5,400 / tháng</strong></div>
-          <div>CPA: <strong>Tối ưu giảm 20% – 30%</strong></div>
           <div>Video Views: <strong>1,17 Triệu lượt xem</strong></div>
-          <div>Tiếp cận: <strong>727K Reach</strong></div>
-          <div>Click &amp; Web: <strong>6.9K Clicks · 3.5K Visits</strong></div>
           <div>Shop Rating: <strong>4.5 – 4.8 ★</strong></div>
         </div>
 
@@ -2269,7 +2264,7 @@
       <!-- PANE 4: DỰ ÁN FREELANCE CHO NHÃN HÀNG -->
       <div class="project-pane" id="more">
         <div class="pane-header-box">
-          <div class="pane-header-tags" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
             <span class="editorial-tag" style="margin-bottom:0">Case 04 · Freelance Performance &amp; Khai Phá Thị Trường</span>
             <span class="editorial-pill" style="background:#FDFBF7;border-color:#C49746;color:#7A4B1A;font-weight:700">A-Zone &amp; Thức Coffee 24/7</span>
           </div>
@@ -2301,7 +2296,7 @@
     <section class="sec" id="skills">
       <div class="section-heading-editorial">
         <span class="sec-category-label">NĂNG LỰC &amp; VŨ KHÍ THỰC CHIẾN</span>
-        <h2 class="sec-title-main" data-vi="<span class='sec-num-inline'>03 ·</span> Kỹ năng cốt lõi &amp; Hệ sinh thái công cụ" data-en="<span class='sec-num-inline'>03 ·</span> Core Competencies &amp; Tool Ecosystem"><span class="sec-num-inline'>03 ·</span> Kỹ năng cốt lõi &amp; Hệ sinh thái công cụ</h2>
+        <h2 class="sec-title-main" data-vi="<span class='sec-num-inline'>03 ·</span> Kỹ năng, Bộ công cụ &amp; Phương pháp luận" data-en="<span class='sec-num-inline'>03 ·</span> Core Competencies &amp; Tool Ecosystem"><span class="sec-num-inline'>03 ·</span> Kỹ năng, Bộ công cụ &amp; Phương pháp luận</h2>
       </div>
       <p class="mut sec-desc" data-vi="Khảo sát năng lực thực chiến dưới lăng kính quản trị: Tách bạch rõ ràng giữa kỹ thuật phương pháp luận tư duy và hệ sinh thái công cụ phần mềm làm chủ hàng ngày." data-en="Hands-on execution matrix evaluated from a management perspective: Clearly separated between strategic execution methodologies and the applied tool &amp; software ecosystem.">Khảo sát năng lực thực chiến dưới lăng kính quản trị: Tách bạch rõ ràng giữa kỹ thuật phương pháp luận tư duy và hệ sinh thái công cụ phần mềm làm chủ hàng ngày.</p>
 
@@ -2695,12 +2690,11 @@
               </div>
               <span style="font-family:var(--font-mono);font-size:12px;color:var(--muted-foreground);white-space:nowrap;padding-top:2px">07/2025 – 02/2026</span>
             </div>
-            <p style="font-size:14.5px;color:var(--muted-foreground);line-height:1.7;margin-bottom:14px" data-vi="Trực tiếp chạy Facebook Ads cho các thương hiệu F&amp;B với ngân sách 200–250tr/tháng, tối ưu chi phí marketing giữ ở mức 10–20%. Đề xuất dự toán ngân sách theo mô hình Dive in &amp; Casual giúp team đạt KPI kỳ vọng 5–10% ngân sách. Tối ưu giảm 30–50% CPA qua A/B testing creative &amp; audience, xây dựng funnel chuyển đổi giúp scale doanh thu 30–40% giữ chi phí marketing an toàn." data-en="Managed Facebook Ads for F&amp;B brands with 200–250M/mo spend, maintaining 10–20% marketing cost ratio. Budgeted via Dive in &amp; Casual models to hit KPI 5–10% of budget. Halved CPA via creative &amp; audience A/B testing, scaling revenue 30–40%.">Trực tiếp chạy Facebook Ads cho các thương hiệu F&amp;B với ngân sách 200–250tr/tháng, tối ưu chi phí marketing giữ ở mức 10–20%. Đề xuất dự toán ngân sách theo mô hình Dive in &amp; Casual giúp team đạt KPI kỳ vọng 5–10% ngân sách. Tối ưu giảm 30–50% CPA qua A/B testing creative &amp; audience, xây dựng funnel chuyển đổi giúp scale doanh thu 30–40% giữ chi phí marketing an toàn.</p>
+            <p style="font-size:14.5px;color:var(--muted-foreground);line-height:1.7;margin-bottom:14px" data-vi="Vận hành cùng lúc 7 thương hiệu ẩm thực với ngân sách 200–250 triệu/tháng. Giảm CPA 30–50%, phối hợp chặt chẽ với Content/Account để scale doanh thu chuỗi 30–40% với tỷ lệ A/S luôn an toàn dưới 20%." data-en="Operated 7 concurrent F&B brands with 200–250M/mo spend. Reduced CPA by 30–50%, aligned with Content/Account to scale revenues 30–40% maintaining A/S strictly below 20%.">Vận hành cùng lúc 7 thương hiệu ẩm thực với ngân sách 200–250 triệu/tháng. Giảm CPA 30–50%, phối hợp chặt chẽ với Content/Account để scale doanh thu chuỗi 30–40% với tỷ lệ A/S luôn an toàn dưới 20%.</p>
             <div style="display:flex;gap:8px;flex-wrap:wrap">
-              <span class="editorial-pill">Ngân sách 200–250M/tháng</span>
               <span class="editorial-pill">▼ 30–50% CPA</span>
-              <span class="editorial-pill">Scale Doanh thu 30–40%</span>
-              <span class="editorial-pill">Chi phí MKT 10–20%</span>
+              <span class="editorial-pill">Scale Chuỗi ~900M</span>
+              <span class="editorial-pill">A/S &lt; 20%</span>
             </div>
           </div>
         </div>
@@ -2711,17 +2705,16 @@
           <div class="card card-top-accent" style="padding:28px 24px">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:12px">
               <div>
-                <div style="font-family:var(--font-display);font-size:17.5px;font-weight:700;color:var(--fg);line-height:1.3">Content &amp; Performance Marketing Executive</div>
+                <div style="font-family:var(--font-display);font-size:17.5px;font-weight:700;color:var(--fg);line-height:1.3">Content &amp; Performance Executive</div>
                 <div style="font-family:var(--font-mono);font-size:13.5px;font-weight:700;color:var(--btn-brown);margin-top:4px">HV Holdings (ABERA Cosmetics Philippines)</div>
               </div>
               <span style="font-family:var(--font-mono);font-size:12px;color:var(--muted-foreground);white-space:nowrap;padding-top:2px">02/2025 – 06/2025</span>
             </div>
-            <p style="font-size:14.5px;color:var(--muted-foreground);line-height:1.7;margin-bottom:14px" data-vi="Quản lý kế hoạch nội dung Facebook, Shopify, TikTok và vận hành TikTok Shop (booking KOC/KOL, khuyến mãi, CSKH, rating 4.5–4.8★). Quản lý ngân sách $3.900–$5.900/tháng, doanh thu $7.800–$17.700 với ROAS 2–3.0 (vượt xa hòa vốn 1,56), giảm 20–30% CPA, lợi nhuận ròng tối đa ~$5.400/tháng và đạt 1,17M lượt xem video." data-en="Managed content on Facebook, Shopify &amp; TikTok; operated TikTok Shop (KOC booking, promo, CS, 4.5–4.8★ rating). Handled $3.9k–$5.9k/mo spend, $7.8k–$17.7k revenue, 2.0–3.0 ROAS (vs 1.56 BE), -20–30% CPA, peak net profit ~$5,400/mo and 1.17M views.">Quản lý kế hoạch nội dung Facebook, Shopify, TikTok và vận hành TikTok Shop (booking KOC/KOL, khuyến mãi, CSKH, rating 4.5–4.8★). Quản lý ngân sách $3.900–$5.900/tháng, doanh thu $7.800–$17.700 với ROAS 2–3.0 (vượt xa hòa vốn 1,56), giảm 20–30% CPA, lợi nhuận ròng tối đa ~$5.400/tháng và đạt 1,17M lượt xem video.</p>
+            <p style="font-size:14.5px;color:var(--muted-foreground);line-height:1.7;margin-bottom:14px" data-vi="Vận hành TikTok Shop &amp; Facebook Ads thị trường Philippines ($3.900–$5.900/tháng). Quản lý mạng lưới KOC bản địa, tối ưu xác nhận COD đạt ROAS 2,0–3,0 (vượt xa hòa vốn 1,56), lợi nhuận ròng đỉnh $5.400/tháng và 1,17M lượt xem video." data-en="Operated TikTok Shop &amp; Facebook Ads for Philippines ($3.9k–$5.9k/mo). Managed Filipino KOC network and COD verification, achieving 2.0–3.0 ROAS (vs 1.56 BE), peak net profit $5,400/mo, and 1.17M views.">Vận hành TikTok Shop &amp; Facebook Ads thị trường Philippines ($3.900–$5.900/tháng). Quản lý mạng lưới KOC bản địa, tối ưu xác nhận COD đạt ROAS 2,0–3,0 (vượt xa hòa vốn 1,56), lợi nhuận ròng đỉnh $5.400/tháng và 1,17M lượt xem video.</p>
             <div style="display:flex;gap:8px;flex-wrap:wrap">
-              <span class="editorial-pill">ROAS 2.0–3.0 (BE 1.56)</span>
-              <span class="editorial-pill">Lợi nhuận ~$5,400/tháng</span>
+              <span class="editorial-pill">ROAS 2.0–3.0</span>
+              <span class="editorial-pill">Net Profit ~$5,400</span>
               <span class="editorial-pill">1.17M Video Views</span>
-              <span class="editorial-pill">Rating Shop 4.5–4.8★</span>
             </div>
           </div>
         </div>
@@ -2732,16 +2725,16 @@
           <div class="card card-top-accent" style="padding:28px 24px">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:12px">
               <div>
-                <div style="font-family:var(--font-display);font-size:17.5px;font-weight:700;color:var(--fg);line-height:1.3">Social Marketing Intern</div>
-                <div style="font-family:var(--font-mono);font-size:13.5px;font-weight:700;color:var(--btn-brown);margin-top:4px">Công Ty Cổ phần IVS</div>
+                <div style="font-family:var(--font-display);font-size:17.5px;font-weight:700;color:var(--fg);line-height:1.3">Thực tập sinh Marketing</div>
+                <div style="font-family:var(--font-mono);font-size:13.5px;font-weight:700;color:var(--btn-brown);margin-top:4px">Công ty Cổ phần Phần mềm Hợp tác Quốc tế (IVS)</div>
               </div>
-              <span style="font-family:var(--font-mono);font-size:12px;color:var(--muted-foreground);white-space:nowrap;padding-top:2px">05/2023 – 11/2023</span>
+              <span style="font-family:var(--font-mono);font-size:12px;color:var(--muted-foreground);white-space:nowrap;padding-top:2px">2024</span>
             </div>
-            <p style="font-size:14.5px;color:var(--muted-foreground);line-height:1.7;margin-bottom:14px" data-vi="Lên kế hoạch và triển khai nội dung bài viết Facebook, LinkedIn cho thương hiệu phần mềm; viết mô tả sản phẩm, email marketing, thiết kế hình ảnh web. Giúp Facebook tăng +367% lượt theo dõi và LinkedIn vượt xa trung bình ngành; trực tiếp tổ chức sự kiện nội bộ và bên ngoài cho 100–150 người tham dự." data-en="Planned &amp; executed content on Facebook &amp; LinkedIn; drafted product copy, email marketing &amp; website visuals. Boosted Facebook followers by +367% and outpaced industry benchmarks on LinkedIn; organized company events for 100–150 attendees.">Lên kế hoạch và triển khai nội dung bài viết Facebook, LinkedIn cho thương hiệu phần mềm; viết mô tả sản phẩm, email marketing, thiết kế hình ảnh web. Giúp Facebook tăng +367% lượt theo dõi và LinkedIn vượt xa trung bình ngành; trực tiếp tổ chức sự kiện nội bộ và bên ngoài cho 100–150 người tham dự.</p>
+            <p style="font-size:14.5px;color:var(--muted-foreground);line-height:1.7;margin-bottom:14px" data-vi="Tham gia thực tập marketing tại IVS: Hỗ trợ nghiên cứu thị trường ngành phần mềm, xây dựng nội dung truyền thông và phân tích dữ liệu tương tác phục vụ các dự án tiếp cận khách hàng doanh nghiệp." data-en="Marketing intern at IVS: Assisted in software market research, digital content production, and engagement analytics for B2B client acquisition campaigns.">Tham gia thực tập marketing tại IVS: Hỗ trợ nghiên cứu thị trường ngành phần mềm, xây dựng nội dung truyền thông và phân tích dữ liệu tương tác phục vụ các dự án tiếp cận khách hàng doanh nghiệp.</p>
             <div style="display:flex;gap:8px;flex-wrap:wrap">
-              <span class="editorial-pill">+367% Follower FB</span>
-              <span class="editorial-pill">LinkedIn Growth</span>
-              <span class="editorial-pill">Event 100–150 Pax</span>
+              <span class="editorial-pill">Nghiên cứu thị trường B2B</span>
+              <span class="editorial-pill">Phân tích dữ liệu số</span>
+              <span class="editorial-pill">Nội dung truyền thông</span>
             </div>
           </div>
         </div>
