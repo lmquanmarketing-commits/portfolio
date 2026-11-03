@@ -22,8 +22,9 @@
       --bg: #FAFAF8;
       --fg: #1A1A1A;
       --muted: #F5F3F0;
-      --muted-foreground: #6B6B6B;
+      --muted-foreground: #55504A;
       --accent: #B8860B;
+      --accent-deep: #8A5216;
       --accent-secondary: #D4A84B;
       --accent-border: #D4A84B;
       --border: #E8E4DF;
@@ -128,7 +129,7 @@
       font-family: var(--font-display);
       font-size: 42px;
       font-weight: 700;
-      color: var(--accent);
+      color: var(--accent-deep);
       line-height: 1;
       letter-spacing: -0.02em;
       flex-shrink: 0;
@@ -228,10 +229,27 @@
       letter-spacing: 0.08em;
       color: var(--muted-foreground);
       text-decoration: none;
-      transition: var(--transition);
-      font-weight: 500;
+      transition: color 0.18s ease;
+      font-weight: 600;
+      position: relative;
+      padding: 6px 0;
     }
-    .nav-links a:hover { color: var(--btn-brown); }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--btn-brown);
+      transition: width 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nav-links a:hover {
+      color: var(--btn-brown);
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
 
     /* Language Switcher */
     .tg {
@@ -253,6 +271,13 @@
       cursor: pointer;
       border-radius: 3px;
       transition: var(--transition);
+    }
+    .tg button:not(.on):hover {
+      color: var(--fg);
+      background: rgba(122, 75, 26, 0.08);
+    }
+    .tg button:active {
+      transform: scale(0.96);
     }
     .tg button.on {
       background: var(--btn-brown) !important;
@@ -376,6 +401,16 @@
       border-top: 1px dashed var(--border);
       text-align: left;
     }
+    .contact-meta-link {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(122, 75, 26, 0.45);
+      transition: color 0.18s ease, border-bottom-color 0.18s ease;
+    }
+    .contact-meta-link:hover {
+      color: var(--btn-brown) !important;
+      border-bottom-color: var(--btn-brown);
+    }
     .av-contact-row {
       font-family: var(--font-mono);
       font-size: 11px;
@@ -406,8 +441,8 @@
       font-size: 11.5px;
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      color: var(--accent);
-      font-weight: 600;
+      color: var(--accent-deep);
+      font-weight: 700;
       margin-bottom: 0;
     }
     .hero-name-main {
@@ -472,6 +507,13 @@
       transition: transform 0.2s ease;
     }
     .btn:hover svg { transform: translateX(3px); }
+    .btn:active {
+      transform: scale(0.978);
+    }
+    .btn:focus-visible, .tg button:focus-visible, .pmn-btn:focus-visible, .pill-btn:focus-visible {
+      outline: 2px solid var(--btn-brown);
+      outline-offset: 2.5px;
+    }
     .btn-primary {
       background: var(--btn-brown) !important;
       color: #FFFFFF !important;
@@ -483,6 +525,10 @@
       border-color: var(--btn-brown-hover) !important;
       box-shadow: 0 4px 12px rgba(122, 75, 26, 0.28) !important;
     }
+    .btn-primary:active {
+      transform: scale(0.978);
+      box-shadow: 0 1px 3px rgba(122, 75, 26, 0.2) !important;
+    }
     .btn-secondary {
       background: var(--btn-brown-light) !important;
       color: var(--btn-brown) !important;
@@ -492,6 +538,10 @@
       background: #F5EFE4 !important;
       border-color: var(--btn-brown) !important;
       color: var(--btn-brown) !important;
+    }
+    .btn-secondary:active {
+      transform: scale(0.978);
+      background: #ECE4D6 !important;
     }
 
     /* 3 Case Study Grid - Nằm ngang đối xứng 3 cột đồng bộ, Safe-Zone Tuyệt Đối */
@@ -682,7 +732,10 @@
       border-color: #D4A84B;
       background: #FFFFFF;
       transform: translateY(-2px);
-      box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+      box-shadow: 0 4px 14px rgba(122, 75, 26, 0.08);
+    }
+    .pmn-btn:active {
+      transform: translateY(0) scale(0.985);
     }
     .pmn-btn.active {
       background: #FFFFFF;
@@ -1258,6 +1311,9 @@
       color: var(--btn-brown);
       background: #FDFBF7;
     }
+    .pill-btn:active {
+      transform: scale(0.975);
+    }
     .pill-btn.active {
       background: var(--btn-brown) !important;
       color: #FFFFFF !important;
@@ -1592,7 +1648,7 @@
             </div>
             <div class="av-contact-row">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <span><a href="tel:0812544319" style="color:inherit;text-decoration:none">0812 544 319</a></span>
+              <span><a href="tel:0812544319" class="contact-meta-link">0812 544 319</a></span>
             </div>
           </div>
         </div>
@@ -2594,11 +2650,11 @@
           </a>
         </div>
 
-        <div style="font-family:var(--font-mono);font-size:12.5px;color:var(--muted-foreground);display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:12px;padding-top:18px;border-top:1px dashed var(--border)">
-          <span>Hotline / Zalo: <strong style="color:var(--fg)"><a href="https://zalo.me/0812544319" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">0812 544 319</a></strong></span>
-          <span>•</span>
-          <span>Email: <strong style="color:var(--fg)">lmquan.marketing@gmail.com</strong></span>
-          <span>•</span>
+        <div style="font-family:var(--font-mono);font-size:12.5px;color:var(--muted-foreground);display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:14px;padding-top:20px;border-top:1px dashed var(--border)">
+          <span>Hotline / Zalo: <strong style="color:var(--fg)"><a href="https://zalo.me/0812544319" target="_blank" rel="noopener" class="contact-meta-link">0812 544 319</a></strong></span>
+          <span style="opacity:0.4">•</span>
+          <span>Email: <strong style="color:var(--fg)"><a href="mailto:lmquan.marketing@gmail.com" class="contact-meta-link">lmquan.marketing@gmail.com</a></strong></span>
+          <span style="opacity:0.4">•</span>
           <span>Địa điểm: <strong style="color:var(--fg)">TP. Hồ Chí Minh</strong></span>
         </div>
       </div>
