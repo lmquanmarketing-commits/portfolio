@@ -1757,6 +1757,160 @@
       font-size: 12.5px;
       color: var(--muted-foreground);
     }
+
+    /* Contact Action Modal (Popup 2 Option: Gọi điện & Gửi mail khi nhấn nút Liên hệ) */
+    .contact-modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(26, 26, 26, 0.6);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 99999;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      box-sizing: border-box;
+      opacity: 0;
+      transition: opacity 0.22s ease;
+    }
+    .contact-modal-backdrop.active {
+      display: flex;
+      opacity: 1;
+    }
+    .contact-modal-dialog {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--btn-brown);
+      border-radius: 12px;
+      padding: 26px 22px;
+      width: 100%;
+      max-width: 440px;
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.22);
+      transform: translateY(16px) scale(0.97);
+      transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+      box-sizing: border-box;
+      position: relative;
+    }
+    .contact-modal-backdrop.active .contact-modal-dialog {
+      transform: translateY(0) scale(1);
+    }
+    .contact-modal-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .contact-modal-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--fg);
+      margin: 0;
+      line-height: 1.25;
+    }
+    .contact-modal-close {
+      background: transparent;
+      border: none;
+      font-size: 20px;
+      line-height: 1;
+      color: var(--muted-foreground);
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 4px;
+      transition: var(--transition);
+    }
+    .contact-modal-close:hover {
+      color: var(--fg);
+      background: var(--muted);
+    }
+    .contact-modal-desc {
+      font-size: 13.5px;
+      color: var(--muted-foreground);
+      line-height: 1.55;
+      margin-bottom: 18px;
+    }
+    .contact-modal-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .cmo-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 13px 15px;
+      border-radius: 8px;
+      border: 1.5px solid var(--border);
+      background: #FAFAF8;
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+      box-sizing: border-box;
+    }
+    .cmo-item:hover {
+      background: #FFFFFF;
+      border-color: var(--btn-brown);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(122, 75, 26, 0.08);
+    }
+    .cmo-item:active {
+      transform: scale(0.98);
+    }
+    .cmo-icon-box {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      color: var(--btn-brown);
+      transition: var(--transition);
+    }
+    .cmo-item:hover .cmo-icon-box {
+      background: var(--btn-brown);
+      color: #FFFFFF;
+      border-color: var(--btn-brown);
+    }
+    .cmo-text-box {
+      flex: 1;
+      min-width: 0;
+      text-align: left;
+    }
+    .cmo-label {
+      font-family: var(--font-display);
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--fg);
+      line-height: 1.3;
+      margin-bottom: 2px;
+    }
+    .cmo-val {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--btn-brown);
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .cmo-arrow {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      color: var(--muted-foreground);
+      font-weight: 700;
+      transition: transform 0.2s ease;
+    }
+    .cmo-item:hover .cmo-arrow {
+      color: var(--btn-brown);
+      transform: translateX(3px);
+    }
   </style>
 </head>
 <body>
@@ -1805,10 +1959,10 @@
           </p>
 
           <div class="btn-row">
-            <a class="btn btn-primary" href="#contact">
+            <button class="btn btn-primary" onclick="openContactModal(event)">
               <span class="lang-txt" data-vi="Liên hệ trao đổi" data-en="Contact me">Liên hệ trao đổi</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </a>
+            </button>
             <a class="btn btn-secondary" href="https://www.linkedin.com/in/quan-le-minh-78629b291/" target="_blank" rel="noopener">
               <span class="lang-txt" data-vi="Kết nối LinkedIn" data-en="Connect on LinkedIn">Kết nối LinkedIn</span>
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
@@ -2831,14 +2985,11 @@
         <p class="mut lang-txt" style="max-width:580px;margin:0 auto 30px;font-size:15px;line-height:1.7" data-vi="Tập trung tối ưu phễu chuyển đổi, xây dựng hạ tầng dữ liệu đo lường và bảo toàn dòng tiền tăng trưởng bền vững." data-en="Dedicated to funnel optimization, measurement tracking infrastructure, and sustainable revenue growth.">Tập trung tối ưu phễu chuyển đổi, xây dựng hạ tầng dữ liệu đo lường và bảo toàn dòng tiền tăng trưởng bền vững.</p>
 
         <div class="btn-row" style="justify-content:center;margin-bottom:24px">
-          <a class="btn btn-primary" href="mailto:lmquan.marketing@gmail.com">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-            <span class="lang-txt" data-vi="Gửi Email trực tiếp" data-en="Send Email">Gửi Email trực tiếp</span>
-          </a>
-          <a class="btn btn-primary" href="tel:0812544319" style="background:#8A5216;border-color:#8A5216">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <span class="lang-txt" data-vi="Gọi điện: 0812 544 319" data-en="Call: 0812 544 319">Gọi điện: 0812 544 319</span>
-          </a>
+          <button class="btn btn-primary" onclick="openContactModal(event)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span class="lang-txt" data-vi="Liên hệ trao đổi" data-en="Contact me">Liên hệ trao đổi</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
           <a class="btn btn-secondary" href="https://www.linkedin.com/in/quan-le-minh-78629b291/" target="_blank" rel="noopener">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
             <span>LinkedIn</span>
@@ -2934,9 +3085,87 @@
       btn.addEventListener('click', () => setLanguage(btn.dataset.l));
     });
 
+    // Contact Modal Controller: Mở Popup 2 Option Gọi điện & Gửi mail
+    function openContactModal(e) {
+      if (e) e.preventDefault();
+      const modal = document.getElementById('contact-modal');
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    function closeContactModal() {
+      const modal = document.getElementById('contact-modal');
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+    function closeContactModalOnBackdrop(e) {
+      if (e.target && e.target.id === 'contact-modal') {
+        closeContactModal();
+      }
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeContactModal();
+    });
+
     // Chạy ngay lập tức khi tải trang để kích hoạt ngôn ngữ và tab
     setLanguage(currentLang);
     document.addEventListener('DOMContentLoaded', () => setLanguage(currentLang));
   </script>
+
+  <!-- Contact Action Modal: 2 Lựa chọn Gửi mail & Gọi điện sau khi nhấn nút Liên hệ -->
+  <div id="contact-modal" class="contact-modal-backdrop" onclick="closeContactModalOnBackdrop(event)">
+    <div class="contact-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="cm-title">
+      <div class="contact-modal-header">
+        <div>
+          <span class="editorial-tag" style="margin-bottom:4px;font-size:10px">KẾT NỐI TRỰC TIẾP</span>
+          <h3 id="cm-title" class="contact-modal-title" data-vi="Phương thức liên hệ" data-en="Contact Options">Phương thức liên hệ</h3>
+        </div>
+        <button class="contact-modal-close" onclick="closeContactModal()" aria-label="Đóng">✕</button>
+      </div>
+      
+      <p class="contact-modal-desc" data-vi="Vui lòng chọn kênh thuận tiện nhất để trao đổi công việc cùng tôi:" data-en="Please select your preferred channel to connect with me:">Vui lòng chọn kênh thuận tiện nhất để trao đổi công việc cùng tôi:</p>
+      
+      <div class="contact-modal-options">
+        <!-- Option 1: Gửi Email -->
+        <a href="mailto:lmquan.marketing@gmail.com" class="cmo-item" onclick="closeContactModal()">
+          <div class="cmo-icon-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          </div>
+          <div class="cmo-text-box">
+            <div class="cmo-label" data-vi="Gửi Email trực tiếp" data-en="Send Direct Email">Gửi Email trực tiếp</div>
+            <div class="cmo-val">lmquan.marketing@gmail.com</div>
+          </div>
+          <div class="cmo-arrow">➔</div>
+        </a>
+
+        <!-- Option 2: Gọi điện thoại -->
+        <a href="tel:0812544319" class="cmo-item" onclick="closeContactModal()">
+          <div class="cmo-icon-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div class="cmo-text-box">
+            <div class="cmo-label" data-vi="Gọi điện thoại / Zalo" data-en="Call / Zalo Hotline">Gọi điện thoại / Zalo</div>
+            <div class="cmo-val">0812 544 319 (Hotline)</div>
+          </div>
+          <div class="cmo-arrow">➔</div>
+        </a>
+
+        <!-- Option 3: LinkedIn -->
+        <a href="https://www.linkedin.com/in/quan-le-minh-78629b291/" target="_blank" rel="noopener" class="cmo-item" onclick="closeContactModal()">
+          <div class="cmo-icon-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </div>
+          <div class="cmo-text-box">
+            <div class="cmo-label">Kết nối qua LinkedIn</div>
+            <div class="cmo-val">Quan Le Minh</div>
+          </div>
+          <div class="cmo-arrow">↗</div>
+        </a>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
