@@ -3110,12 +3110,27 @@
       if (e.key === 'Escape') closeContactModal();
     });
 
+    // Mở trực tiếp trình soạn thư Gmail trên máy tính hoặc ứng dụng Mail trên điện thoại
+    function handleEmailClick(e) {
+      if (e) e.preventDefault();
+      closeContactModal();
+      const email = 'lmquan.marketing@gmail.com';
+      const subject = encodeURIComponent('Trao đổi cơ hội hợp tác cùng Lê Minh Quân');
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      
+      if (isMobile) {
+        window.location.href = `mailto:${email}?subject=${subject}`;
+      } else {
+        window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}`, '_blank');
+      }
+    }
+
     // Chạy ngay lập tức khi tải trang để kích hoạt ngôn ngữ và tab
     setLanguage(currentLang);
     document.addEventListener('DOMContentLoaded', () => setLanguage(currentLang));
   </script>
 
-  <!-- Contact Action Modal: 2 Lựa chọn Gửi mail & Gọi điện sau khi nhấn nút Liên hệ -->
+  <!-- Contact Action Modal: Đúng 2 Option Gửi mail & Gọi điện theo yêu cầu -->
   <div id="contact-modal" class="contact-modal-backdrop" onclick="closeContactModalOnBackdrop(event)">
     <div class="contact-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="cm-title">
       <div class="contact-modal-header">
@@ -3129,13 +3144,13 @@
       <p class="contact-modal-desc" data-vi="Vui lòng chọn kênh thuận tiện nhất để trao đổi công việc cùng tôi:" data-en="Please select your preferred channel to connect with me:">Vui lòng chọn kênh thuận tiện nhất để trao đổi công việc cùng tôi:</p>
       
       <div class="contact-modal-options">
-        <!-- Option 1: Gửi Email -->
-        <a href="mailto:lmquan.marketing@gmail.com" class="cmo-item" onclick="closeContactModal()">
+        <!-- Option 1: Gửi Email (Chuyển trực tiếp đến khung soạn thư) -->
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=lmquan.marketing@gmail.com&su=Trao%20%C4%91%E1%BB%95i%20c%C6%A1%20h%E1%BB%A3p%20t%C3%A1c%20c%C3%B9ng%20L%C3%AA%20Minh%20Qu%C3%A2n" target="_blank" rel="noopener" class="cmo-item" onclick="handleEmailClick(event)">
           <div class="cmo-icon-box">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
           </div>
           <div class="cmo-text-box">
-            <div class="cmo-label" data-vi="Gửi Email trực tiếp" data-en="Send Direct Email">Gửi Email trực tiếp</div>
+            <div class="cmo-label" data-vi="Gửi Email (Soạn thư ngay)" data-en="Send Direct Email (Compose)">Gửi Email (Soạn thư ngay)</div>
             <div class="cmo-val">lmquan.marketing@gmail.com</div>
           </div>
           <div class="cmo-arrow">➔</div>
@@ -3151,18 +3166,6 @@
             <div class="cmo-val">0812 544 319 (Hotline)</div>
           </div>
           <div class="cmo-arrow">➔</div>
-        </a>
-
-        <!-- Option 3: LinkedIn -->
-        <a href="https://www.linkedin.com/in/quan-le-minh-78629b291/" target="_blank" rel="noopener" class="cmo-item" onclick="closeContactModal()">
-          <div class="cmo-icon-box">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-          </div>
-          <div class="cmo-text-box">
-            <div class="cmo-label">Kết nối qua LinkedIn</div>
-            <div class="cmo-val">Quan Le Minh</div>
-          </div>
-          <div class="cmo-arrow">↗</div>
         </a>
       </div>
     </div>
